@@ -2,7 +2,7 @@
 
 The single source of truth for Landbot's marketing website. Tokens, components, and patterns, plus a Claude skill so the design system applies automatically when you use Claude to build or review web work.
 
-Maintainer: [@niklaspuertolas-cmd](https://github.com/niklaspuertolas-cmd) (Niklas Puertolas, niklas.puertolas@landbot.io). Issues and suggestions welcome via PR.
+Maintainer: [@niklaspuertolas-cmd](https://github.com/niklaspuertolas-cmd) (Niklas Puertolas).
 
 ## What's in this repo
 
