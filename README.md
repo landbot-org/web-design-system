@@ -22,9 +22,9 @@ SKILL.md                       The Claude skill definition. Loaded automatically
 
 ## Browse the design system
 
-Hosted at: **https://landbot.github.io/web-design-system/**
+Hosted at: **https://landbot-org.github.io/web-design-system/**
 
-You must be signed in to GitHub and a member of the `landbot-org` organization to view it. If you can see this README, you can see the hosted version.
+The site is public — anyone with the link can view it.
 
 ## Use it in Claude
 
@@ -34,7 +34,7 @@ This repo doubles as a Claude skill. Once installed, Claude will automatically a
 
 1. Clone the repo to your machine:
    ```bash
-   git clone git@github.com:landbot-org/web-design-system.git ~/landbot/web-design-system
+   git clone https://github.com/landbot-org/web-design-system.git ~/landbot/web-design-system
    ```
 
 2. Symlink (or copy) it into your Claude skills folder:
@@ -58,7 +58,7 @@ cd ~/landbot/web-design-system && git pull
 
 ### Use it without installing
 
-If you don't want to install the skill, you can still use the design system inside any Claude project by attaching `docs/index.html` directly, or pasting the hosted URL into a Cowork project (Claude will fetch it via WebFetch as long as you're signed in to GitHub on the same machine — note that this path is unreliable for private Pages sites; the skill route is the recommended approach).
+If you don't want to install the skill, you can still use the design system inside any Claude project by attaching `docs/index.html` directly, or pasting the hosted URL into a Claude Cowork project — Claude will fetch it via WebFetch. The skill route is still the recommended approach because it loads automatically with no per-prompt setup.
 
 ## Use it without Claude
 

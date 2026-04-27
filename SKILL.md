@@ -55,4 +55,4 @@ When generating Landbot web UI:
 
 ## Source of truth
 
-This repo is the canonical version. The hosted browseable URL is `https://landbot.github.io/web-design-system/` (Landbot org members only). Any change to tokens, components, or patterns must go through this repo.
+This repo is the canonical version. The hosted browseable URL is `https://landbot-org.github.io/web-design-system/` (public). Any change to tokens, components, or patterns must go through this repo.
