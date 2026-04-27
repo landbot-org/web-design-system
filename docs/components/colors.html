@@ -1,0 +1,385 @@
+<!-- 
+  Component: Colors
+  Source: docs/design-system.html (CSS lines 330-418, HTML lines 2791-3075)
+  Tokens: All CSS custom properties are defined in design-system.html :root
+  Reference: tokens/DESIGN-SYSTEM-REFERENCE.md
+-->
+
+<style>
+/* Component-specific CSS extracted from design-system.html */
+    /* ─── COLOR SWATCHES ─────────────────────────────────────────── */
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 12px;
+    }
+
+    .color-swatch {
+      border-radius: var(--radius-4);
+      overflow: hidden;
+      box-shadow: var(--elevation-1);
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+
+    .color-swatch:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--elevation-2);
+    }
+
+    .swatch-block {
+      height: 72px;
+    }
+
+    .swatch-info {
+      background: var(--color-surface-card);
+      padding: 8px 10px;
+    }
+
+    .swatch-name {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--color-text-primary);
+      letter-spacing: 0.2px;
+    }
+
+    .swatch-hex {
+      font-size: 11px;
+      color: var(--color-text-secondary);
+      margin-top: 2px;
+      font-family: 'Courier New', monospace;
+    }
+
+    .swatch-copied {
+      font-size: 10px;
+      color: var(--color-status-success);
+      font-weight: 600;
+      margin-top: 2px;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .color-swatch.just-copied .swatch-copied { opacity: 1; }
+
+    .color-row {
+      display: flex;
+      gap: 4px;
+      border-radius: var(--radius-4);
+      overflow: hidden;
+      margin-bottom: 8px;
+    }
+
+    .color-row .swatch-slim {
+      flex: 1;
+      height: 40px;
+      cursor: pointer;
+      position: relative;
+      transition: transform 0.1s;
+    }
+
+    .color-row .swatch-slim:hover { transform: scaleY(1.1); }
+
+    .color-row .swatch-slim .swatch-tip {
+      display: none;
+      position: absolute;
+      bottom: calc(100% + 6px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--color-brand-secondary);
+      color: #fff;
+      font-size: 10px;
+      padding: 4px 6px;
+      border-radius: var(--radius-2);
+      white-space: nowrap;
+      pointer-events: none;
+      z-index: var(--z-tooltip);
+    }
+
+    .color-row .swatch-slim:hover .swatch-tip { display: block; }
+</style>
+
+  <section class="ds-section" id="colors">
+    <div class="ds-section-header">
+      <h2>Colors</h2>
+      <p>Always use CSS custom properties in code — never hardcode hex values. Click a swatch to copy.</p>
+    </div>
+
+    <div class="ds-subsection">
+      <div class="ds-label">Semantic tokens — use these in code</div>
+      <div class="color-grid">
+        <div class="color-swatch" onclick="copyColor('#5A60F6', this)">
+          <div class="swatch-block" style="background:#5A60F6"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">brand-primary</div>
+            <div class="swatch-hex">#5A60F6</div>
+            <div class="swatch-copied">✓ Copied</div>
+          </div>
+        </div>
+        <div class="color-swatch" onclick="copyColor('#33405E', this)">
+          <div class="swatch-block" style="background:#33405E"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">brand-secondary</div>
+            <div class="swatch-hex">#33405E</div>
+            <div class="swatch-copied">✓ Copied</div>
+          </div>
+        </div>
+        <div class="color-swatch" onclick="copyColor('#3A3D5C', this)">
+          <div class="swatch-block" style="background:#3A3D5C"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">text-primary</div>
+            <div class="swatch-hex">#3A3D5C</div>
+            <div class="swatch-copied">✓ Copied</div>
+          </div>
+        </div>
+        <div class="color-swatch" onclick="copyColor('#5D6079', this)">
+          <div class="swatch-block" style="background:#5D6079"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">text-secondary</div>
+            <div class="swatch-hex">#5D6079</div>
+            <div class="swatch-copied">✓ Copied</div>
+          </div>
+        </div>
+        <div class="color-swatch" onclick="copyColor('#FFFFFF', this)">
+          <div class="swatch-block" style="background:#FFFFFF; border:1px solid #E5E6EA;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">surface-page</div>
+            <div class="swatch-hex">#FFFFFF</div>
+            <div class="swatch-copied">✓ Copied</div>
+          </div>
+        </div>
+        <div class="color-swatch" onclick="copyColor('#FBFBFC', this)">
+          <div class="swatch-block" style="background:#FBFBFC; border:1px solid #E5E6EA;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">surface-card</div>
+            <div class="swatch-hex">#FBFBFC</div>
+            <div class="swatch-copied">✓ Copied</div>
+          </div>
+        </div>
+        <div class="color-swatch" onclick="copyColor('#E5E6EA', this)">
+          <div class="swatch-block" style="background:#E5E6EA"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">border-default</div>
+            <div class="swatch-hex">#E5E6EA</div>
+            <div class="swatch-copied">✓ Copied</div>
+          </div>
+        </div>
+        <div class="color-swatch" onclick="copyColor('#F7F7F8', this)">
+          <div class="swatch-block" style="background:#F7F7F8; border:1px solid #E5E6EA;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">border-subtle</div>
+            <div class="swatch-hex">#F7F7F8</div>
+            <div class="swatch-copied">✓ Copied</div>
+          </div>
+        </div>
+        <div class="color-swatch" onclick="copyColor('#52CC57', this)">
+          <div class="swatch-block" style="background:#52CC57"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">status-success</div>
+            <div class="swatch-hex">#52CC57</div>
+            <div class="swatch-copied">✓ Copied</div>
+          </div>
+        </div>
+        <div class="color-swatch" onclick="copyColor('#F58B0B', this)">
+          <div class="swatch-block" style="background:#F58B0B"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">status-warning</div>
+            <div class="swatch-hex">#F58B0B</div>
+            <div class="swatch-copied">✓ Copied</div>
+          </div>
+        </div>
+        <div class="color-swatch" onclick="copyColor('#FF3F7B', this)">
+          <div class="swatch-block" style="background:#FF3F7B"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">status-error</div>
+            <div class="swatch-hex">#FF3F7B</div>
+            <div class="swatch-copied">✓ Copied</div>
+          </div>
+        </div>
+        <div class="color-swatch" onclick="copyColor('#6BCEEB', this)">
+          <div class="swatch-block" style="background:#6BCEEB"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">status-info</div>
+            <div class="swatch-hex">#6BCEEB</div>
+            <div class="swatch-copied">✓ Copied</div>
+          </div>
+        </div>
+        <div class="color-swatch" onclick="copyColor('#FF3F7B', this)">
+          <div class="swatch-block" style="background:#FF3F7B"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">brand-accent</div>
+            <div class="swatch-hex">#FF3F7B</div>
+            <div class="swatch-copied">✓ Copied</div>
+          </div>
+        </div>
+        <div class="color-swatch" onclick="copyColor('#9596A7', this)">
+          <div class="swatch-block" style="background:#9596A7"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">text-disabled</div>
+            <div class="swatch-hex">#9596A7</div>
+            <div class="swatch-copied">✓ Copied</div>
+          </div>
+        </div>
+        <div class="color-swatch" onclick="copyColor('#F7F7F8', this)">
+          <div class="swatch-block" style="background:#F7F7F8; border:1px solid #E5E6EA;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">surface-hover</div>
+            <div class="swatch-hex">#F7F7F8</div>
+            <div class="swatch-copied">✓ Copied</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ds-subsection">
+      <div class="ds-label">Status surfaces — tinted backgrounds for chips &amp; alerts</div>
+      <div style="display:flex; gap:12px; flex-wrap:wrap;">
+        <div style="background:var(--color-surface-success); border:1px solid var(--color-text-on-success); border-radius:var(--radius-pill); padding:6px 16px; display:inline-flex; align-items:center; gap:8px; cursor:pointer;" onclick="copyHex('#DEF6DF')">
+          <span style="width:8px;height:8px;background:var(--color-text-on-success);border-radius:50%;display:inline-block;"></span>
+          <span style="font-size:12px;font-weight:700;color:var(--color-text-on-success);text-transform:uppercase;letter-spacing:0.4px;">Success</span>
+          <span style="font-size:11px;color:var(--color-text-secondary);font-family:'Courier New',monospace;">--color-surface-success</span>
+        </div>
+        <div style="background:var(--color-surface-warning); border:1px solid var(--color-text-on-warning); border-radius:var(--radius-pill); padding:6px 16px; display:inline-flex; align-items:center; gap:8px; cursor:pointer;" onclick="copyHex('#FEF3E0')">
+          <span style="width:8px;height:8px;background:var(--color-text-on-warning);border-radius:50%;display:inline-block;"></span>
+          <span style="font-size:12px;font-weight:700;color:var(--color-text-on-warning);text-transform:uppercase;letter-spacing:0.4px;">Warning</span>
+          <span style="font-size:11px;color:var(--color-text-secondary);font-family:'Courier New',monospace;">--color-surface-warning</span>
+        </div>
+        <div style="background:var(--color-surface-error); border:1px solid var(--color-text-on-error); border-radius:var(--radius-pill); padding:6px 16px; display:inline-flex; align-items:center; gap:8px; cursor:pointer;" onclick="copyHex('#FFE8EF')">
+          <span style="width:8px;height:8px;background:var(--color-text-on-error);border-radius:50%;display:inline-block;"></span>
+          <span style="font-size:12px;font-weight:700;color:var(--color-text-on-error);text-transform:uppercase;letter-spacing:0.4px;">Error</span>
+          <span style="font-size:11px;color:var(--color-text-secondary);font-family:'Courier New',monospace;">--color-surface-error</span>
+        </div>
+        <div style="background:var(--color-surface-info); border:1px solid var(--color-text-on-info); border-radius:var(--radius-pill); padding:6px 16px; display:inline-flex; align-items:center; gap:8px; cursor:pointer;" onclick="copyHex('#EEF9FD')">
+          <span style="width:8px;height:8px;background:var(--color-text-on-info);border-radius:50%;display:inline-block;"></span>
+          <span style="font-size:12px;font-weight:700;color:var(--color-text-on-info);text-transform:uppercase;letter-spacing:0.4px;">Info</span>
+          <span style="font-size:11px;color:var(--color-text-secondary);font-family:'Courier New',monospace;">--color-surface-info</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="ds-subsection">
+      <div class="ds-label">Neutral scale — primitives reference</div>
+      <div class="color-row">
+        <div class="swatch-slim" style="background:#3A3D5C" onclick="copyHex('#3A3D5C')"><div class="swatch-tip">#3A3D5C · 900</div></div>
+        <div class="swatch-slim" style="background:#444764" onclick="copyHex('#444764')"><div class="swatch-tip">#444764 · 800</div></div>
+        <div class="swatch-slim" style="background:#50526E" onclick="copyHex('#50526E')"><div class="swatch-tip">#50526E · 700</div></div>
+        <div class="swatch-slim" style="background:#5D6079" onclick="copyHex('#5D6079')"><div class="swatch-tip">#5D6079 · 600</div></div>
+        <div class="swatch-slim" style="background:#676A81" onclick="copyHex('#676A81')"><div class="swatch-tip">#676A81 · 500</div></div>
+        <div class="swatch-slim" style="background:#73758B" onclick="copyHex('#73758B')"><div class="swatch-tip">#73758B · 400</div></div>
+        <div class="swatch-slim" style="background:#7D7F93" onclick="copyHex('#7D7F93')"><div class="swatch-tip">#7D7F93 · 300</div></div>
+        <div class="swatch-slim" style="background:#898B9D" onclick="copyHex('#898B9D')"><div class="swatch-tip">#898B9D · 200</div></div>
+        <div class="swatch-slim" style="background:#9596A7" onclick="copyHex('#9596A7')"><div class="swatch-tip">#9596A7 · 100</div></div>
+        <div class="swatch-slim" style="background:#CECFD6" onclick="copyHex('#CECFD6')"><div class="swatch-tip">#CECFD6 · 50</div></div>
+        <div class="swatch-slim" style="background:#E5E6EA" onclick="copyHex('#E5E6EA')"><div class="swatch-tip">#E5E6EA · 40</div></div>
+        <div class="swatch-slim" style="background:#EFEFF2" onclick="copyHex('#EFEFF2')"><div class="swatch-tip">#EFEFF2 · 30</div></div>
+        <div class="swatch-slim" style="background:#F7F7F8" onclick="copyHex('#F7F7F8')"><div class="swatch-tip">#F7F7F8 · 20</div></div>
+        <div class="swatch-slim" style="background:#FBFBFC; border: 1px solid #E5E6EA" onclick="copyHex('#FBFBFC')"><div class="swatch-tip">#FBFBFC · 10</div></div>
+        <div class="swatch-slim" style="background:#FFFFFF; border: 1px solid #E5E6EA" onclick="copyHex('#FFFFFF')"><div class="swatch-tip">#FFFFFF · 0</div></div>
+      </div>
+      <div style="font-size:11px; color: var(--color-text-secondary); margin-top:4px;">Hover to see value · Click to copy</div>
+    </div>
+  </section>
+
+  <!-- ═══ EXTENDED PALETTE ═════════════════════════════════════════ -->
+  <section class="ds-section" id="palette">
+    <div class="ds-section-header">
+      <h2>Extended Palette</h2>
+      <p>6 hue families · 9 steps each (100–900). Use semantic tokens in code — these are primitives for reference. Hover a swatch to see its value, click to copy.</p>
+    </div>
+
+    <!-- PK -->
+    <div class="ds-subsection">
+      <div class="ds-label">PK — Pink / Hot pink</div>
+      <div class="color-row">
+        <div class="swatch-slim" style="background:#FFE8EF; border:1px solid #E5E6EA" onclick="copyHex('#FFE8EF')"><div class="swatch-tip">#FFE8EF · PK100</div></div>
+        <div class="swatch-slim" style="background:#FFC3D6" onclick="copyHex('#FFC3D6')"><div class="swatch-tip">#FFC3D6 · PK200</div></div>
+        <div class="swatch-slim" style="background:#FF9EBE" onclick="copyHex('#FF9EBE')"><div class="swatch-tip">#FF9EBE · PK300</div></div>
+        <div class="swatch-slim" style="background:#FF6F9D" onclick="copyHex('#FF6F9D')"><div class="swatch-tip">#FF6F9D · PK400</div></div>
+        <div class="swatch-slim" style="background:#FF3F7B" onclick="copyHex('#FF3F7B')"><div class="swatch-tip">#FF3F7B · PK500 ★</div></div>
+        <div class="swatch-slim" style="background:#E03168" onclick="copyHex('#E03168')"><div class="swatch-tip">#E03168 · PK600</div></div>
+        <div class="swatch-slim" style="background:#BE2257" onclick="copyHex('#BE2257')"><div class="swatch-tip">#BE2257 · PK700</div></div>
+        <div class="swatch-slim" style="background:#991546" onclick="copyHex('#991546')"><div class="swatch-tip">#991546 · PK800</div></div>
+        <div class="swatch-slim" style="background:#730937" onclick="copyHex('#730937')"><div class="swatch-tip">#730937 · PK900</div></div>
+      </div>
+    </div>
+
+    <!-- PU -->
+    <div class="ds-subsection">
+      <div class="ds-label">PU — Purple</div>
+      <div class="color-row">
+        <div class="swatch-slim" style="background:#EBECFF; border:1px solid #E5E6EA" onclick="copyHex('#EBECFF')"><div class="swatch-tip">#EBECFF · PU100</div></div>
+        <div class="swatch-slim" style="background:#CFD1FE" onclick="copyHex('#CFD1FE')"><div class="swatch-tip">#CFD1FE · PU200</div></div>
+        <div class="swatch-slim" style="background:#B3B5FD" onclick="copyHex('#B3B5FD')"><div class="swatch-tip">#B3B5FD · PU300</div></div>
+        <div class="swatch-slim" style="background:#9699FC" onclick="copyHex('#9699FC')"><div class="swatch-tip">#9699FC · PU400</div></div>
+        <div class="swatch-slim" style="background:#5A60F6" onclick="copyHex('#5A60F6')"><div class="swatch-tip">#5A60F6 · PU500 ★</div></div>
+        <div class="swatch-slim" style="background:#5259E0" onclick="copyHex('#5259E0')"><div class="swatch-tip">#5259E0 · PU600</div></div>
+        <div class="swatch-slim" style="background:#4047C4" onclick="copyHex('#4047C4')"><div class="swatch-tip">#4047C4 · PU700</div></div>
+        <div class="swatch-slim" style="background:#2E35A8" onclick="copyHex('#2E35A8')"><div class="swatch-tip">#2E35A8 · PU800</div></div>
+        <div class="swatch-slim" style="background:#1C228C" onclick="copyHex('#1C228C')"><div class="swatch-tip">#1C228C · PU900</div></div>
+      </div>
+    </div>
+
+    <!-- TE -->
+    <div class="ds-subsection">
+      <div class="ds-label">TE — Green</div>
+      <div class="color-row">
+        <div class="swatch-slim" style="background:#DEF6DF; border:1px solid #E5E6EA" onclick="copyHex('#DEF6DF')"><div class="swatch-tip">#DEF6DF · TE100</div></div>
+        <div class="swatch-slim" style="background:#BDEDBE" onclick="copyHex('#BDEDBE')"><div class="swatch-tip">#BDEDBE · TE200</div></div>
+        <div class="swatch-slim" style="background:#8DE090" onclick="copyHex('#8DE090')"><div class="swatch-tip">#8DE090 · TE300</div></div>
+        <div class="swatch-slim" style="background:#64D169" onclick="copyHex('#64D169')"><div class="swatch-tip">#64D169 · TE400</div></div>
+        <div class="swatch-slim" style="background:#52CC57" onclick="copyHex('#52CC57')"><div class="swatch-tip">#52CC57 · TE500 ★</div></div>
+        <div class="swatch-slim" style="background:#3CAF41" onclick="copyHex('#3CAF41')"><div class="swatch-tip">#3CAF41 · TE600</div></div>
+        <div class="swatch-slim" style="background:#2A8F2F" onclick="copyHex('#2A8F2F')"><div class="swatch-tip">#2A8F2F · TE700</div></div>
+        <div class="swatch-slim" style="background:#1B6B1F" onclick="copyHex('#1B6B1F')"><div class="swatch-tip">#1B6B1F · TE800</div></div>
+        <div class="swatch-slim" style="background:#0E4511" onclick="copyHex('#0E4511')"><div class="swatch-tip">#0E4511 · TE900</div></div>
+      </div>
+    </div>
+
+    <!-- OR -->
+    <div class="ds-subsection">
+      <div class="ds-label">OR — Orange</div>
+      <div class="color-row">
+        <div class="swatch-slim" style="background:#FEF3E0; border:1px solid #E5E6EA" onclick="copyHex('#FEF3E0')"><div class="swatch-tip">#FEF3E0 · OR100</div></div>
+        <div class="swatch-slim" style="background:#FDE0B0" onclick="copyHex('#FDE0B0')"><div class="swatch-tip">#FDE0B0 · OR200</div></div>
+        <div class="swatch-slim" style="background:#FCC97A" onclick="copyHex('#FCC97A')"><div class="swatch-tip">#FCC97A · OR300</div></div>
+        <div class="swatch-slim" style="background:#FAB03E" onclick="copyHex('#FAB03E')"><div class="swatch-tip">#FAB03E · OR400</div></div>
+        <div class="swatch-slim" style="background:#F58B0B" onclick="copyHex('#F58B0B')"><div class="swatch-tip">#F58B0B · OR500 ★</div></div>
+        <div class="swatch-slim" style="background:#D67409" onclick="copyHex('#D67409')"><div class="swatch-tip">#D67409 · OR600</div></div>
+        <div class="swatch-slim" style="background:#AE5D07" onclick="copyHex('#AE5D07')"><div class="swatch-tip">#AE5D07 · OR700</div></div>
+        <div class="swatch-slim" style="background:#884705" onclick="copyHex('#884705')"><div class="swatch-tip">#884705 · OR800</div></div>
+        <div class="swatch-slim" style="background:#623203" onclick="copyHex('#623203')"><div class="swatch-tip">#623203 · OR900</div></div>
+      </div>
+    </div>
+
+    <!-- BL -->
+    <div class="ds-subsection">
+      <div class="ds-label">BL — Cool Blue</div>
+      <div class="color-row">
+        <div class="swatch-slim" style="background:#EEF9FD; border:1px solid #E5E6EA" onclick="copyHex('#EEF9FD')"><div class="swatch-tip">#EEF9FD · BL100</div></div>
+        <div class="swatch-slim" style="background:#CEEFFA" onclick="copyHex('#CEEFFA')"><div class="swatch-tip">#CEEFFA · BL200</div></div>
+        <div class="swatch-slim" style="background:#A8E4F7" onclick="copyHex('#A8E4F7')"><div class="swatch-tip">#A8E4F7 · BL300</div></div>
+        <div class="swatch-slim" style="background:#82D8F1" onclick="copyHex('#82D8F1')"><div class="swatch-tip">#82D8F1 · BL400</div></div>
+        <div class="swatch-slim" style="background:#6BCEEB" onclick="copyHex('#6BCEEB')"><div class="swatch-tip">#6BCEEB · BL500 ★</div></div>
+        <div class="swatch-slim" style="background:#4BBBD8" onclick="copyHex('#4BBBD8')"><div class="swatch-tip">#4BBBD8 · BL600</div></div>
+        <div class="swatch-slim" style="background:#35A5C1" onclick="copyHex('#35A5C1')"><div class="swatch-tip">#35A5C1 · BL700</div></div>
+        <div class="swatch-slim" style="background:#228DAA" onclick="copyHex('#228DAA')"><div class="swatch-tip">#228DAA · BL800</div></div>
+        <div class="swatch-slim" style="background:#12728E" onclick="copyHex('#12728E')"><div class="swatch-tip">#12728E · BL900</div></div>
+      </div>
+    </div>
+
+    <!-- NV -->
+    <div class="ds-subsection">
+      <div class="ds-label">NV — Navy</div>
+      <div class="color-row">
+        <div class="swatch-slim" style="background:#E7EBF3; border:1px solid #E5E6EA" onclick="copyHex('#E7EBF3')"><div class="swatch-tip">#E7EBF3 · NV100</div></div>
+        <div class="swatch-slim" style="background:#C9CFE5" onclick="copyHex('#C9CFE5')"><div class="swatch-tip">#C9CFE5 · NV200</div></div>
+        <div class="swatch-slim" style="background:#AABAD4" onclick="copyHex('#AABAD4')"><div class="swatch-tip">#AABAD4 · NV300</div></div>
+        <div class="swatch-slim" style="background:#8CA5C3" onclick="copyHex('#8CA5C3')"><div class="swatch-tip">#8CA5C3 · NV400</div></div>
+        <div class="swatch-slim" style="background:#6E83AA" onclick="copyHex('#6E83AA')"><div class="swatch-tip">#6E83AA · NV500</div></div>
+        <div class="swatch-slim" style="background:#546994" onclick="copyHex('#546994')"><div class="swatch-tip">#546994 · NV600</div></div>
+        <div class="swatch-slim" style="background:#3F527F" onclick="copyHex('#3F527F')"><div class="swatch-tip">#3F527F · NV700</div></div>
+        <div class="swatch-slim" style="background:#2C3E6B" onclick="copyHex('#2C3E6B')"><div class="swatch-tip">#2C3E6B · NV800</div></div>
+        <div class="swatch-slim" style="background:#33405E" onclick="copyHex('#33405E')"><div class="swatch-tip">#33405E · NV900 ★</div></div>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);margin-top:4px;">★ = semantic token anchor &nbsp;·&nbsp; Hover to see value · Click to copy</div>
+    </div>
+  </section>

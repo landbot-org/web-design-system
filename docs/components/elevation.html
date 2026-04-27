@@ -1,0 +1,63 @@
+<!-- 
+  Component: Elevation & Shadows
+  Source: docs/design-system.html (CSS lines 537-563, HTML lines 3841-3865)
+  Tokens: All CSS custom properties are defined in design-system.html :root
+  Reference: tokens/DESIGN-SYSTEM-REFERENCE.md
+-->
+
+<style>
+/* Component-specific CSS extracted from design-system.html */
+    /* ─── ELEVATION ──────────────────────────────────────────────── */
+    .elevation-grid {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .elevation-card {
+      width: 180px;
+      background: var(--color-surface-card);
+      border-radius: var(--radius-6);
+      padding: 20px;
+      border: 1px solid var(--color-border-subtle);
+    }
+
+    .elevation-card .elev-level {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--color-brand-primary);
+    }
+
+    .elevation-card .elev-use {
+      font-size: 12px;
+      color: var(--color-text-secondary);
+      margin-top: 6px;
+      line-height: 18px;
+    }
+</style>
+
+  <!-- ═══ ELEVATION ════════════════════════════════════════════════ -->
+  <section class="ds-section" id="elevation">
+    <div class="ds-section-header">
+      <h2>Elevation & Shadows</h2>
+      <p>All shadows use <span class="token-chip">rgba(51,64,94,0.08)</span> — navy at 8% opacity.</p>
+    </div>
+    <div class="elevation-grid">
+      <div class="elevation-card" style="box-shadow:var(--elevation-1)">
+        <div class="elev-level">Elevation 1</div>
+        <div class="elev-use">Cards, text fields, buttons, selection controls</div>
+      </div>
+      <div class="elevation-card" style="box-shadow:var(--elevation-2)">
+        <div class="elev-level">Elevation 2</div>
+        <div class="elev-use">Dialogs, popovers, tooltips, hover states</div>
+      </div>
+      <div class="elevation-card" style="box-shadow:var(--elevation-3)">
+        <div class="elev-level">Elevation 3</div>
+        <div class="elev-use">Navbar dropdowns, floating buttons</div>
+      </div>
+      <div class="elevation-card" style="box-shadow:var(--elevation-4)">
+        <div class="elev-level">Elevation 4</div>
+        <div class="elev-use">Modal dialogs, global notifications</div>
+      </div>
+    </div>
+  </section>

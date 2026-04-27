@@ -1,0 +1,338 @@
+<!-- 
+  Component: Motion & Animation
+  Source: docs/design-system.html (CSS lines 1039-1243, HTML lines 4084-4205)
+  Tokens: All CSS custom properties are defined in design-system.html :root
+  Reference: tokens/DESIGN-SYSTEM-REFERENCE.md
+-->
+
+<style>
+/* Component-specific CSS extracted from design-system.html */
+    /* ─── MOTION ────────────────────────────────────────────────── */
+    .motion-dur-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .motion-dur-card {
+      background: var(--color-surface-card);
+      border: 1px solid var(--color-border-default);
+      border-radius: var(--radius-5);
+      padding: 24px;
+      cursor: pointer;
+    }
+
+    .dur-dot {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--color-brand-primary);
+      margin-bottom: 16px;
+      transition-property: transform, background;
+      transition-timing-function: cubic-bezier(0.0, 0.0, 0.2, 1);
+    }
+
+    .motion-dur-card:hover .dur-dot {
+      transform: scale(1.45);
+      background: var(--color-brand-accent);
+    }
+
+    .dur-fast  .dur-dot { transition-duration: 150ms; }
+    .dur-normal .dur-dot { transition-duration: 250ms; }
+    .dur-slow  .dur-dot { transition-duration: 400ms; }
+
+    .dur-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      margin-bottom: 4px;
+    }
+
+    .dur-use {
+      font-size: 11px;
+      color: var(--color-text-secondary);
+      line-height: 16px;
+    }
+
+    .easing-track-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .easing-track {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .easing-label {
+      width: 130px;
+      flex-shrink: 0;
+    }
+
+    .ease-name {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--color-text-primary);
+    }
+
+    .ease-use {
+      font-size: 11px;
+      color: var(--color-text-secondary);
+      margin-top: 2px;
+    }
+
+    .ease-curve {
+      font-size: 10px;
+      color: var(--color-text-disabled);
+      font-family: 'Courier New', monospace;
+      margin-top: 3px;
+    }
+
+    .easing-rail {
+      flex: 1;
+      height: 48px;
+      background: var(--color-border-subtle);
+      border-radius: var(--radius-4);
+      position: relative;
+    }
+
+    .easing-ball {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      transition-property: left;
+      transition-duration: 400ms;
+    }
+
+    .easing-ball.animate { left: calc(100% - 40px); }
+
+    .ease-out-ball    { background: var(--color-brand-primary);  transition-timing-function: cubic-bezier(0.0,  0.0, 0.2, 1); }
+    .ease-in-ball     { background: var(--color-status-success);  transition-timing-function: cubic-bezier(0.4,  0.0, 1.0, 1); }
+    .ease-in-out-ball { background: var(--color-status-warning);  transition-timing-function: cubic-bezier(0.4,  0.0, 0.2, 1); }
+    .ease-spring-ball { background: var(--color-brand-accent);    transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
+
+    .play-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      background: var(--color-brand-primary);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius-pill);
+      font-size: 12px;
+      font-weight: 600;
+      font-family: 'DM Sans', sans-serif;
+      cursor: pointer;
+      margin-left: 12px;
+      transition: opacity 150ms ease;
+    }
+
+    .play-btn:hover { opacity: 0.85; }
+
+    .motion-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      font-size: 13px;
+    }
+
+    .motion-table th {
+      text-align: left;
+      padding: 8px 12px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--color-text-secondary);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--color-border-default);
+    }
+
+    .motion-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--color-border-subtle);
+      color: var(--color-text-primary);
+    }
+
+    .motion-table td:nth-child(2),
+    .motion-table td:nth-child(3) {
+      color: var(--color-text-secondary);
+      font-size: 12px;
+    }
+
+    .rule-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .rule-col {
+      padding: 20px;
+      border-radius: var(--radius-5);
+    }
+
+    .rule-do   { background: var(--color-surface-success); }
+    .rule-dont { background: var(--color-surface-error); }
+
+    .rule-col-label {
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .rule-do   .rule-col-label { color: var(--color-text-on-success); }
+    .rule-dont .rule-col-label { color: var(--color-text-on-error); }
+
+    .rule-col ul {
+      margin: 0;
+      padding-left: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .rule-col li {
+      font-size: 12px;
+      line-height: 17px;
+      color: var(--color-text-primary);
+    }
+
+    .rule-col code {
+      background: var(--color-border-subtle);
+      padding: 1px 5px;
+      border-radius: var(--radius-1);
+      font-family: 'Courier New', monospace;
+      font-size: 11px;
+    }
+</style>
+
+  <!-- ═══ MOTION ══════════════════════════════════════════════════ -->
+  <section class="ds-section" id="motion">
+    <div class="ds-section-header">
+      <h2>Motion & Animation</h2>
+      <p>Three duration tokens, four easing curves. Every animated property on the site uses one combination of these — never one-off values.</p>
+    </div>
+
+    <!-- Duration -->
+    <div style="font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-text-secondary);margin-bottom:4px;">Duration — hover each card</div>
+    <div class="motion-dur-grid">
+      <div class="motion-dur-card dur-fast">
+        <div class="dur-dot"></div>
+        <div class="dur-name">Fast · 150ms</div>
+        <div class="dur-use">Hover states · button presses · color switches</div>
+      </div>
+      <div class="motion-dur-card dur-normal">
+        <div class="dur-dot"></div>
+        <div class="dur-name">Normal · 250ms</div>
+        <div class="dur-use">Tooltips · dropdowns · expanding panels</div>
+      </div>
+      <div class="motion-dur-card dur-slow">
+        <div class="dur-dot"></div>
+        <div class="dur-name">Slow · 400ms</div>
+        <div class="dur-use">Section entrances · hero reveals · modals</div>
+      </div>
+    </div>
+
+    <!-- Easing -->
+    <div style="font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-text-secondary);margin-top:40px;margin-bottom:4px;">
+      Easing curves — same duration (400ms), different feel
+      <button class="play-btn" id="play-easing-btn">▶ Play</button>
+    </div>
+    <div class="easing-track-wrap">
+      <div class="easing-track">
+        <div class="easing-label">
+          <div class="ease-name">Ease Out</div>
+          <div class="ease-use">Entrances</div>
+          <div class="ease-curve">.0, .0, .2, 1</div>
+        </div>
+        <div class="easing-rail">
+          <div class="easing-ball ease-out-ball"></div>
+        </div>
+      </div>
+      <div class="easing-track">
+        <div class="easing-label">
+          <div class="ease-name">Ease In</div>
+          <div class="ease-use">Exits</div>
+          <div class="ease-curve">.4, .0, 1, 1</div>
+        </div>
+        <div class="easing-rail">
+          <div class="easing-ball ease-in-ball"></div>
+        </div>
+      </div>
+      <div class="easing-track">
+        <div class="easing-label">
+          <div class="ease-name">Ease In-Out</div>
+          <div class="ease-use">Position shifts</div>
+          <div class="ease-curve">.4, .0, .2, 1</div>
+        </div>
+        <div class="easing-rail">
+          <div class="easing-ball ease-in-out-ball"></div>
+        </div>
+      </div>
+      <div class="easing-track">
+        <div class="easing-label">
+          <div class="ease-name">Spring</div>
+          <div class="ease-use">Playful entrances</div>
+          <div class="ease-curve">.34, 1.56, .64, 1</div>
+        </div>
+        <div class="easing-rail">
+          <div class="easing-ball ease-spring-ball"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Common patterns -->
+    <details class="ds-specs">
+      <summary>Common patterns</summary>
+      <div class="specs-body">
+        <table class="motion-table">
+          <thead>
+            <tr><th>What</th><th>Duration</th><th>Easing</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Button hover</td><td>150ms</td><td>Ease Out</td></tr>
+            <tr><td>Tooltip / dropdown appear</td><td>250ms</td><td>Ease Out</td></tr>
+            <tr><td>Scroll section reveal</td><td>400ms</td><td>Ease Out</td></tr>
+            <tr><td>Modal appear</td><td>400ms</td><td>Spring</td></tr>
+            <tr><td>Card entrance (staggered)</td><td>400ms</td><td>Ease Out · +60ms per card</td></tr>
+            <tr><td>Hero text entrance</td><td>400ms</td><td>Ease Out · staggered 80ms</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+
+    <!-- Rules -->
+    <details class="ds-specs">
+      <summary>Rules</summary>
+      <div class="specs-body">
+        <div class="rule-cols">
+          <div class="rule-col rule-do">
+            <div class="rule-col-label">✓ Do</div>
+            <ul>
+              <li>Animate only <strong>transform</strong> and <strong>opacity</strong> — never width, height, margin, or padding</li>
+              <li>Use <strong>ease-out</strong> for almost everything — it feels instant and natural</li>
+              <li>Stagger sequential elements 60–80ms each (3 cards: 0ms, 60ms, 120ms)</li>
+              <li>Respect <code>prefers-reduced-motion</code> — skip all scroll animations if set</li>
+            </ul>
+          </div>
+          <div class="rule-col rule-dont">
+            <div class="rule-col-label">✗ Don't</div>
+            <ul>
+              <li>Don't use <code>linear</code> easing — it looks mechanical</li>
+              <li>Don't exceed 600ms for any UI interaction — it feels broken</li>
+              <li>Don't animate error messages, focus rings, or critical state changes</li>
+              <li>Don't animate more than 3–4 elements simultaneously in the same area</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </details>
+  </section>

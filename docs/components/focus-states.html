@@ -1,0 +1,171 @@
+<!-- 
+  Component: Focus States
+  Source: docs/design-system.html (CSS lines 2231-2279, HTML lines 3972-4082)
+  Tokens: All CSS custom properties are defined in design-system.html :root
+  Reference: tokens/DESIGN-SYSTEM-REFERENCE.md
+-->
+
+<style>
+/* Component-specific CSS extracted from design-system.html */
+    /* ─── FOCUS STATES ───────────────────────────────────────────── */
+    /* Global focus ring — applied via :focus-visible */
+    *:focus { outline: none; }
+    *:focus-visible {
+      outline: 3px solid var(--color-brand-primary);
+      outline-offset: var(--focus-ring-offset);
+      border-radius: var(--radius-2);
+    }
+
+    /* Focus demo elements */
+    .focus-demo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    @media (max-width: 700px) { .focus-demo-grid { grid-template-columns: 1fr 1fr; } }
+
+    .focus-demo-cell {
+      background: var(--color-surface-card);
+      border: 1px solid var(--color-border-default);
+      border-radius: var(--radius-5);
+      padding: 20px 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .focus-demo-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-text-disabled);
+    }
+
+    /* Simulated focus ring — always visible for demo */
+    .focus-sim {
+      outline: 3px solid var(--color-brand-primary);
+      outline-offset: 2px;
+    }
+    .focus-sim-dark {
+      outline: 3px solid rgba(255,255,255,0.70);
+      outline-offset: 2px;
+    }
+    .focus-sim-input {
+      outline: none;
+      border-color: var(--color-brand-primary) !important;
+      box-shadow: 0 0 0 3px rgba(90,96,246,0.18) !important;
+    }
+</style>
+
+  <!-- ═══ FOCUS STATES ══════════════════════════════════════════════ -->
+  <section class="ds-section" id="focus">
+    <div class="ds-section-header">
+      <h2>Focus States</h2>
+      <p>Keyboard navigation ring — applied via <code>:focus-visible</code> (not <code>:focus</code>). WCAG 2.4.11 compliant: 3px minimum width, 3:1 contrast ratio against adjacent colours.</p>
+    </div>
+
+    <!-- Focus ring demos -->
+    <div class="focus-demo-grid" style="margin-bottom:16px;">
+
+      <!-- Primary button -->
+      <div class="focus-demo-cell">
+        <div class="focus-demo-label">Primary button</div>
+        <button class="btn cta-primary cta-medium focus-sim" tabindex="-1" style="pointer-events:none;">Try Landbot Free</button>
+      </div>
+
+      <!-- Outline button -->
+      <div class="focus-demo-cell">
+        <div class="focus-demo-label">Outline button</div>
+        <button class="btn cta-outline cta-medium focus-sim" tabindex="-1" style="pointer-events:none;">Get a demo</button>
+      </div>
+
+      <!-- Text link -->
+      <div class="focus-demo-cell">
+        <div class="focus-demo-label">Text link</div>
+        <a href="#" class="focus-sim" tabindex="-1" onclick="return false;" style="font-size:14px;font-weight:600;color:var(--color-brand-primary);text-decoration:none;text-underline-offset:3px;">Read the docs →</a>
+      </div>
+
+      <!-- Text input -->
+      <div class="focus-demo-cell">
+        <div class="focus-demo-label">Text input</div>
+        <input
+          type="text"
+          value="Your work email"
+          tabindex="-1"
+          class="focus-sim-input"
+          style="width:100%;height:40px;padding:0 12px;border:1.5px solid var(--color-border-default);border-radius:var(--radius-4);font-size:13px;font-family:inherit;color:var(--color-text-primary);background:var(--color-surface-page);"
+          readonly
+        >
+      </div>
+
+      <!-- Feature card -->
+      <div class="focus-demo-cell">
+        <div class="focus-demo-label">Card (focusable)</div>
+        <div class="c-card focus-sim" tabindex="-1" style="width:100%;cursor:pointer;pointer-events:none;">
+          <div class="c-feature" style="padding:14px 12px;gap:6px;">
+            <div class="c-feature-icon c-feature-icon-purple" style="width:32px;height:32px;font-size:20px;"><i class="hgi-stroke hgi-ai-brain-02"></i></div>
+            <div style="font-size:13px;font-weight:700;color:var(--color-text-primary);">AI Flows</div>
+            <div style="font-size:12px;color:var(--color-text-secondary);">Build without code</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dark background -->
+      <div class="focus-demo-cell" style="background:var(--color-surface-dark);border-color:var(--color-border-on-dark);">
+        <div class="focus-demo-label" style="color:var(--color-text-on-dark-muted);">On dark background</div>
+        <button class="btn cta-outline cta-medium focus-sim-dark" tabindex="-1" style="pointer-events:none;color:#fff;border-color:rgba(255,255,255,0.35);">Get a demo</button>
+      </div>
+
+    </div>
+
+    <!-- How it works -->
+    <div style="background:var(--color-surface-card);border:1px solid var(--color-border-default);border-radius:var(--radius-5);padding:20px 20px 16px;margin-bottom:16px;">
+      <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-text-disabled);margin-bottom:14px;">How to keyboard-test</div>
+      <div style="display:flex;flex-direction:column;gap:8px;font-size:13px;color:var(--color-text-secondary);">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <kbd style="background:var(--color-surface-page);border:1px solid var(--color-border-default);border-radius:var(--radius-3);padding:3px 8px;font-size:11px;font-weight:700;color:var(--color-text-primary);min-width:28px;text-align:center;">Tab</kbd>
+          <span>Move forward through interactive elements</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <kbd style="background:var(--color-surface-page);border:1px solid var(--color-border-default);border-radius:var(--radius-3);padding:3px 8px;font-size:11px;font-weight:700;color:var(--color-text-primary);min-width:28px;text-align:center;">⇧ Tab</kbd>
+          <span>Move backward through interactive elements</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <kbd style="background:var(--color-surface-page);border:1px solid var(--color-border-default);border-radius:var(--radius-3);padding:3px 8px;font-size:11px;font-weight:700;color:var(--color-text-primary);min-width:28px;text-align:center;">Enter</kbd>
+          <span>Activate buttons, links, and form submissions</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <kbd style="background:var(--color-surface-page);border:1px solid var(--color-border-default);border-radius:var(--radius-3);padding:3px 8px;font-size:11px;font-weight:700;color:var(--color-text-primary);min-width:28px;text-align:center;">Esc</kbd>
+          <span>Close dropdowns, modals, and tooltips</span>
+        </div>
+      </div>
+    </div>
+
+    <details class="ds-specs">
+      <summary>Focus ring specs & implementation</summary>
+      <div class="specs-body">
+        <table class="motion-table">
+          <thead><tr><th>Property</th><th>Light bg</th><th>Dark bg</th></tr></thead>
+          <tbody>
+            <tr><td>Selector</td><td colspan="2"><code>:focus-visible</code> (not <code>:focus</code>)</td></tr>
+            <tr><td>Style</td><td><code>outline: 3px solid #5A60F6</code></td><td><code>outline: 3px solid rgba(255,255,255,0.70)</code></td></tr>
+            <tr><td>Offset</td><td colspan="2"><code>outline-offset: 2px</code></td></tr>
+            <tr><td>Border radius</td><td colspan="2">Inherits parent shape (auto via browser)</td></tr>
+            <tr><td>Input focus</td><td colspan="2"><code>border-color: #5A60F6</code> + <code>box-shadow: 0 0 0 3px rgba(90,96,246,0.18)</code></td></tr>
+            <tr><td>WCAG level</td><td colspan="2">AA · 2.4.11 (Focus Appearance) · 3px ≥ 3:1 contrast ✅</td></tr>
+            <tr><td>Token</td><td><code>--focus-ring</code></td><td><code>--focus-ring-dark</code></td></tr>
+          </tbody>
+        </table>
+        <div style="margin-top:14px;font-size:12px;color:var(--color-text-secondary);display:flex;flex-direction:column;gap:5px;">
+          <strong style="color:var(--color-text-primary);">Rules</strong>
+          <span>• <strong>Never use <code>outline: none</code></strong> without providing a custom visible focus indicator.</span>
+          <span>• Use <code>:focus-visible</code>, not <code>:focus</code> — this suppresses the ring for mouse users while keeping it for keyboard users.</span>
+          <span>• Inputs use a border + shadow combo instead of outline, to avoid clipping inside containers.</span>
+          <span>• On dark sections, switch to the white ring (<code>--focus-ring-dark</code>) — the purple ring has insufficient contrast on dark navy.</span>
+          <span>• Make all interactive custom elements (cards, tags, toggles) focusable via <code>tabindex="0"</code>.</span>
+        </div>
+      </div>
+    </details>
+
+  </section>

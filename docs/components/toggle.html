@@ -1,0 +1,352 @@
+<!-- 
+  Component: Toggle
+  Source: docs/design-system.html (CSS lines 823-995, HTML lines 4992-5159)
+  Tokens: All CSS custom properties are defined in design-system.html :root
+  Reference: tokens/DESIGN-SYSTEM-REFERENCE.md
+-->
+
+<style>
+/* Component-specific CSS extracted from design-system.html */
+    /* ─── TOGGLE ─────────────────────────────────────────────────── */
+    .toggle-wrap {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .toggle-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .toggle-item .t-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--color-text-secondary);
+    }
+
+    .toggle {
+      position: relative;
+      width: 44px;
+      height: 24px;
+    }
+
+    .toggle input { opacity: 0; width: 0; height: 0; }
+
+    .toggle-track {
+      position: absolute;
+      cursor: pointer;
+      inset: 0;
+      background: var(--color-border-default);
+      border-radius: var(--radius-pill);
+      transition: background 0.2s;
+    }
+
+    .toggle-track::after {
+      content: '';
+      position: absolute;
+      width: 18px; height: 18px;
+      left: 3px; top: 3px;
+      background: #fff;
+      border-radius: 50%;
+      transition: transform 0.2s;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+    }
+
+    .toggle input:checked + .toggle-track { background: var(--color-brand-primary); }
+    .toggle input:checked + .toggle-track::after { transform: translateX(20px); }
+
+    /* ─── SEGMENTED TOGGLE (Binary Choice) ─────────────────────── */
+    .seg-toggle {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      background: var(--color-border-subtle);
+      border: 1.5px solid var(--color-border-default);
+      border-radius: var(--radius-pill);
+      padding: 3px;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    /* Animated sliding background */
+    .seg-glider {
+      position: absolute;
+      top: 3px;
+      left: 0;
+      height: calc(100% - 6px);
+      background: #ffffff;
+      border-radius: var(--radius-pill);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.10), 0 0 0 1px rgba(0,0,0,0.05);
+      transition: transform 0.28s cubic-bezier(0.4,0,0.2,1),
+                  width    0.28s cubic-bezier(0.4,0,0.2,1),
+                  background 0.22s ease,
+                  box-shadow  0.22s ease;
+      will-change: transform, width;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Colored glider states */
+    .seg-glider[data-color="success"] {
+      background: var(--color-surface-success);
+      box-shadow: 0 1px 4px rgba(82,204,87,0.18), 0 0 0 1px rgba(82,204,87,0.22);
+    }
+    .seg-glider[data-color="error"] {
+      background: var(--color-surface-error);
+      box-shadow: 0 1px 4px rgba(255,63,123,0.15), 0 0 0 1px rgba(255,63,123,0.18);
+    }
+    .seg-glider[data-color="brand"] {
+      background: var(--color-brand-primary);
+      box-shadow: 0 2px 10px rgba(90,96,246,0.30), 0 0 0 1px rgba(90,96,246,0.15);
+    }
+
+    /* Individual option button */
+    .seg-option {
+      position: relative;
+      z-index: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: 9px 20px;
+      border: none;
+      background: transparent;
+      border-radius: var(--radius-pill);
+      cursor: pointer;
+      font-family: var(--font-primary);
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--color-text-secondary);
+      transition: color 0.22s ease;
+      white-space: nowrap;
+      line-height: 1.2;
+    }
+    .seg-option.seg-active {
+      color: var(--color-text-primary);
+      font-weight: 600;
+    }
+    /* White text on brand-colored glider */
+    .seg-option.seg-active.seg-active--on-brand {
+      color: #ffffff;
+    }
+
+    /* Optional icon slot */
+    .seg-icon {
+      display: inline-flex;
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+      filter: grayscale(1);
+      opacity: 0.4;
+      transition: filter 0.22s ease, opacity 0.22s ease;
+    }
+    .seg-option.seg-active .seg-icon {
+      filter: grayscale(0);
+      opacity: 1;
+    }
+
+    /* Optional badge (e.g. "Save 20%") */
+    .seg-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 2px 7px;
+      background: var(--color-brand-primary);
+      color: #fff;
+      border-radius: var(--radius-pill);
+      font-size: 11px;
+      font-weight: 700;
+      line-height: 1.5;
+      letter-spacing: 0.2px;
+      margin-left: 2px;
+    }
+
+    /* Small size modifier */
+    .seg-toggle--sm .seg-option {
+      padding: 7px 14px;
+      font-size: 13px;
+      gap: 5px;
+    }
+    .seg-toggle--sm .seg-icon { width: 16px; height: 16px; }
+
+    /* Focus */
+    .seg-option:focus-visible {
+      outline: 3px solid var(--focus-ring-default);
+      outline-offset: 2px;
+      border-radius: var(--radius-pill);
+    }
+</style>
+
+  <!-- ═══ TOGGLES ══════════════════════════════════════════════════ -->
+  <section class="ds-section" id="toggles">
+    <div class="ds-section-header">
+      <h2>Toggle</h2>
+      <p>Two patterns: a boolean on/off switch for settings, and a segmented binary-choice toggle for comparisons and plan selectors.</p>
+    </div>
+
+    <!-- 1 · Boolean Toggle Switch ──────────────────────────────── -->
+    <div class="ds-subsection">
+      <div class="ds-label">Toggle Switch — boolean on/off (settings, feature flags)</div>
+      <div class="toggle-wrap">
+        <div class="toggle-item">
+          <div class="t-label">Off</div>
+          <label class="toggle">
+            <input type="checkbox">
+            <span class="toggle-track"></span>
+          </label>
+        </div>
+        <div class="toggle-item">
+          <div class="t-label">On</div>
+          <label class="toggle">
+            <input type="checkbox" checked>
+            <span class="toggle-track"></span>
+          </label>
+        </div>
+        <div class="toggle-item">
+          <div class="t-label">Disabled Off</div>
+          <label class="toggle" style="opacity:0.4;pointer-events:none">
+            <input type="checkbox">
+            <span class="toggle-track"></span>
+          </label>
+        </div>
+        <div class="toggle-item">
+          <div class="t-label">Disabled On</div>
+          <label class="toggle" style="opacity:0.4;pointer-events:none">
+            <input type="checkbox" checked>
+            <span class="toggle-track"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2 · Segmented Toggle ─────────────────────────────────────── -->
+    <div class="ds-subsection">
+      <div class="ds-label">Segmented Toggle — binary choice with animated sliding pill</div>
+
+      <!-- Row of examples -->
+      <div style="display:flex;flex-wrap:wrap;gap:32px;align-items:flex-start;margin-top:8px;">
+
+        <!-- Pricing: Monthly / Yearly with badge -->
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <span style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--color-text-secondary)">Pricing · with badge</span>
+          <div class="seg-toggle" role="group" aria-label="Billing period">
+            <div class="seg-glider"></div>
+            <button class="seg-option seg-active" type="button">Monthly</button>
+            <button class="seg-option" type="button">
+              Yearly
+              <span class="seg-badge">Save 20%</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Comparison: Without / With Landbot, with icons -->
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <span style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--color-text-secondary)">Comparison · with icons</span>
+          <div class="seg-toggle" role="group" aria-label="Landbot comparison">
+            <div class="seg-glider"></div>
+            <button class="seg-option seg-active" type="button" data-glider-color="error">
+              <span class="seg-icon">
+                <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="9" cy="9" r="9" fill="#FF3F7B"/>
+                  <path d="M6 6l6 6M12 6l-6 6" stroke="white" stroke-width="1.6" stroke-linecap="round"/>
+                </svg>
+              </span>
+              Without Landbot
+            </button>
+            <button class="seg-option" type="button" data-glider-color="success">
+              <span class="seg-icon">
+                <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="9" cy="9" r="9" fill="#52CC57"/>
+                  <path d="M5.5 9l2.5 2.5 4.5-4.5" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              With Landbot
+            </button>
+          </div>
+        </div>
+
+        <!-- No icons, plain text -->
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <span style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--color-text-secondary)">Plain · no icons</span>
+          <div class="seg-toggle" role="group" aria-label="View mode">
+            <div class="seg-glider"></div>
+            <button class="seg-option seg-active" type="button">Before</button>
+            <button class="seg-option" type="button">After</button>
+          </div>
+        </div>
+
+        <!-- Brand / filled active state -->
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <span style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--color-text-secondary)">Brand fill · accent active</span>
+          <div class="seg-toggle" role="group" aria-label="Plan type">
+            <div class="seg-glider"></div>
+            <button class="seg-option seg-active" type="button" data-glider-color="brand">Starter</button>
+            <button class="seg-option" type="button" data-glider-color="brand">Pro</button>
+            <button class="seg-option" type="button" data-glider-color="brand">Business</button>
+          </div>
+        </div>
+
+        <!-- Small size -->
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <span style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--color-text-secondary)">Small size modifier</span>
+          <div class="seg-toggle seg-toggle--sm" role="group" aria-label="Time range">
+            <div class="seg-glider"></div>
+            <button class="seg-option seg-active" type="button">Weekly</button>
+            <button class="seg-option" type="button">Monthly</button>
+            <button class="seg-option" type="button">Annual</button>
+          </div>
+        </div>
+
+      </div><!-- /row -->
+    </div><!-- /subsection -->
+
+    <!-- Anatomy + specs ─────────────────────────────────────────── -->
+    <div class="ds-subsection">
+      <div class="ds-label">Anatomy &amp; specs</div>
+      <div class="ds-specs-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-top:8px;">
+        <div class="ds-spec-card">
+          <span class="ds-spec-label">Container padding</span>
+          <span class="ds-spec-value">3px (inner track room)</span>
+        </div>
+        <div class="ds-spec-card">
+          <span class="ds-spec-label">Option padding (default)</span>
+          <span class="ds-spec-value">9px 20px</span>
+        </div>
+        <div class="ds-spec-card">
+          <span class="ds-spec-label">Option padding (sm)</span>
+          <span class="ds-spec-value">7px 14px</span>
+        </div>
+        <div class="ds-spec-card">
+          <span class="ds-spec-label">Icon size</span>
+          <span class="ds-spec-value">18px default · 16px sm</span>
+        </div>
+        <div class="ds-spec-card">
+          <span class="ds-spec-label">Font</span>
+          <span class="ds-spec-value">15px / 500 inactive · 600 active</span>
+        </div>
+        <div class="ds-spec-card">
+          <span class="ds-spec-label">Animation</span>
+          <span class="ds-spec-value">0.28s cubic-bezier(0.4,0,0.2,1)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Usage notes ─────────────────────────────────────────────── -->
+    <div class="ds-subsection">
+      <div class="ds-label">Usage rules</div>
+      <div class="focus-notes" style="margin-top:8px;">
+        <span>• Use <strong>Toggle Switch</strong> for a single boolean setting (notifications on/off, dark mode, etc.).</span>
+        <span>• Use <strong>Segmented Toggle</strong> when the user must choose between exactly 2–4 named options (Monthly/Yearly, Before/After, plan tiers).</span>
+        <span>• Icons are optional. Only include them when they add meaning (✓ With / ✗ Without). Never use decorative-only icons.</span>
+        <span>• The <code>data-glider-color</code> attribute on each button controls the glider color when that option is active. Values: <code>success</code> · <code>error</code> · <code>brand</code> · omit for default white.</span>
+        <span>• The <code>.seg-badge</code> span is for contextual callouts like "Save 20%" — use only on the value-add option, never on both.</span>
+        <span>• For pricing pages, use the default (white glider) or brand variant. The semantic error/success colors are reserved for comparison contexts.</span>
+      </div>
+    </div>
+
+  </section>

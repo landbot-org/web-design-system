@@ -1,0 +1,147 @@
+<!-- 
+  Component: Labels & Tags
+  Source: docs/design-system.html (CSS lines 747-767, 2143-2155, HTML lines 4849-4948)
+  Tokens: All CSS custom properties are defined in design-system.html :root
+  Reference: tokens/DESIGN-SYSTEM-REFERENCE.md
+-->
+
+<style>
+/* Component-specific CSS extracted from design-system.html */
+    /* ─── LABELS / TAGS ──────────────────────────────────────────── */
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 12px;
+      border-radius: var(--radius-pill);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .tag-purple { background: var(--color-brand-primary); color: #fff; }        /* 4.73:1 ✅ */
+    .tag-pink   { background: #BE2257; color: #fff; }                           /* PK700 — 5.91:1 ✅  (#FF3F7B = 3.36:1 ❌) */
+    .tag-green  { background: var(--color-surface-success); color: var(--color-text-on-success); }  /* 5.80:1 ✅ */
+    .tag-orange { background: #AE5D07; color: #fff; }                           /* OR700 — 4.80:1 ✅  (#F58B0B = 2.45:1 ❌) */
+    .tag-info   { background: var(--color-status-info);   color: var(--color-text-primary); }   /* 5.84:1 ✅ */
+    .tag-navy   { background: var(--color-brand-secondary); color: #fff; }      /* 10.30:1 ✅ */
+
+    .tag-outline-purple { background: var(--color-surface-brand-subtle); color: var(--color-text-on-brand-subtle); border: 1px solid #CFD1FE; }  /* PU600 — 4.65:1 ✅ */
+    .tag-outline-pink   { background: var(--color-surface-error); color: var(--color-text-on-error); border: 1px solid #FFC3D6; }  /* PK700 — 5.08:1 ✅ */
+
+    /* Blog/content tag classes (from Cards section) */
+    .c-blog-tag {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      color: var(--color-brand-primary);
+      background: var(--color-surface-brand-subtle);
+      border-radius: var(--radius-pill);
+      padding: 3px 10px;
+      width: fit-content;
+    }
+    .c-blog-tag-pink   { color: var(--color-brand-accent); background: var(--color-surface-error); }
+    .c-blog-tag-green  { color: var(--color-text-on-success); background: var(--color-surface-success); }
+    .c-blog-tag-section { font-size: 12px; font-weight: 600; padding: 5px 14px; }
+</style>
+
+  <!-- ═══ LABELS ═══════════════════════════════════════════════════ -->
+  <section class="ds-section" id="labels">
+    <div class="ds-section-header">
+      <h2>Labels &amp; Tags</h2>
+      <p>Two families: <strong>Status tags</strong> for system states and feature badges (always uppercase), and <strong>Content tags</strong> for categories and descriptive labels (always sentence case).</p>
+    </div>
+
+    <!-- Status / Badge Tags -->
+    <div class="ds-subsection">
+      <div class="ds-label">Status &amp; Badge Tags — <span style="font-style:italic;font-weight:400;text-transform:none;letter-spacing:0;">always UPPERCASE</span></div>
+      <p style="font-size:13px;color:var(--color-text-secondary);margin:0 0 16px;">Use for: system states (Active, Beta, Deprecated), plan levels (Free, Pro), feature flags (New, Coming soon). Short 1–3 word labels only.</p>
+      <div class="row" style="margin-bottom:20px;">
+        <span class="tag tag-purple">New</span>
+        <span class="tag tag-pink">Error</span>
+        <span class="tag tag-green">Success</span>
+        <span class="tag tag-orange">Warning</span>
+        <span class="tag tag-info">Info</span>
+        <span class="tag tag-navy">Beta</span>
+        <span class="tag tag-outline-purple">Pro</span>
+        <span class="tag tag-outline-pink">Coming soon</span>
+      </div>
+      <details class="ds-specs">
+        <summary>Status tag variants</summary>
+        <div class="specs-body">
+          <table class="motion-table">
+            <thead><tr><th>Class</th><th>Color</th><th>Use for</th></tr></thead>
+            <tbody>
+              <tr><td><code>.tag-purple</code></td><td>Brand purple</td><td>Feature highlights, primary badges (New, Featured)</td></tr>
+              <tr><td><code>.tag-navy</code></td><td>Navy</td><td>System state (Beta, Alpha, Coming soon)</td></tr>
+              <tr><td><code>.tag-green</code></td><td>Success green</td><td>Positive states (Active, Live, Success, Verified)</td></tr>
+              <tr><td><code>.tag-orange</code></td><td>Warning amber</td><td>Cautionary states (Warning, Review, Pending)</td></tr>
+              <tr><td><code>.tag-pink</code></td><td>Error red-pink</td><td>Error states, destructive labels (Error, Expired, Blocked)</td></tr>
+              <tr><td><code>.tag-info</code></td><td>Info blue</td><td>Informational (Info, Note, Tip)</td></tr>
+              <tr><td><code>.tag-outline-purple</code></td><td>Purple outline</td><td>Lower emphasis: plan level (Pro, Free), optional feature</td></tr>
+              <tr><td><code>.tag-outline-pink</code></td><td>Pink outline</td><td>Lower emphasis warm states (Coming soon, On request)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+    </div>
+
+    <!-- Content / Category Tags -->
+    <div class="ds-subsection">
+      <div class="ds-label">Content &amp; Category Tags — <span style="font-style:italic;font-weight:400;text-transform:none;letter-spacing:0;">always Sentence case</span></div>
+      <p style="font-size:13px;color:var(--color-text-secondary);margin:0 0 16px;">Use for: blog categories, article types, content classification, resource labels. Descriptive, human-readable. Can be multi-word.</p>
+      <div class="row" style="margin-bottom:20px;">
+        <span class="c-blog-tag">Product</span>
+        <span class="c-blog-tag c-blog-tag-pink">Case study</span>
+        <span class="c-blog-tag c-blog-tag-green">Guide</span>
+        <span class="c-blog-tag">Automation</span>
+        <span class="c-blog-tag c-blog-tag-pink">Customer story</span>
+        <span class="c-blog-tag c-blog-tag-green">Free · Open source</span>
+      </div>
+    </div>
+
+    <!-- Section Overline variant -->
+    <div class="ds-subsection">
+      <div class="ds-label">Section Overline variant — <span style="font-style:italic;font-weight:400;text-transform:none;letter-spacing:0;">content tag, sized for landing pages</span></div>
+      <p style="font-size:13px;color:var(--color-text-secondary);margin:0 0 16px;">Use for: section headings on landing pages where the tag sits above a large H2 and needs more visual weight. Keeps sentence case and soft colours — distinguished from Status tags by not being uppercase/bold. Add <code>.c-blog-tag-section</code> alongside the base class.</p>
+      <p style="font-size:11px;color:var(--color-text-disabled);margin:0 0 12px;">12px · weight 600 · padding 5px 14px · sentence case · letter-spacing 0.02em</p>
+      <div class="row" style="margin-bottom:20px;">
+        <span class="c-blog-tag c-blog-tag-section">Built for revenue teams</span>
+        <span class="c-blog-tag c-blog-tag-pink c-blog-tag-section">Customer spotlight</span>
+        <span class="c-blog-tag c-blog-tag-green c-blog-tag-section">What to expect</span>
+      </div>
+      <div style="background:var(--color-surface-card);border:1px solid var(--color-border-default);border-radius:var(--radius-4);padding:20px;margin-bottom:12px;">
+        <p style="font-size:11px;color:var(--color-text-disabled);margin:0 0 8px;">Example: section overline above H2</p>
+        <span class="c-blog-tag c-blog-tag-section" style="margin-bottom:8px;">Built for revenue teams</span>
+        <h2 style="font-size:28px;font-weight:400;letter-spacing:-0.04em;color:var(--color-text-primary);margin:0;">WhatsApp Chatbot. AI Agent Power.</h2>
+      </div>
+    </div>
+
+    <!-- Case rules -->
+    <details class="ds-specs">
+      <summary>When to use uppercase vs sentence case</summary>
+      <div class="specs-body">
+        <table class="motion-table">
+          <thead><tr><th>Use UPPERCASE when…</th><th>Use Sentence case when…</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>It's a system or status state<br><span style="color:var(--color-text-disabled);font-size:11px;">ACTIVE · ERROR · DEPRECATED</span></td>
+              <td>It's a content category or blog tag<br><span style="color:var(--color-text-disabled);font-size:11px;">Case study · Product update</span></td>
+            </tr>
+            <tr>
+              <td>It's a plan or tier label<br><span style="color:var(--color-text-disabled);font-size:11px;">FREE · PRO · ENTERPRISE</span></td>
+              <td>It has 3+ words or is descriptive<br><span style="color:var(--color-text-disabled);font-size:11px;">Free · Open source · Freemium</span></td>
+            </tr>
+            <tr>
+              <td>It's a short feature flag<br><span style="color:var(--color-text-disabled);font-size:11px;">NEW · BETA · LIVE</span></td>
+              <td>It's a resource type or content label<br><span style="color:var(--color-text-disabled);font-size:11px;">Tutorial · Guide · Webinar</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <div style="margin-top:12px;padding:12px 16px;background:var(--color-surface-brand-subtle);border-radius:var(--radius-3);font-size:13px;color:var(--color-text-on-brand-subtle);">
+          <strong>Quick rule:</strong> If it describes a <em>state or system concept</em> → UPPERCASE. If it describes <em>content a human would read</em> → Sentence case.
+        </div>
+      </div>
+    </details>
+
+  </section>

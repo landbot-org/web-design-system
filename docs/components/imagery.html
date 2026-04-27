@@ -1,0 +1,505 @@
+<!-- 
+  Component: Imagery Style Guide
+  Source: docs/design-system.html (CSS lines 2416-2583, HTML lines 5567-5892)
+  Tokens: All CSS custom properties are defined in design-system.html :root
+  Reference: tokens/DESIGN-SYSTEM-REFERENCE.md
+-->
+
+<style>
+/* Component-specific CSS extracted from design-system.html */
+    /* ─── IMAGERY ───────────────────────────────────────────────── */
+    .img-tier-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    @media (max-width: 800px) { .img-tier-grid { grid-template-columns: 1fr; } }
+
+    .img-tier-card {
+      border-radius: var(--radius-6);
+      overflow: hidden;
+      border: 1px solid var(--color-border-default);
+    }
+    .img-tier-thumb {
+      height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      position: relative;
+      overflow: hidden;
+    }
+    .img-tier-body {
+      padding: 16px;
+      background: var(--color-surface-page);
+    }
+    .img-tier-badge {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: var(--radius-pill);
+      padding: 3px 8px;
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+    .img-tier-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      margin-bottom: 6px;
+    }
+    .img-tier-desc {
+      font-size: 12px;
+      color: var(--color-text-secondary);
+      line-height: 1.55;
+    }
+
+    /* Photo style demo */
+    .photo-spec-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+    @media (max-width: 700px) { .photo-spec-grid { grid-template-columns: repeat(2,1fr); } }
+
+    .photo-spec-cell {
+      border-radius: var(--radius-5);
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      position: relative;
+    }
+    .photo-spec-label {
+      position: absolute;
+      bottom: 8px;
+      left: 8px;
+      right: 8px;
+      font-size: 10px;
+      font-weight: 700;
+      background: rgba(27,33,57,0.80);
+      color: #fff;
+      border-radius: var(--radius-3);
+      padding: 3px 7px;
+      text-align: center;
+    }
+
+    /* Do / Don't grid */
+    .do-dont-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    @media (max-width: 600px) { .do-dont-grid { grid-template-columns: 1fr; } }
+
+    .do-dont-cell {
+      border-radius: var(--radius-5);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .do-dont-header {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .do-cell  { background: var(--color-surface-success); border: 1.5px solid var(--color-status-success); }
+    .do-cell  .do-dont-header { color: var(--color-text-on-success); }
+    .dont-cell { background: var(--color-surface-error); border: 1.5px solid var(--color-brand-accent); }
+    .dont-cell .do-dont-header { color: var(--color-text-on-error); }
+    .do-dont-item {
+      font-size: 13px;
+      color: var(--color-text-primary);
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      line-height: 1.45;
+    }
+
+    /* Library cards */
+    .lib-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    @media (max-width: 700px) { .lib-grid { grid-template-columns: 1fr 1fr; } }
+
+    .lib-card {
+      background: var(--color-surface-card);
+      border: 1px solid var(--color-border-default);
+      border-radius: var(--radius-5);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .lib-card-logo {
+      font-size: 24px;
+      margin-bottom: 4px;
+    }
+    .lib-card-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--color-text-primary);
+    }
+    .lib-card-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: var(--color-brand-primary);
+      background: var(--color-surface-brand-subtle);
+      border-radius: var(--radius-pill);
+      padding: 2px 7px;
+      width: fit-content;
+    }
+    .lib-card-tag-green { color: var(--color-text-on-success); background: var(--color-surface-success); }
+    .lib-card-tag-pink  { color: var(--color-brand-accent); background: #FFEEF4; }
+    .lib-card-desc {
+      font-size: 12px;
+      color: var(--color-text-secondary);
+      line-height: 1.5;
+      margin-top: 2px;
+    }
+    .lib-card-url {
+      font-size: 11px;
+      color: var(--color-brand-primary);
+      text-decoration: none;
+      text-underline-offset: 3px;
+      margin-top: 4px;
+      font-weight: 600;
+    }
+    .lib-card-url:hover { text-decoration: underline; }
+</style>
+
+  <!-- ═══ IMAGERY ═════════════════════════════════════════════════ -->
+  <section class="ds-section" id="imagery">
+    <div class="ds-section-header">
+      <h2>Imagery Style Guide</h2>
+      <p>Without a dedicated illustrator, Landbot uses a <strong>3-tier system</strong> that produces a consistent, high-quality visual language entirely in-house — no custom illustration required.</p>
+    </div>
+
+    <!-- ── THE 3-TIER SYSTEM ──────────────────────────────────────── -->
+    <h3 style="font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-text-disabled);margin:0 0 12px;">The 3-Tier System</h3>
+
+    <div class="img-tier-grid">
+
+      <!-- Tier 1: Product -->
+      <div class="img-tier-card">
+        <div class="img-tier-thumb" style="background:var(--gradient-purple-soft);">
+          <!-- Browser mockup illustration -->
+          <div style="width:180px;background:#fff;border-radius:8px;box-shadow:var(--elevation-3);overflow:hidden;border:1px solid var(--color-border-default);">
+            <div style="background:#F7F7F8;height:22px;display:flex;align-items:center;gap:5px;padding:0 10px;">
+              <div style="width:7px;height:7px;border-radius:50%;background:#FF5F57;"></div>
+              <div style="width:7px;height:7px;border-radius:50%;background:#FFBD2E;"></div>
+              <div style="width:7px;height:7px;border-radius:50%;background:#28CA42;"></div>
+              <div style="flex:1;height:10px;background:#E5E6EA;border-radius:3px;margin-left:6px;"></div>
+            </div>
+            <div style="padding:8px;display:flex;flex-direction:column;gap:4px;">
+              <div style="height:6px;background:var(--gradient-brand);border-radius:3px;width:60%;"></div>
+              <div style="height:5px;background:#E5E6EA;border-radius:3px;width:90%;"></div>
+              <div style="height:5px;background:#E5E6EA;border-radius:3px;width:75%;"></div>
+              <div style="height:24px;background:var(--color-surface-brand-subtle);border-radius:4px;margin-top:4px;display:flex;align-items:center;justify-content:center;">
+                <div style="width:50%;height:5px;background:var(--color-brand-primary);border-radius:3px;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="img-tier-body">
+          <div class="img-tier-badge" style="background:var(--color-surface-brand-subtle);color:var(--color-brand-primary);">Tier 1 · Primary</div>
+          <div class="img-tier-title">Product Screenshots</div>
+          <div class="img-tier-desc">Your most credible asset. Show the actual Landbot builder in browser or phone device frames. Works for hero, features, and case studies.</div>
+        </div>
+      </div>
+
+      <!-- Tier 2: People -->
+      <div class="img-tier-card">
+        <div class="img-tier-thumb" style="background:linear-gradient(135deg,#FFF1F5,#FFEEF4);">
+          <div style="display:flex;gap:-8px;align-items:flex-end;">
+            <div style="width:56px;height:72px;background:linear-gradient(180deg,#FFD0B5 0%,#FFAA80 100%);border-radius:28px 28px 12px 12px;display:flex;align-items:center;justify-content:center;font-size:28px;position:relative;">
+              😊
+              <div style="position:absolute;bottom:-4px;width:40px;height:18px;background:var(--color-brand-primary);border-radius:9px;"></div>
+            </div>
+            <div style="width:48px;height:60px;background:linear-gradient(180deg,#C8A882 0%,#A07850 100%);border-radius:24px 24px 10px 10px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-left:-8px;position:relative;">
+              🙂
+              <div style="position:absolute;bottom:-4px;width:32px;height:16px;background:var(--color-brand-accent);border-radius:8px;"></div>
+            </div>
+          </div>
+        </div>
+        <div class="img-tier-body">
+          <div class="img-tier-badge" style="background:#FFEEF4;color:var(--color-brand-accent);">Tier 2 · Contextual</div>
+          <div class="img-tier-title">People Photography</div>
+          <div class="img-tier-desc">Real humans in modern work contexts — for testimonials, team pages, and case studies. Carefully curated from free stock sources.</div>
+        </div>
+      </div>
+
+      <!-- Tier 3: Abstract -->
+      <div class="img-tier-card">
+        <div class="img-tier-thumb" style="background:var(--color-surface-dark);overflow:hidden;position:relative;">
+          <div style="position:absolute;inset:0;background:var(--gradient-glow-purple);"></div>
+          <div style="position:absolute;inset:0;background:var(--gradient-glow-pink);"></div>
+          <div style="position:relative;display:flex;gap:12px;align-items:center;">
+            <div style="width:48px;height:48px;border-radius:50%;background:var(--gradient-brand);opacity:0.6;filter:blur(8px);"></div>
+            <div style="width:32px;height:32px;border-radius:50%;background:var(--color-brand-primary);opacity:0.4;filter:blur(6px);"></div>
+            <div style="width:40px;height:40px;border-radius:50%;background:var(--color-brand-accent);opacity:0.3;filter:blur(10px);"></div>
+          </div>
+        </div>
+        <div class="img-tier-body">
+          <div class="img-tier-badge" style="background:#E7EBF3;color:var(--color-brand-secondary);">Tier 3 · Decorative</div>
+          <div class="img-tier-title">Abstract Brand Visuals</div>
+          <div class="img-tier-desc">Gradient blobs, glow effects, and geometric shapes built in Figma using brand tokens. Used as section backgrounds — never as storytelling.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- When to use what -->
+    <div style="background:var(--color-surface-card);border:1px solid var(--color-border-default);border-radius:var(--radius-5);padding:20px;margin-bottom:24px;">
+      <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-text-disabled);margin-bottom:14px;">When to use which tier</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;font-size:13px;" class="use-when-grid">
+        <div style="padding:0 16px 0 0;border-right:1px solid var(--color-border-default);">
+          <div style="font-weight:700;color:var(--color-text-primary);margin-bottom:8px;">Tier 1 · Product</div>
+          <div style="display:flex;flex-direction:column;gap:5px;color:var(--color-text-secondary);">
+            <span>✦ Hero sections</span>
+            <span>✦ Feature breakdowns</span>
+            <span>✦ How it works</span>
+            <span>✦ Case study visuals</span>
+            <span>✦ Integration pages</span>
+          </div>
+        </div>
+        <div style="padding:0 16px;border-right:1px solid var(--color-border-default);">
+          <div style="font-weight:700;color:var(--color-text-primary);margin-bottom:8px;">Tier 2 · People</div>
+          <div style="display:flex;flex-direction:column;gap:5px;color:var(--color-text-secondary);">
+            <span>✦ Testimonial cards</span>
+            <span>✦ Customer logos section</span>
+            <span>✦ About / Team page</span>
+            <span>✦ Blog author avatars</span>
+            <span>✦ Case study headers</span>
+          </div>
+        </div>
+        <div style="padding:0 0 0 16px;">
+          <div style="font-weight:700;color:var(--color-text-primary);margin-bottom:8px;">Tier 3 · Abstract</div>
+          <div style="display:flex;flex-direction:column;gap:5px;color:var(--color-text-secondary);">
+            <span>✦ Section backgrounds</span>
+            <span>✦ Empty states</span>
+            <span>✦ 404 / error pages</span>
+            <span>✦ Dark section accents</span>
+            <span>✦ Social media cards</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── PHOTOGRAPHY STYLE ──────────────────────────────────────── -->
+    <h3 style="font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-text-disabled);margin:0 0 12px;">Photography Style</h3>
+    <p style="font-size:13px;color:var(--color-text-secondary);margin:0 0 16px;">When using people photos, maintain a consistent mood. Think: <em>modern, real, focused</em> — not staged or corporate.</p>
+
+    <div class="photo-spec-grid" style="margin-bottom:16px;">
+      <div class="photo-spec-cell" style="background:linear-gradient(135deg,#E8ECF5 0%,#D4DAE8 100%);">
+        <span>💻</span>
+        <div class="photo-spec-label">Modern workspace</div>
+      </div>
+      <div class="photo-spec-cell" style="background:linear-gradient(135deg,#FFF1F5 0%,#FFE0EA 100%);">
+        <span>🙌</span>
+        <div class="photo-spec-label">Collaboration moment</div>
+      </div>
+      <div class="photo-spec-cell" style="background:linear-gradient(135deg,var(--color-surface-brand-subtle) 0%,#D8DAFC 100%);">
+        <span>📊</span>
+        <div class="photo-spec-label">Data / results focus</div>
+      </div>
+      <div class="photo-spec-cell" style="background:linear-gradient(135deg,#E6F9F0 0%,#C6EEDA 100%);">
+        <span>😄</span>
+        <div class="photo-spec-label">Authentic reaction</div>
+      </div>
+    </div>
+
+    <details class="ds-specs">
+      <summary>Photography specs</summary>
+      <div class="specs-body">
+        <table class="motion-table">
+          <thead><tr><th>Attribute</th><th>✓ Do</th><th>✗ Don't</th></tr></thead>
+          <tbody>
+            <tr><td>Lighting</td><td>Natural light, warm tones, soft shadows</td><td>Harsh studio flash, cold blue tones</td></tr>
+            <tr><td>Setting</td><td>Modern office, home workspace, café, casual outdoor</td><td>Generic white cyc, fake greenscreen backgrounds</td></tr>
+            <tr><td>People</td><td>Genuinely diverse — age, ethnicity, body type</td><td>Same-looking stock model repeated across pages</td></tr>
+            <tr><td>Poses</td><td>Natural activity (typing, talking, reacting)</td><td>Staged handshakes, pointing at whiteboards, suits</td></tr>
+            <tr><td>Clothing</td><td>Smart casual — modern but relaxed</td><td>Corporate formal wear, cheesy branded t-shirts</td></tr>
+            <tr><td>Framing</td><td>Slight crop (shoulder up or mid-body)</td><td>Stiff full-body shots, too much empty background</td></tr>
+            <tr><td>Color grading</td><td>Warm-neutral with subtle purple/pink accent light acceptable</td><td>Heavy filters, HDR, black &amp; white</td></tr>
+            <tr><td>Aspect ratio</td><td>16:9 for cards, 3:2 for featured, 1:1 for avatars</td><td>Uncropped originals dropped straight into layout</td></tr>
+          </tbody>
+        </table>
+        <div style="margin-top:14px;font-size:12px;color:var(--color-text-secondary);">
+          <strong style="color:var(--color-text-primary);">Free sources (curated, brand-safe):</strong><br>
+          <span style="display:flex;flex-direction:column;gap:3px;margin-top:6px;">
+            <span>• <strong>Unsplash</strong> (unsplash.com) — best overall quality, large library</span>
+            <span>• <strong>Pexels</strong> (pexels.com) — good diversity, strong workspace category</span>
+            <span>• <strong>Moose by Icons8</strong> (icons8.com/photos) — consistent style, easy to match shots</span>
+          </span>
+          <div style="margin-top:10px;padding:10px;background:var(--color-surface-stars);border-radius:var(--radius-3);border:1px solid var(--color-status-stars);">
+            <strong style="color:var(--color-text-on-stars);">⚠ Before publishing:</strong> Check the licence for every photo. Unsplash and Pexels are free for commercial use but require no model releases — avoid using identifiable people in contexts that imply endorsement.
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <!-- ── PRODUCT SCREENSHOTS ────────────────────────────────────── -->
+    <h3 style="font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-text-disabled);margin:32px 0 12px;">Product Screenshots</h3>
+    <p style="font-size:13px;color:var(--color-text-secondary);margin:0 0 16px;">Show the product inside a device frame — this gives visual context and elevates perception. Never show a raw screenshot floating on a background.</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+
+      <!-- Desktop mockup demo -->
+      <div style="background:var(--gradient-purple-soft);border-radius:var(--radius-6);padding:24px;display:flex;align-items:center;justify-content:center;">
+        <div style="width:100%;max-width:280px;background:#fff;border-radius:8px;box-shadow:var(--elevation-4);overflow:hidden;border:1px solid var(--color-border-default);">
+          <!-- Browser chrome -->
+          <div style="background:#F7F7F8;height:28px;display:flex;align-items:center;gap:5px;padding:0 12px;border-bottom:1px solid var(--color-border-default);">
+            <div style="width:8px;height:8px;border-radius:50%;background:#FF5F57;"></div>
+            <div style="width:8px;height:8px;border-radius:50%;background:#FFBD2E;"></div>
+            <div style="width:8px;height:8px;border-radius:50%;background:#28CA42;"></div>
+            <div style="flex:1;height:12px;background:#E5E6EA;border-radius:6px;margin-left:8px;"></div>
+          </div>
+          <!-- Fake UI -->
+          <div style="padding:12px;display:flex;flex-direction:column;gap:6px;">
+            <div style="height:8px;background:var(--gradient-brand);border-radius:4px;width:55%;"></div>
+            <div style="height:6px;background:#E5E6EA;border-radius:3px;width:85%;"></div>
+            <div style="height:6px;background:#E5E6EA;border-radius:3px;width:70%;"></div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:4px;">
+              <div style="height:40px;background:var(--color-surface-brand-subtle);border-radius:6px;"></div>
+              <div style="height:40px;background:#FFEEF4;border-radius:6px;"></div>
+            </div>
+            <div style="height:28px;background:var(--gradient-brand);border-radius:6px;margin-top:4px;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile mockup demo -->
+      <div style="background:var(--color-surface-dark);border-radius:var(--radius-6);padding:24px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;">
+        <div style="position:absolute;inset:0;background:var(--gradient-glow-purple);pointer-events:none;"></div>
+        <div style="position:relative;width:90px;background:#fff;border-radius:16px;box-shadow:var(--elevation-4);overflow:hidden;border:2px solid var(--color-brand-secondary);">
+          <div style="background:var(--color-brand-secondary);height:16px;display:flex;align-items:center;justify-content:center;">
+            <div style="width:28px;height:5px;background:rgba(255,255,255,0.2);border-radius:3px;"></div>
+          </div>
+          <div style="padding:6px;display:flex;flex-direction:column;gap:4px;">
+            <div style="height:5px;background:#E5E6EA;border-radius:3px;width:80%;"></div>
+            <div style="height:20px;background:var(--color-surface-brand-subtle);border-radius:4px;display:flex;align-items:center;justify-content:flex-end;padding:0 4px;">
+              <div style="height:3px;width:60%;background:var(--color-brand-primary);border-radius:2px;"></div>
+            </div>
+            <div style="height:20px;background:#FFEEF4;border-radius:4px;display:flex;align-items:center;padding:0 4px;">
+              <div style="height:3px;width:70%;background:var(--color-brand-accent);border-radius:2px;"></div>
+            </div>
+            <div style="height:16px;background:var(--gradient-brand);border-radius:4px;margin-top:2px;"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <details class="ds-specs">
+      <summary>Product screenshot specs</summary>
+      <div class="specs-body">
+        <table class="motion-table">
+          <thead><tr><th>Context</th><th>Device frame</th><th>Background</th><th>Shadow</th></tr></thead>
+          <tbody>
+            <tr><td>Hero (light section)</td><td>Browser chrome · light theme</td><td><code>--gradient-purple-soft</code></td><td><code>--elevation-4</code></td></tr>
+            <tr><td>Hero (dark section)</td><td>Browser chrome · dark theme</td><td><code>--gradient-dark</code> + glow</td><td><code>--elevation-4</code></td></tr>
+            <tr><td>Feature row</td><td>Browser chrome · light theme</td><td>White or soft gradient</td><td><code>--elevation-3</code></td></tr>
+            <tr><td>Mobile feature</td><td>Phone frame · 9:19.5 ratio</td><td>Dark navy + glow</td><td><code>--elevation-3</code></td></tr>
+            <tr><td>Inline / card thumb</td><td>No frame needed</td><td>Card background</td><td>None</td></tr>
+          </tbody>
+        </table>
+        <div style="margin-top:14px;font-size:12px;color:var(--color-text-secondary);display:flex;flex-direction:column;gap:4px;">
+          <strong style="color:var(--color-text-primary);">Rules</strong>
+          <span>• Always use the same screenshot scale within a section — mixing zoom levels looks inconsistent.</span>
+          <span>• Remove any personal data, customer names, or internal content before screenshotting.</span>
+          <span>• Use the actual Landbot UI — never fake or redesign the interface for marketing.</span>
+          <span>• For feature rows, show the most visually interesting part of the UI cropped tightly.</span>
+        </div>
+      </div>
+    </details>
+
+    <!-- ── ILLUSTRATIONS ───────────────────────────────────────────── -->
+    <h3 style="font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-text-disabled);margin:32px 0 8px;">Illustrations (When Needed)</h3>
+    <div style="background:var(--color-surface-stars);border:1px solid var(--color-status-stars);border-radius:var(--radius-4);padding:12px 14px;margin-bottom:16px;font-size:13px;color:var(--color-text-on-stars);line-height:1.55;">
+      <strong>Recommendation:</strong> Landbot's strong brand color system means you rarely <em>need</em> custom illustrations. Product shots + abstract visuals carry most pages. Use illustrations only for empty states, onboarding tooltips, and 404/error pages — where there is no product UI to show.
+    </div>
+
+    <p style="font-size:13px;color:var(--color-text-secondary);margin:0 0 16px;">When you do need illustrations, use these free libraries — all support custom brand color input:</p>
+
+    <div class="lib-grid" style="margin-bottom:16px;">
+
+      <div class="lib-card">
+        <div class="lib-card-logo">🎨</div>
+        <div class="lib-card-name">unDraw</div>
+        <div class="lib-card-tag">Free · Open source</div>
+        <div class="lib-card-desc">SVG illustrations with a single brand-color input. Clean, flat style. 1000+ scenes. Best for empty states and feature explainers.</div>
+        <a href="https://undraw.co" class="lib-card-url" target="_blank">undraw.co</a>
+      </div>
+
+      <div class="lib-card">
+        <div class="lib-card-logo">✏️</div>
+        <div class="lib-card-name">Storyset</div>
+        <div class="lib-card-tag lib-card-tag-green">Free · Animated</div>
+        <div class="lib-card-desc">Customisable colour + animated SVGs. Modern, SaaS-appropriate style. Has a Figma plugin. Great for hero explainer sections.</div>
+        <a href="https://storyset.com" class="lib-card-url" target="_blank">storyset.com</a>
+      </div>
+
+      <div class="lib-card">
+        <div class="lib-card-logo">🧩</div>
+        <div class="lib-card-name">Blush</div>
+        <div class="lib-card-tag lib-card-tag-pink">Freemium</div>
+        <div class="lib-card-desc">Character-based illustrations with a Figma plugin. High diversity. Colour-customisable. Best for testimonial and human-context sections.</div>
+        <a href="https://blush.design" class="lib-card-url" target="_blank">blush.design</a>
+      </div>
+
+    </div>
+
+    <details class="ds-specs">
+      <summary>Illustration usage rules</summary>
+      <div class="specs-body">
+        <table class="motion-table">
+          <thead><tr><th>Rule</th><th>Reason</th></tr></thead>
+          <tbody>
+            <tr><td>Always set the illustration's primary color to <code>#5A60F6</code></td><td>Ties it to the brand, avoids generic stock look</td></tr>
+            <tr><td>Use one library per project — never mix styles</td><td>Inconsistent styles break visual cohesion</td></tr>
+            <tr><td>Max 1 illustration per page section</td><td>More than one competes for attention</td></tr>
+            <tr><td>Never use illustrations as hero images</td><td>Product screenshots are more credible for B2B SaaS</td></tr>
+            <tr><td>Export as SVG — never PNG for web illustrations</td><td>SVG scales without blur at all screen sizes</td></tr>
+            <tr><td>Match illustration complexity to text density</td><td>Simple section = simple illustration; detailed section = no illustration</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+
+    <!-- ── DO / DON'T ─────────────────────────────────────────────── -->
+    <h3 style="font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-text-disabled);margin:32px 0 12px;">Do / Don't</h3>
+
+    <div class="do-dont-grid">
+      <div class="do-dont-cell do-cell">
+        <div class="do-dont-header">✓ Do</div>
+        <div class="do-dont-item"><span>✓</span><span>Show the real Landbot UI inside a clean device frame</span></div>
+        <div class="do-dont-item"><span>✓</span><span>Use people photos that feel natural and unposed</span></div>
+        <div class="do-dont-item"><span>✓</span><span>Apply brand gradients as section backgrounds and accents</span></div>
+        <div class="do-dont-item"><span>✓</span><span>Use one illustration library consistently across the whole site</span></div>
+        <div class="do-dont-item"><span>✓</span><span>Crop and frame images intentionally — leave room for text overlay</span></div>
+        <div class="do-dont-item"><span>✓</span><span>Set illustration primary color to <strong>#5A60F6</strong> always</span></div>
+        <div class="do-dont-item"><span>✓</span><span>Pair dark sections with glow effects for visual depth</span></div>
+      </div>
+      <div class="do-dont-cell dont-cell">
+        <div class="do-dont-header">✗ Don't</div>
+        <div class="do-dont-item"><span>✗</span><span>Use floating screenshots with no device frame or background context</span></div>
+        <div class="do-dont-item"><span>✗</span><span>Mix illustration styles from different libraries on the same page</span></div>
+        <div class="do-dont-item"><span>✗</span><span>Use corporate stock photos (suits, handshakes, pointing at whiteboards)</span></div>
+        <div class="do-dont-item"><span>✗</span><span>Use illustrations as the primary hero visual — use product instead</span></div>
+        <div class="do-dont-item"><span>✗</span><span>Apply heavy filters or black &amp; white to photography</span></div>
+        <div class="do-dont-item"><span>✗</span><span>Show personal data or customer info in product screenshots</span></div>
+        <div class="do-dont-item"><span>✗</span><span>Use stock art of robots or chat bubbles — it's generic for a chatbot brand</span></div>
+      </div>
+    </div>
+
+  </section>

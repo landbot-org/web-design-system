@@ -1,0 +1,179 @@
+<!-- 
+  Component: Dark Surfaces
+  Source: docs/design-system.html (HTML lines 3238-3408)
+  Tokens: All CSS custom properties are defined in design-system.html :root
+  Reference: tokens/DESIGN-SYSTEM-REFERENCE.md
+  Note: This section uses primarily inline styles; dark surface tokens are defined in :root
+-->
+
+  <!-- ═══ DARK SURFACES ═══════════════════════════════════════════ -->
+  <section class="ds-section" id="dark">
+    <div class="ds-section-header">
+      <h2>Dark Surfaces</h2>
+      <p>Tokens and rules for dark sections — footers, social proof bands, CTA blocks, dark heroes. Every marketing page needs at least one.</p>
+    </div>
+
+    <!-- Tokens -->
+    <div class="ds-subsection">
+      <div class="ds-label">Tokens</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;">
+
+        <div style="border-radius:var(--radius-4);overflow:hidden;box-shadow:var(--elevation-1);">
+          <div style="height:56px;background:var(--color-surface-dark);"></div>
+          <div style="background:var(--color-surface-card);padding:10px 12px;">
+            <div style="font-size:11px;font-weight:700;color:var(--color-text-primary);">surface-dark</div>
+            <div style="font-size:11px;color:var(--color-text-secondary);font-family:monospace;margin-top:2px;">#1B2139</div>
+            <div style="font-size:11px;color:var(--color-text-disabled);margin-top:4px;font-style:italic;">Section bg · footer · CTA band</div>
+          </div>
+        </div>
+
+        <div style="border-radius:var(--radius-4);overflow:hidden;box-shadow:var(--elevation-1);">
+          <div style="height:56px;background:var(--color-surface-dark-raised);"></div>
+          <div style="background:var(--color-surface-card);padding:10px 12px;">
+            <div style="font-size:11px;font-weight:700;color:var(--color-text-primary);">surface-dark-raised</div>
+            <div style="font-size:11px;color:var(--color-text-secondary);font-family:monospace;margin-top:2px;">#252D47</div>
+            <div style="font-size:11px;color:var(--color-text-disabled);margin-top:4px;font-style:italic;">Cards / panels on dark bg</div>
+          </div>
+        </div>
+
+        <div style="border-radius:var(--radius-4);overflow:hidden;box-shadow:var(--elevation-1);">
+          <div style="height:56px;background:var(--color-surface-dark);display:flex;align-items:center;padding:0 14px;gap:8px;">
+            <div style="font-size:14px;font-weight:700;color:#FFFFFF;">Heading text</div>
+          </div>
+          <div style="background:var(--color-surface-card);padding:10px 12px;">
+            <div style="font-size:11px;font-weight:700;color:var(--color-text-primary);">text-on-dark</div>
+            <div style="font-size:11px;color:var(--color-text-secondary);font-family:monospace;margin-top:2px;">#FFFFFF</div>
+            <div style="font-size:11px;color:var(--color-text-disabled);margin-top:4px;font-style:italic;">Headings on dark — always white</div>
+          </div>
+        </div>
+
+        <div style="border-radius:var(--radius-4);overflow:hidden;box-shadow:var(--elevation-1);">
+          <div style="height:56px;background:var(--color-surface-dark);display:flex;align-items:center;padding:0 14px;">
+            <div style="font-size:13px;color:var(--color-text-on-dark-secondary);">Body paragraph text — 9.6:1 ✅</div>
+          </div>
+          <div style="background:var(--color-surface-card);padding:10px 12px;">
+            <div style="font-size:11px;font-weight:700;color:var(--color-text-primary);">text-on-dark-secondary</div>
+            <div style="font-size:11px;color:var(--color-text-secondary);font-family:monospace;margin-top:2px;">#C9CFE5</div>
+            <div style="font-size:11px;color:var(--color-text-disabled);margin-top:4px;font-style:italic;">Body copy on dark sections</div>
+          </div>
+        </div>
+
+        <div style="border-radius:var(--radius-4);overflow:hidden;box-shadow:var(--elevation-1);">
+          <div style="height:56px;background:var(--color-surface-dark);display:flex;align-items:center;padding:0 14px;">
+            <div style="font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-text-on-dark-muted);">Overline · 6.0:1 ✅</div>
+          </div>
+          <div style="background:var(--color-surface-card);padding:10px 12px;">
+            <div style="font-size:11px;font-weight:700;color:var(--color-text-primary);">text-on-dark-muted</div>
+            <div style="font-size:11px;color:var(--color-text-secondary);font-family:monospace;margin-top:2px;">#8CA5C3</div>
+            <div style="font-size:11px;color:var(--color-text-disabled);margin-top:4px;font-style:italic;">Overlines · captions · labels on dark</div>
+          </div>
+        </div>
+
+        <div style="border-radius:var(--radius-4);overflow:hidden;box-shadow:var(--elevation-1);">
+          <div style="height:56px;background:var(--color-surface-dark);display:flex;align-items:center;padding:0 14px;">
+            <div style="width:100%;height:1px;background:rgba(255,255,255,0.10);"></div>
+          </div>
+          <div style="background:var(--color-surface-card);padding:10px 12px;">
+            <div style="font-size:11px;font-weight:700;color:var(--color-text-primary);">border-on-dark</div>
+            <div style="font-size:11px;color:var(--color-text-secondary);font-family:monospace;margin-top:2px;">rgba(255,255,255,0.10)</div>
+            <div style="font-size:11px;color:var(--color-text-disabled);margin-top:4px;font-style:italic;">Dividers · card borders on dark</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Live preview -->
+    <div class="ds-subsection">
+      <div class="ds-label">Live Preview — Hero section on dark</div>
+      <div style="background:var(--color-surface-dark);border-radius:16px;padding:80px 56px 72px;position:relative;overflow:hidden;text-align:center;">
+        <!-- Single top-centre glow — blends naturally, no visible spots -->
+        <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:700px;height:320px;background:radial-gradient(ellipse 80% 100% at 50% 0%, rgba(90,96,246,0.20) 0%, transparent 70%);pointer-events:none;"></div>
+        <div style="position:absolute;bottom:0;right:0;width:400px;height:240px;background:radial-gradient(ellipse 70% 80% at 100% 100%, rgba(255,63,123,0.12) 0%, transparent 65%);pointer-events:none;"></div>
+        <div style="position:relative;">
+          <!-- Overline pill -->
+          <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:100px;padding:6px 16px;font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-text-on-dark-muted);margin-bottom:28px;">Conversational AI Platform</div>
+          <!-- H1 headline -->
+          <div style="font-size:52px;line-height:1.1;letter-spacing:-2px;font-weight:400;color:var(--color-text-on-dark);max-width:660px;margin:0 auto 20px;">Turn your website into your <span style="background:var(--gradient-brand);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:700;">best sales agent</span></div>
+          <!-- Subheading -->
+          <div style="font-size:18px;line-height:28px;color:var(--color-text-on-dark-secondary);max-width:500px;margin:0 auto 40px;">Landbot engages visitors in real time, qualifies leads automatically, and hands them off to your team.</div>
+          <!-- CTAs -->
+          <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:48px;">
+            <div style="background:var(--gradient-brand);border-radius:var(--radius-4);padding:14px 28px;font-size:15px;font-weight:500;color:#fff;cursor:pointer;">Get started free</div>
+            <div style="border:1.5px solid rgba(255,255,255,0.22);border-radius:var(--radius-4);padding:14px 28px;font-size:15px;font-weight:500;color:rgba(255,255,255,0.85);cursor:pointer;">See how it works</div>
+          </div>
+          <!-- Raised card row -->
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;text-align:left;">
+            <div style="background:var(--color-surface-dark-raised);border-radius:12px;border:1px solid var(--color-border-on-dark);padding:20px;">
+              <div style="font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-text-on-dark-muted);margin-bottom:10px;">Lead capture</div>
+              <div style="font-size:16px;font-weight:400;color:var(--color-text-on-dark);line-height:1.4;margin-bottom:8px;">Qualify while you sleep</div>
+              <div style="font-size:12px;color:var(--color-text-on-dark-secondary);line-height:1.6;">AI scores and tags every lead 24/7 before any human steps in.</div>
+            </div>
+            <div style="background:var(--color-surface-dark-raised);border-radius:12px;border:1px solid var(--color-border-on-dark);padding:20px;">
+              <div style="font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-text-on-dark-muted);margin-bottom:10px;">Omnichannel</div>
+              <div style="font-size:16px;font-weight:400;color:var(--color-text-on-dark);line-height:1.4;margin-bottom:8px;">Web, WhatsApp & more</div>
+              <div style="font-size:12px;color:var(--color-text-on-dark-secondary);line-height:1.6;">One builder, every channel your customers are already on.</div>
+            </div>
+            <div style="background:var(--color-surface-dark-raised);border-radius:12px;border:1px solid var(--color-border-on-dark);padding:20px;">
+              <div style="font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-text-on-dark-muted);margin-bottom:10px;">Integrations</div>
+              <div style="font-size:16px;font-weight:400;color:var(--color-text-on-dark);line-height:1.4;margin-bottom:8px;">Connects to your stack</div>
+              <div style="font-size:12px;color:var(--color-text-on-dark-secondary);line-height:1.6;">HubSpot, Salesforce, Zapier and 100+ tools — no dev needed.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Component compatibility -->
+    <div class="ds-subsection">
+      <div class="ds-label">Button compatibility on dark</div>
+      <div style="background:var(--color-surface-dark);border-radius:12px;padding:28px 32px;display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
+          <div style="background:var(--gradient-brand);border-radius:var(--radius-4);padding:10px 20px;font-size:13px;font-weight:500;color:#fff;">Primary CTA</div>
+          <div style="font-size:10px;color:var(--color-status-success);font-weight:600;">✓ Use this</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
+          <div style="border:2px solid rgba(255,255,255,0.35);border-radius:var(--radius-4);padding:10px 20px;font-size:13px;font-weight:500;color:#fff;">Outline white</div>
+          <div style="font-size:10px;color:var(--color-status-success);font-weight:600;">✓ Secondary</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
+          <div style="font-size:13px;font-weight:700;color:var(--color-brand-accent);padding:10px 20px;">Pink text link</div>
+          <div style="font-size:10px;color:var(--color-status-success);font-weight:600;">✓ Inline links</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
+          <div style="background:var(--color-brand-primary);border-radius:var(--radius-4);padding:10px 20px;font-size:13px;font-weight:500;color:#fff;">Solid purple</div>
+          <div style="font-size:10px;color:var(--color-status-warning);font-weight:600;">⚠ Large text only</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
+          <div style="background:var(--color-surface-brand-subtle);border-radius:var(--radius-4);padding:10px 20px;font-size:13px;font-weight:500;color:var(--color-text-on-brand-subtle);">Alt purple tinted</div>
+          <div style="font-size:10px;color:var(--color-brand-accent);font-weight:600;">✗ Never on dark</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Rules -->
+    <div class="ds-subsection">
+      <div class="ds-label">Usage Rules</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <div style="background:var(--color-surface-success);border-radius:var(--radius-4);padding:16px 18px;">
+          <div style="font-size:11px;font-weight:700;color:var(--color-text-on-success);letter-spacing:0.04em;text-transform:uppercase;margin-bottom:10px;">✓ Do</div>
+          <ul style="font-size:12px;color:var(--color-text-on-success);line-height:1.8;padding-left:14px;">
+            <li>Use <strong>1–2 dark sections per page</strong> — enough to create rhythm without feeling heavy</li>
+            <li>Always layer both glow gradients for depth — they're subtle but make a big difference</li>
+            <li>Use raised cards (<code style="font-family:monospace;background:rgba(0,0,0,0.08);padding:1px 4px;border-radius:3px;">surface-dark-raised</code>) inside dark sections for feature callouts</li>
+            <li>Use gradient text on bold headlines — it pops especially well on dark</li>
+          </ul>
+        </div>
+        <div style="background:var(--color-surface-error);border-radius:var(--radius-4);padding:16px 18px;">
+          <div style="font-size:11px;font-weight:700;color:var(--color-text-on-error);letter-spacing:0.04em;text-transform:uppercase;margin-bottom:10px;">✗ Don't</div>
+          <ul style="font-size:12px;color:var(--color-text-on-error);line-height:1.8;padding-left:14px;">
+            <li>Don't stack two dark sections back to back — always separate with a white or tinted section</li>
+            <li>Don't use <code style="font-family:monospace;background:rgba(0,0,0,0.08);padding:1px 4px;border-radius:3px;">--color-text-primary</code> on dark — it's near-black and will disappear</li>
+            <li>Don't use the alt-purple tinted button (<code style="font-family:monospace;background:rgba(0,0,0,0.08);padding:1px 4px;border-radius:3px;">--color-surface: #EBECFF</code>) on dark backgrounds</li>
+            <li>Don't use standard border color (<code style="font-family:monospace;background:rgba(0,0,0,0.08);padding:1px 4px;border-radius:3px;">#E5E6EA</code>) — it disappears; use <code style="font-family:monospace;background:rgba(0,0,0,0.08);padding:1px 4px;border-radius:3px;">border-on-dark</code> instead</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </section>

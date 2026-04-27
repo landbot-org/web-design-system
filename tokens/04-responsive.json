@@ -1,0 +1,114 @@
+{
+  "breakpoint": {
+    "mobile":  { "$type": "dimension", "$value": "375px" },
+    "desktop": { "$type": "dimension", "$value": "768px" }
+  },
+
+  "grid": {
+    "mobile": {
+      "columns":  { "$type": "number",    "$value": 4 },
+      "gap":      { "$type": "dimension", "$value": "{primitives.spacing.4}" },
+      "paddingX": { "$type": "dimension", "$value": "20px" }
+    },
+    "desktop": {
+      "columns":  { "$type": "number",    "$value": 12 },
+      "gap":      { "$type": "dimension", "$value": "{primitives.spacing.5}" },
+      "paddingX": { "$type": "dimension", "$value": "{primitives.spacing.8}" }
+    }
+  },
+
+  "contentWidth": {
+    "standard": { "$type": "dimension", "$value": "1200px" },
+    "narrow":   { "$type": "dimension", "$value": "760px" }
+  },
+
+  "spacing": {
+    "hero": {
+      "mobile":  { "$type": "dimension", "$value": "{primitives.spacing.10}" },
+      "desktop": { "$type": "dimension", "$value": "160px" }
+    },
+    "section": {
+      "mobile":  { "$type": "dimension", "$value": "{primitives.spacing.9}" },
+      "desktop": { "$type": "dimension", "$value": "120px" }
+    },
+    "sectionGap": {
+      "mobile":  { "$type": "dimension", "$value": "{primitives.spacing.8}" },
+      "desktop": { "$type": "dimension", "$value": "{primitives.spacing.10}" }
+    },
+    "tightGroup": {
+      "mobile":  { "$type": "dimension", "$value": "{primitives.spacing.6}" },
+      "desktop": { "$type": "dimension", "$value": "{primitives.spacing.8}" }
+    }
+  },
+
+  "navbar": {
+    "height": {
+      "mobile":  { "$type": "dimension", "$value": "56px" },
+      "desktop": { "$type": "dimension", "$value": "72px" }
+    }
+  },
+
+  "typography": {
+    "displayXl": {
+      "desktop": { "fontSize": { "$type": "dimension", "$value": "{primitives.font.size.80}" }, "lineHeight": { "$type": "dimension", "$value": "{primitives.font.lineHeight.96}" }, "letterSpacing": { "$type": "dimension", "$value": "{primitives.font.letterSpacing.tight3}" } },
+      "mobile":  { "fontSize": { "$type": "dimension", "$value": "40px" }, "lineHeight": { "$type": "dimension", "$value": "48px" }, "letterSpacing": { "$type": "dimension", "$value": "-2px" } }
+    },
+    "display": {
+      "desktop": { "fontSize": { "$type": "dimension", "$value": "{primitives.font.size.64}" }, "lineHeight": { "$type": "dimension", "$value": "{primitives.font.lineHeight.80}" }, "letterSpacing": { "$type": "dimension", "$value": "{primitives.font.letterSpacing.tight2}" } },
+      "mobile":  { "fontSize": { "$type": "dimension", "$value": "36px" }, "lineHeight": { "$type": "dimension", "$value": "44px" }, "letterSpacing": { "$type": "dimension", "$value": "-2px" } }
+    },
+    "h1": {
+      "desktop": { "fontSize": { "$type": "dimension", "$value": "{primitives.font.size.48}" }, "lineHeight": { "$type": "dimension", "$value": "{primitives.font.lineHeight.64}" }, "letterSpacing": { "$type": "dimension", "$value": "{primitives.font.letterSpacing.tight2}" } },
+      "mobile":  { "fontSize": { "$type": "dimension", "$value": "32px" }, "lineHeight": { "$type": "dimension", "$value": "40px" }, "letterSpacing": { "$type": "dimension", "$value": "-1.5px" } }
+    },
+    "h2": {
+      "desktop": { "fontSize": { "$type": "dimension", "$value": "{primitives.font.size.40}" }, "lineHeight": { "$type": "dimension", "$value": "{primitives.font.lineHeight.56}" }, "letterSpacing": { "$type": "dimension", "$value": "{primitives.font.letterSpacing.tight2}" } },
+      "mobile":  { "fontSize": { "$type": "dimension", "$value": "28px" }, "lineHeight": { "$type": "dimension", "$value": "36px" }, "letterSpacing": { "$type": "dimension", "$value": "-1px" } }
+    },
+    "h3": {
+      "desktop": { "fontSize": { "$type": "dimension", "$value": "{primitives.font.size.32}" }, "lineHeight": { "$type": "dimension", "$value": "{primitives.font.lineHeight.40}" }, "letterSpacing": { "$type": "dimension", "$value": "{primitives.font.letterSpacing.tight2}" } },
+      "mobile":  { "fontSize": { "$type": "dimension", "$value": "24px" }, "lineHeight": { "$type": "dimension", "$value": "32px" }, "letterSpacing": { "$type": "dimension", "$value": "-1px" } }
+    },
+    "h4": {
+      "desktop": { "fontSize": { "$type": "dimension", "$value": "{primitives.font.size.28}" }, "lineHeight": { "$type": "dimension", "$value": "{primitives.font.lineHeight.36}" }, "letterSpacing": { "$type": "dimension", "$value": "{primitives.font.letterSpacing.tight1}" } },
+      "mobile":  { "fontSize": { "$type": "dimension", "$value": "22px" }, "lineHeight": { "$type": "dimension", "$value": "30px" }, "letterSpacing": { "$type": "dimension", "$value": "-0.5px" } }
+    },
+    "h5": {
+      "desktop": { "fontSize": { "$type": "dimension", "$value": "{primitives.font.size.24}" }, "lineHeight": { "$type": "dimension", "$value": "{primitives.font.lineHeight.32}" }, "letterSpacing": { "$type": "dimension", "$value": "{primitives.font.letterSpacing.tight1}" } },
+      "mobile":  { "fontSize": { "$type": "dimension", "$value": "20px" }, "lineHeight": { "$type": "dimension", "$value": "28px" }, "letterSpacing": { "$type": "dimension", "$value": "-0.5px" } }
+    },
+    "h6": {
+      "desktop": { "fontSize": { "$type": "dimension", "$value": "{primitives.font.size.20}" }, "lineHeight": { "$type": "dimension", "$value": "{primitives.font.lineHeight.28}" }, "letterSpacing": { "$type": "dimension", "$value": "{primitives.font.letterSpacing.normal}" } },
+      "mobile":  { "fontSize": { "$type": "dimension", "$value": "18px" }, "lineHeight": { "$type": "dimension", "$value": "26px" }, "letterSpacing": { "$type": "dimension", "$value": "0px" } }
+    },
+    "p1": {
+      "desktop": { "fontSize": { "$type": "dimension", "$value": "{primitives.font.size.20}" }, "lineHeight": { "$type": "dimension", "$value": "{primitives.font.lineHeight.32}" } },
+      "mobile":  { "fontSize": { "$type": "dimension", "$value": "18px" }, "lineHeight": { "$type": "dimension", "$value": "28px" } }
+    },
+    "p2": {
+      "desktop": { "fontSize": { "$type": "dimension", "$value": "{primitives.font.size.18}" }, "lineHeight": { "$type": "dimension", "$value": "{primitives.font.lineHeight.28}" } },
+      "mobile":  { "fontSize": { "$type": "dimension", "$value": "16px" }, "lineHeight": { "$type": "dimension", "$value": "24px" } }
+    },
+    "p": {
+      "desktop": { "fontSize": { "$type": "dimension", "$value": "{primitives.font.size.16}" }, "lineHeight": { "$type": "dimension", "$value": "{primitives.font.lineHeight.24}" } },
+      "mobile":  { "fontSize": { "$type": "dimension", "$value": "15px" }, "lineHeight": { "$type": "dimension", "$value": "24px" } }
+    }
+  },
+
+  "button": {
+    "large": {
+      "mobile": {
+        "paddingX": { "$type": "dimension", "$value": "{primitives.spacing.5}" },
+        "paddingY": { "$type": "dimension", "$value": "14px" },
+        "fontSize": { "$type": "dimension", "$value": "{primitives.font.size.16}" }
+      }
+    },
+    "medium": {
+      "mobile": {
+        "paddingX": { "$type": "dimension", "$value": "{primitives.spacing.5}" },
+        "paddingY": { "$type": "dimension", "$value": "14px" },
+        "fontSize": { "$type": "dimension", "$value": "{primitives.font.size.15}" }
+      }
+    }
+  }
+}

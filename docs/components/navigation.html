@@ -1,0 +1,686 @@
+<!-- 
+  Component: Navigation
+  Source: docs/design-system.html (CSS lines 1245-1633, 1769-1800, HTML lines 5161-5412)
+  Tokens: All CSS custom properties are defined in design-system.html :root
+  Reference: tokens/DESIGN-SYSTEM-REFERENCE.md
+-->
+
+<style>
+/* Component-specific CSS extracted from design-system.html */
+    /* ─── NAVIGATION ────────────────────────────────────────────── */
+
+    /* Demo layout: desktop (scrollable) + mobile side by side */
+    .nav-demos-row {
+      display: flex;
+      gap: 32px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+    .nav-demo-desktop {
+      flex: 1;
+      min-width: 280px;
+    }
+    .nav-demo-desktop-label,
+    .nav-demo-mobile-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--color-text-secondary);
+      margin-bottom: 10px;
+    }
+    /* Horizontally scrollable wrapper for the full-width desktop navbar */
+    .nav-desktop-scroll {
+      overflow-x: auto;
+      border-radius: var(--radius-5);
+      box-shadow: var(--elevation-2);
+      /* Subtle right-edge fade hint that it's scrollable */
+      background: linear-gradient(to right, transparent calc(100% - 40px), rgba(255,255,255,0.9)) #fff;
+      -webkit-overflow-scrolling: touch;
+    }
+    .nav-desktop-scroll::-webkit-scrollbar { height: 4px; }
+    .nav-desktop-scroll::-webkit-scrollbar-track { background: var(--color-border-subtle); }
+    .nav-desktop-scroll::-webkit-scrollbar-thumb { background: var(--color-border-default); border-radius: 2px; }
+    .nav-desktop-inner { min-width: 920px; }
+
+    /* Mobile nav demo — interactive slide-down menu */
+    .mob-navbar {
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      border-bottom: 1px solid var(--color-border-default);
+      background: #fff;
+      position: relative;
+      z-index: 10;
+    }
+    .mob-ham {
+      width: 38px; height: 38px;
+      background: #EEEEF8;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      padding: 0;
+      flex-shrink: 0;
+    }
+    .mob-ham span {
+      display: block;
+      width: 17px; height: 2px;
+      background: var(--color-brand-secondary);
+      border-radius: 1px;
+      transition: transform 0.25s cubic-bezier(0.4,0,0.2,1), opacity 0.2s ease;
+      transform-origin: center;
+    }
+    .mob-ham.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .mob-ham.is-open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .mob-ham.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mob-menu-wrap {
+      position: absolute;
+      top: 56px;
+      left: 0; right: 0;
+      background: #fff;
+      z-index: 9;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.38s cubic-bezier(0.4,0,0.2,1);
+      border-bottom: 1px solid transparent;
+      transition: max-height 0.38s cubic-bezier(0.4,0,0.2,1), border-color 0.2s;
+    }
+    .mob-menu-wrap.is-open {
+      max-height: 700px;
+      border-bottom-color: var(--color-border-default);
+    }
+    .mob-menu-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 13px 20px;
+      border-bottom: 1px solid var(--color-border-subtle);
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--color-brand-secondary);
+      cursor: pointer;
+      user-select: none;
+      transition: color 0.15s, background 0.15s;
+    }
+    .mob-menu-row.no-sub { cursor: default; }
+    .mob-menu-row.is-open {
+      color: var(--color-brand-accent);
+      background: #FFF5F8;
+    }
+    .mob-row-caret {
+      width: 14px; height: 14px;
+      flex-shrink: 0;
+      opacity: 0.5;
+      transition: transform 0.25s cubic-bezier(0.4,0,0.2,1), opacity 0.2s;
+    }
+    .mob-menu-row.is-open .mob-row-caret {
+      transform: rotate(180deg);
+      opacity: 1;
+      color: var(--color-brand-accent);
+    }
+    .mob-submenu {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.28s ease;
+      background: var(--color-surface-card);
+    }
+    .mob-submenu.is-open { max-height: 250px; }
+    .mob-submenu-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 20px 9px 36px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--color-text-primary);
+      border-bottom: 1px solid var(--color-border-subtle);
+    }
+    .mob-submenu-item:last-child { border-bottom: none; }
+    .mob-menu-ctas {
+      padding: 16px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      border-top: 1px solid var(--color-border-default);
+    }
+    .mob-cta-primary {
+      background: var(--gradient-brand);
+      border-radius: var(--radius-4);
+      padding: 13px;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+      cursor: pointer;
+    }
+    .mob-cta-outline {
+      border: 1.5px solid var(--color-brand-primary);
+      border-radius: var(--radius-4);
+      padding: 11px;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--color-brand-primary);
+      cursor: pointer;
+    }
+    .mob-cta-note {
+      text-align: center;
+      font-size: 11px;
+      color: var(--color-text-secondary);
+      margin-top: -2px;
+    }
+
+    .demo-navbar {
+      background: var(--color-surface-page);
+      border-bottom: 1px solid var(--color-border-default);
+      height: 72px;
+      display: flex;
+      align-items: center;
+      padding: 0 48px;
+      gap: 0;
+      position: relative;
+      border-radius: var(--radius-5) var(--radius-5) 0 0;
+    }
+
+    .demo-navbar.scrolled {
+      box-shadow: 0 2px 16px rgba(51,64,94,0.10);
+      border-bottom-color: transparent;
+    }
+
+    .dnav-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      flex-shrink: 0;
+      margin-right: 40px;
+    }
+
+    .dnav-logo-mark {
+      width: 32px;
+      height: 32px;
+    }
+
+    .dnav-logo-word {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--color-brand-secondary);
+      letter-spacing: -0.4px;
+    }
+
+    .dnav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      flex: 1;
+    }
+
+    .dnav-link {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 8px 12px;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--color-brand-secondary);
+      border-radius: var(--radius-3);
+      cursor: pointer;
+      transition: color 150ms ease, background 150ms ease;
+      white-space: nowrap;
+      user-select: none;
+    }
+
+    .dnav-link:hover { color: var(--color-brand-accent); }
+    .dnav-link.is-open { color: var(--color-brand-accent); }
+
+    .dnav-caret {
+      width: 14px;
+      height: 14px;
+      transition: transform 200ms ease;
+      opacity: 0.7;
+    }
+
+    .dnav-link.is-open .dnav-caret { transform: rotate(180deg); }
+
+    .dnav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+
+    .dnav-login {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--color-brand-accent);
+      cursor: pointer;
+      padding: 8px 4px;
+    }
+
+    .dnav-btn-primary {
+      background: var(--gradient-brand);
+      border-radius: var(--radius-4);
+      padding: 10px 20px;
+      font-size: 15px;
+      font-weight: 500;
+      color: #fff;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .dnav-btn-outline {
+      border: 1.5px solid var(--color-brand-primary);
+      border-radius: var(--radius-4);
+      padding: 9px 18px;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--color-brand-primary);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 150ms ease;
+    }
+
+    .dnav-btn-outline:hover { background: var(--color-surface-brand-subtle); }
+
+    /* Mega dropdown */
+    .demo-mega {
+      display: none;
+      background: var(--color-surface-page);
+      border-top: 1px solid var(--color-border-default);
+      border-bottom: 1px solid var(--color-border-default);
+      padding: 32px 48px 36px;
+      border-radius: 0 0 var(--radius-5) var(--radius-5);
+    }
+
+    .demo-mega.is-open { display: block; }
+
+    .mega-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+
+    .mega-col-head {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-text-disabled);
+      margin-bottom: 16px;
+    }
+
+    .mega-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 10px;
+      border-radius: var(--radius-4);
+      cursor: pointer;
+      transition: background 150ms ease;
+      margin-bottom: 4px;
+    }
+
+    .mega-item:hover { background: var(--color-surface-hover); }
+
+    .mega-item-icon {
+      width: 32px;
+      height: 32px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-text-secondary);
+    }
+
+    .mega-item-body { flex: 1; }
+
+    .mega-item-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--color-text-primary);
+      margin-bottom: 2px;
+    }
+
+    .mega-item-desc {
+      font-size: 12px;
+      color: var(--color-text-secondary);
+      line-height: 17px;
+    }
+
+    .mega-featured {
+      background: var(--color-surface-card);
+      border: 1px solid var(--color-border-default);
+      border-radius: var(--radius-5);
+      padding: 16px;
+      cursor: pointer;
+      transition: box-shadow 150ms ease;
+    }
+
+    .mega-featured:hover { box-shadow: var(--elevation-2); }
+
+    .mega-featured-tag {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--color-text-secondary);
+      margin-bottom: 8px;
+    }
+
+    .mega-featured-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      margin-bottom: 6px;
+      line-height: 1.4;
+    }
+
+    .mega-featured-desc {
+      font-size: 12px;
+      color: var(--color-text-secondary);
+      line-height: 1.5;
+      margin-bottom: 10px;
+    }
+
+    .mega-featured-link {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--color-brand-primary);
+      text-decoration: none;
+      text-underline-offset: 3px;
+    }
+    .mega-featured-link:hover { text-decoration: underline; }
+
+    /* Phone frame (for mobile nav demo) */
+    /* ─── PHONE FRAME ────────────────────────────────────────────── */
+    .phone-frame {
+      width: 300px;
+      flex-shrink: 0;
+      border: 2px solid var(--color-brand-secondary);
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: var(--elevation-3);
+      background: #fff;
+    }
+
+    .phone-status {
+      background: var(--color-brand-secondary);
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .phone-notch {
+      width: 56px;
+      height: 10px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 5px;
+    }
+
+    .phone-screen {
+      background: #fff;
+      min-height: 380px;
+      position: relative;
+      overflow: hidden;
+    }
+</style>
+
+  <!-- ═══ NAVIGATION ══════════════════════════════════════════════ -->
+  <section class="ds-section" id="navigation">
+    <div class="ds-section-header">
+      <h2>Navigation</h2>
+      <p>Sticky top navbar with mega dropdown menus on desktop. On mobile (&lt; 768px) the hamburger reveals a slide-down accordion menu. Active links turn pink on hover/open.</p>
+    </div>
+
+    <!-- Live demos — Desktop + Mobile side by side ────────────── -->
+    <div class="ds-subsection">
+      <div class="ds-label">Live demos — click nav items to interact</div>
+      <div class="nav-demos-row">
+
+        <!-- Desktop demo ──────────────────────────────────────── -->
+        <div class="nav-demo-desktop">
+          <div class="nav-demo-desktop-label">Desktop</div>
+          <div class="nav-desktop-scroll">
+            <div class="nav-desktop-inner">
+
+              <!-- Navbar -->
+              <div class="demo-navbar" id="demo-navbar" style="border-radius:0;">
+                <a class="dnav-logo">
+                  <img src="assets/logo-dark.png" alt="Landbot" style="height:26px;width:auto;">
+                </a>
+                <div class="dnav-links">
+                  <div class="dnav-link" data-menu="product" onclick="toggleMenu('product')">Product<svg class="dnav-caret" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                  <div class="dnav-link" data-menu="solutions" onclick="toggleMenu('solutions')">Solutions<svg class="dnav-caret" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                  <div class="dnav-link" data-menu="resources" onclick="toggleMenu('resources')">Resources<svg class="dnav-caret" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                  <div class="dnav-link">Case Studies</div>
+                  <div class="dnav-link">Pricing</div>
+                </div>
+                <div class="dnav-actions">
+                  <div class="dnav-login">Login</div>
+                  <div class="dnav-btn-primary">Try Landbot Free</div>
+                  <div class="dnav-btn-outline">Get a demo 🇺🇸🇪🇸</div>
+                </div>
+              </div>
+
+              <!-- Mega — Product -->
+              <div class="demo-mega" id="menu-product">
+                <div class="mega-grid">
+                  <div>
+                    <div class="mega-col-head">Products</div>
+                    <div class="mega-item"><div class="mega-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><div class="mega-item-body"><div class="mega-item-title">AI Agent Chatbots</div><div class="mega-item-desc">Combine AI intelligence with rule-based control for engaging conversations.</div></div></div>
+                    <div class="mega-item"><div class="mega-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg></div><div class="mega-item-body"><div class="mega-item-title">WhatsApp Chatbots</div><div class="mega-item-desc">Automate conversations on the world's most popular chat app.</div></div></div>
+                    <div class="mega-item"><div class="mega-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><div class="mega-item-body"><div class="mega-item-title">Website Chatbots</div><div class="mega-item-desc">Generate leads and improve customer experience on the web.</div></div></div>
+                  </div>
+                  <div>
+                    <div class="mega-col-head">Platform &amp; Integrations</div>
+                    <div class="mega-item"><div class="mega-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg></div><div class="mega-item-body"><div class="mega-item-title">API &amp; SDK Integrations</div><div class="mega-item-desc">Build, ship, and scale conversational experiences.</div></div></div>
+                    <div class="mega-item"><div class="mega-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="9" height="9" rx="1"/><rect x="13" y="2" width="9" height="9" rx="1"/><rect x="2" y="13" width="9" height="9" rx="1"/><rect x="13" y="13" width="9" height="9" rx="1"/></svg></div><div class="mega-item-body"><div class="mega-item-title">Chatbot Platform</div><div class="mega-item-desc">Design and deploy chatbots anywhere with a no-code builder.</div></div></div>
+                  </div>
+                  <div>
+                    <div class="mega-col-head">&nbsp;</div>
+                    <div class="mega-featured"><div class="mega-featured-tag">Featured</div><div class="mega-featured-title">AI Agent Creation Foundation</div><div class="mega-featured-desc">Learn to design reliable, no-code AI agents that run inside real workflows — from guardrails to integrations.</div><div class="mega-featured-link">Read more</div></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Mega — Solutions -->
+              <div class="demo-mega" id="menu-solutions">
+                <div class="mega-grid">
+                  <div>
+                    <div class="mega-col-head">By Team</div>
+                    <div class="mega-item"><div class="mega-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div><div class="mega-item-body"><div class="mega-item-title">Marketing</div><div class="mega-item-desc">Maximize lead acquisition and generate qualified leads.</div></div></div>
+                    <div class="mega-item"><div class="mega-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><div class="mega-item-body"><div class="mega-item-title">Sales</div><div class="mega-item-desc">Automate tasks and close more deals with AI.</div></div></div>
+                  </div>
+                  <div>
+                    <div class="mega-col-head">By Use Case</div>
+                    <div class="mega-item"><div class="mega-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg></div><div class="mega-item-body"><div class="mega-item-title">Lead Generation</div><div class="mega-item-desc">Capture more leads at a lower cost.</div></div></div>
+                    <div class="mega-item"><div class="mega-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div><div class="mega-item-body"><div class="mega-item-title">Customer Engagement</div><div class="mega-item-desc">Engage proactively to enhance loyalty.</div></div></div>
+                  </div>
+                  <div>
+                    <div class="mega-col-head">By Industry</div>
+                    <div class="mega-item"><div class="mega-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg></div><div class="mega-item-body"><div class="mega-item-title">Agency &amp; Consulting</div><div class="mega-item-desc">Lower CPL and drive higher conversions.</div></div></div>
+                    <div class="mega-item"><div class="mega-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h11a2 2 0 012 2v3m4 0h2a2 2 0 012 2v6a2 2 0 01-2 2h-2"/><rect x="9" y="11" width="14" height="10" rx="2"/></svg></div><div class="mega-item-body"><div class="mega-item-title">Automotive</div><div class="mega-item-desc">Capture and convert leads instantly.</div></div></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Mega — Resources -->
+              <div class="demo-mega" id="menu-resources">
+                <div class="mega-grid">
+                  <div>
+                    <div class="mega-col-head">Learn with Landbot</div>
+                    <div class="mega-item"><div class="mega-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div><div class="mega-item-body"><div class="mega-item-title">Academy</div><div class="mega-item-desc">Guided video courses and tutorials.</div></div></div>
+                    <div class="mega-item"><div class="mega-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div><div class="mega-item-body"><div class="mega-item-title">Blog</div><div class="mega-item-desc">Chatbot tips, guides, and in-depth articles.</div></div></div>
+                    <div class="mega-item"><div class="mega-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div><div class="mega-item-body"><div class="mega-item-title">Community</div><div class="mega-item-desc">Connect with users and share best practices.</div></div></div>
+                  </div>
+                  <div>
+                    <div class="mega-col-head">Get Help</div>
+                    <div class="mega-item"><div class="mega-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg></div><div class="mega-item-body"><div class="mega-item-title">Help Docs</div><div class="mega-item-desc">Support articles for your account and chatbots.</div></div></div>
+                    <div class="mega-item"><div class="mega-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div><div class="mega-item-body"><div class="mega-item-title">Service Status</div><div class="mega-item-desc">Real-time status of Landbot's systems.</div></div></div>
+                  </div>
+                  <div>
+                    <div class="mega-col-head">Chatbot Building</div>
+                    <div class="mega-item"><div class="mega-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div><div class="mega-item-body"><div class="mega-item-title">Chatbot Templates</div><div class="mega-item-desc">Ready-to-use templates for web and WhatsApp.</div></div></div>
+                    <div class="mega-featured" style="margin-top:8px;"><div class="mega-featured-tag">Featured</div><div class="mega-featured-title">AI Agent Creation Foundation</div><div class="mega-featured-desc">Design reliable no-code AI agents that run inside real workflows.</div><div class="mega-featured-link">Read more</div></div>
+                  </div>
+                </div>
+              </div>
+
+            </div><!-- /nav-desktop-inner -->
+          </div><!-- /nav-desktop-scroll -->
+        </div><!-- /nav-demo-desktop -->
+
+        <!-- Mobile demo — interactive ─────────────────────────── -->
+        <div>
+          <div class="nav-demo-mobile-label">Mobile &lt; 768px — tap to interact</div>
+          <div class="phone-frame">
+            <div class="phone-status"><div class="phone-notch"></div></div>
+            <div class="phone-screen" style="min-height:520px;">
+
+              <!-- Mobile navbar -->
+              <div class="mob-navbar">
+                <img src="assets/logo-dark.png" alt="Landbot" style="height:20px;width:auto;">
+                <button class="mob-ham" id="mob-ham-btn" onclick="toggleMobMenu()" aria-label="Toggle menu" aria-expanded="false">
+                  <span></span><span></span><span></span>
+                </button>
+              </div>
+
+              <!-- Slide-down menu -->
+              <div class="mob-menu-wrap" id="mob-menu-wrap">
+
+                <!-- Product -->
+                <div class="mob-menu-row" id="mob-row-product" onclick="toggleMobItem('product')">
+                  Product
+                  <svg class="mob-row-caret" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="mob-submenu" id="mob-sub-product">
+                  <div class="mob-submenu-item">AI Agent Chatbots</div>
+                  <div class="mob-submenu-item">WhatsApp Chatbots</div>
+                  <div class="mob-submenu-item">Website Chatbots</div>
+                  <div class="mob-submenu-item">API &amp; SDK Integrations</div>
+                </div>
+
+                <!-- Solutions -->
+                <div class="mob-menu-row" id="mob-row-solutions" onclick="toggleMobItem('solutions')">
+                  Solutions
+                  <svg class="mob-row-caret" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="mob-submenu" id="mob-sub-solutions">
+                  <div class="mob-submenu-item">Marketing</div>
+                  <div class="mob-submenu-item">Sales</div>
+                  <div class="mob-submenu-item">Lead Generation</div>
+                  <div class="mob-submenu-item">Customer Engagement</div>
+                </div>
+
+                <!-- Resources -->
+                <div class="mob-menu-row" id="mob-row-resources" onclick="toggleMobItem('resources')">
+                  Resources
+                  <svg class="mob-row-caret" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="mob-submenu" id="mob-sub-resources">
+                  <div class="mob-submenu-item">Academy</div>
+                  <div class="mob-submenu-item">Blog</div>
+                  <div class="mob-submenu-item">Community</div>
+                  <div class="mob-submenu-item">Help Docs</div>
+                </div>
+
+                <!-- Flat items -->
+                <div class="mob-menu-row no-sub">Case Studies</div>
+                <div class="mob-menu-row no-sub">Pricing</div>
+
+                <!-- CTAs -->
+                <div class="mob-menu-ctas">
+                  <div class="mob-cta-primary">Try Landbot Free</div>
+                  <div class="mob-cta-outline">Get a demo 🇺🇸🇪🇸</div>
+                  <div class="mob-cta-note">No Credit Card required</div>
+                </div>
+
+              </div><!-- /mob-menu-wrap -->
+
+              <!-- Page content skeleton (visible behind menu) -->
+              <div style="padding:24px 20px;display:flex;flex-direction:column;gap:10px;">
+                <div style="height:10px;background:var(--color-border-subtle);border-radius:4px;width:75%;"></div>
+                <div style="height:10px;background:var(--color-border-subtle);border-radius:4px;width:90%;"></div>
+                <div style="height:10px;background:var(--color-border-subtle);border-radius:4px;width:55%;"></div>
+                <div style="margin-top:8px;height:36px;background:var(--gradient-brand);border-radius:8px;width:62%;"></div>
+                <div style="margin-top:6px;height:10px;background:var(--color-border-subtle);border-radius:4px;width:80%;"></div>
+                <div style="height:10px;background:var(--color-border-subtle);border-radius:4px;width:65%;"></div>
+              </div>
+
+            </div><!-- /phone-screen -->
+          </div><!-- /phone-frame -->
+        </div><!-- /mobile demo -->
+
+      </div><!-- /nav-demos-row -->
+    </div><!-- /ds-subsection -->
+
+    <!-- Specs ─────────────────────────────────────────────────── -->
+    <details class="ds-specs">
+      <summary>Navbar specs</summary>
+      <div class="specs-body">
+      <table class="motion-table">
+        <thead><tr><th>Property</th><th>Value</th></tr></thead>
+        <tbody>
+          <tr><td>Height</td><td>72px desktop · 56px mobile</td></tr>
+          <tr><td>Background</td><td><code style="font-family:monospace;font-size:11px;background:var(--color-border-subtle);padding:1px 5px;border-radius:3px;">--color-surface-page</code> (#FFFFFF) — always white</td></tr>
+          <tr><td>Border bottom</td><td>1px solid <code style="font-family:monospace;font-size:11px;background:var(--color-border-subtle);padding:1px 5px;border-radius:3px;">--color-border-default</code> at rest</td></tr>
+          <tr><td>Scroll shadow</td><td><code style="font-family:monospace;font-size:11px;background:var(--color-border-subtle);padding:1px 5px;border-radius:3px;">box-shadow: 0 2px 16px rgba(51,64,94,0.10)</code> — replaces border on scroll</td></tr>
+          <tr><td>Position</td><td>sticky · top: 0 · z-index: 100</td></tr>
+          <tr><td>Edge padding</td><td>48px desktop · 20px mobile</td></tr>
+          <tr><td>Nav link — rest</td><td>15px / 500 · <code style="font-family:monospace;font-size:11px;background:var(--color-border-subtle);padding:1px 5px;border-radius:3px;">--color-brand-secondary</code></td></tr>
+          <tr><td>Nav link — hover / open</td><td><code style="font-family:monospace;font-size:11px;background:var(--color-border-subtle);padding:1px 5px;border-radius:3px;">--color-brand-accent</code> (#FF3F7B) — caret rotates 180°</td></tr>
+          <tr><td>Login link</td><td>15px / 500 · <code style="font-family:monospace;font-size:11px;background:var(--color-border-subtle);padding:1px 5px;border-radius:3px;">--color-brand-accent</code></td></tr>
+          <tr><td>"Try Landbot Free"</td><td>Gradient CTA · medium size · <code style="font-family:monospace;font-size:11px;background:var(--color-border-subtle);padding:1px 5px;border-radius:3px;">--radius-4</code></td></tr>
+          <tr><td>"Get a demo"</td><td>Outline variant · 1.5px purple border · includes country flag emojis</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </details>
+
+    <details class="ds-specs">
+      <summary>Mega dropdown specs</summary>
+      <div class="specs-body">
+      <table class="motion-table">
+        <thead><tr><th>Property</th><th>Value</th></tr></thead>
+        <tbody>
+          <tr><td>Background</td><td>White (<code style="font-family:monospace;font-size:11px;background:var(--color-border-subtle);padding:1px 5px;border-radius:3px;">--color-surface-page</code>)</td></tr>
+          <tr><td>Top separator</td><td>1px solid <code style="font-family:monospace;font-size:11px;background:var(--color-border-subtle);padding:1px 5px;border-radius:3px;">--color-border-default</code></td></tr>
+          <tr><td>Padding</td><td>32px top · 36px bottom · 48px horizontal</td></tr>
+          <tr><td>Column layout</td><td>3 columns · 32px gap</td></tr>
+          <tr><td>Category header</td><td>11px / 700 / uppercase / +0.08em tracking</td></tr>
+          <tr><td>Menu item</td><td>Icon 18px + title 14px/600 + desc 12px · hover bg <code style="font-family:monospace;font-size:11px;background:var(--color-border-subtle);padding:1px 5px;border-radius:3px;">--color-surface-hover</code> · 8px radius</td></tr>
+          <tr><td>Open animation</td><td>250ms · Ease Out · fade-in + translateY from −4px</td></tr>
+          <tr><td>Close</td><td>Click outside or click same trigger again</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </details>
+
+    <details class="ds-specs">
+      <summary>Mobile nav specs</summary>
+      <div class="specs-body">
+      <table class="motion-table">
+        <thead><tr><th>Property</th><th>Value</th></tr></thead>
+        <tbody>
+          <tr><td>Breakpoint</td><td>&lt; 768px</td></tr>
+          <tr><td>Hamburger button</td><td>38×38px · 10px radius · <code style="font-family:monospace;font-size:11px;background:var(--color-border-subtle);padding:1px 5px;border-radius:3px;">#EEEEF8</code> bg · 3 bars 17×2px</td></tr>
+          <tr><td>Hamburger → close</td><td>Middle bar fades · top/bottom bars rotate ±45° · 0.25s cubic-bezier(0.4,0,0.2,1)</td></tr>
+          <tr><td>Menu open animation</td><td>max-height slide down · 0.38s cubic-bezier(0.4,0,0.2,1)</td></tr>
+          <tr><td>Row — rest</td><td>15px / 500 · <code style="font-family:monospace;font-size:11px;background:var(--color-border-subtle);padding:1px 5px;border-radius:3px;">--color-brand-secondary</code> · 13px 20px padding</td></tr>
+          <tr><td>Row — active/open</td><td><code style="font-family:monospace;font-size:11px;background:var(--color-border-subtle);padding:1px 5px;border-radius:3px;">--color-brand-accent</code> · very light pink bg <code style="font-family:monospace;font-size:11px;background:var(--color-border-subtle);padding:1px 5px;border-radius:3px;">#FFF5F8</code></td></tr>
+          <tr><td>Sub-items</td><td>13px / 500 · 36px left indent · <code style="font-family:monospace;font-size:11px;background:var(--color-border-subtle);padding:1px 5px;border-radius:3px;">--color-surface-card</code> bg</td></tr>
+          <tr><td>Submenu animation</td><td>max-height expand · 0.28s ease</td></tr>
+          <tr><td>CTAs at bottom</td><td>Gradient primary + outline secondary · "No Credit Card required" note</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </details>
+
+  </section>

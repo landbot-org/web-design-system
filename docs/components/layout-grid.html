@@ -1,0 +1,171 @@
+<!-- 
+  Component: Layout & Grid
+  Source: docs/design-system.html (HTML lines 3626-3788)
+  Tokens: All CSS custom properties are defined in design-system.html :root
+  Reference: tokens/DESIGN-SYSTEM-REFERENCE.md
+  Note: This section uses primarily inline styles for visual demos
+-->
+
+  <!-- ═══ LAYOUT & GRID ════════════════════════════════════════════ -->
+  <section class="ds-section" id="layout">
+    <div class="ds-section-header">
+      <h2>Layout & Grid</h2>
+      <p>Breakpoints, content widths, column grid, and section spacing for marketing pages.</p>
+    </div>
+
+    <!-- Breakpoints -->
+    <div class="ds-subsection">
+      <div class="ds-label">Breakpoints</div>
+      <p style="font-size:13px;color:var(--color-text-secondary);margin-bottom:16px;">Two designed states. Webflow handles the transition between them automatically.</p>
+      <div style="border-radius:var(--radius-4);overflow:hidden;margin-bottom:4px;">
+        <div style="display:flex;height:8px;">
+          <div style="width:28%;background:var(--color-brand-primary);opacity:0.35;"></div>
+          <div style="flex:1;background:var(--color-brand-primary);"></div>
+        </div>
+        <div style="display:flex;">
+          <div style="width:28%;background:var(--color-surface-brand-subtle);padding:16px 20px;border-right:2px solid #fff;">
+            <div style="font-size:11px;font-weight:700;color:var(--color-brand-primary);letter-spacing:0.05em;text-transform:uppercase;margin-bottom:6px;">Mobile</div>
+            <div style="font-size:20px;font-weight:400;letter-spacing:-0.5px;color:var(--color-text-primary);">&lt; 768px</div>
+            <div style="font-size:12px;color:var(--color-text-secondary);margin-top:4px;">Design frame: 375px</div>
+            <div style="margin-top:12px;display:flex;gap:4px;align-items:center;">
+              <div style="display:flex;gap:3px;">
+                <div style="width:14px;height:18px;background:var(--color-brand-primary);opacity:0.4;border-radius:2px;"></div>
+                <div style="width:14px;height:18px;background:var(--color-brand-primary);opacity:0.4;border-radius:2px;"></div>
+                <div style="width:14px;height:18px;background:var(--color-brand-primary);opacity:0.4;border-radius:2px;"></div>
+                <div style="width:14px;height:18px;background:var(--color-brand-primary);opacity:0.4;border-radius:2px;"></div>
+              </div>
+              <span style="font-size:11px;color:var(--color-text-disabled);margin-left:4px;">4 col · 16px gap</span>
+            </div>
+          </div>
+          <div style="flex:1;background:var(--color-surface-brand-subtle);padding:16px 20px;">
+            <div style="font-size:11px;font-weight:700;color:var(--color-brand-primary);letter-spacing:0.05em;text-transform:uppercase;margin-bottom:6px;">Desktop</div>
+            <div style="font-size:20px;font-weight:400;letter-spacing:-0.5px;color:var(--color-text-primary);">&#x2265; 768px</div>
+            <div style="font-size:12px;color:var(--color-text-secondary);margin-top:4px;">Design frame: 1280px</div>
+            <div style="margin-top:12px;display:flex;gap:4px;align-items:center;flex-wrap:wrap;">
+              <div style="display:flex;gap:3px;">
+                <div style="width:14px;height:18px;background:var(--color-brand-primary);border-radius:2px;"></div>
+                <div style="width:14px;height:18px;background:var(--color-brand-primary);border-radius:2px;"></div>
+                <div style="width:14px;height:18px;background:var(--color-brand-primary);border-radius:2px;"></div>
+                <div style="width:14px;height:18px;background:var(--color-brand-primary);border-radius:2px;"></div>
+                <div style="width:14px;height:18px;background:var(--color-brand-primary);border-radius:2px;"></div>
+                <div style="width:14px;height:18px;background:var(--color-brand-primary);border-radius:2px;"></div>
+                <div style="width:14px;height:18px;background:var(--color-brand-primary);border-radius:2px;"></div>
+                <div style="width:14px;height:18px;background:var(--color-brand-primary);border-radius:2px;"></div>
+                <div style="width:14px;height:18px;background:var(--color-brand-primary);border-radius:2px;"></div>
+                <div style="width:14px;height:18px;background:var(--color-brand-primary);border-radius:2px;"></div>
+                <div style="width:14px;height:18px;background:var(--color-brand-primary);border-radius:2px;"></div>
+                <div style="width:14px;height:18px;background:var(--color-brand-primary);border-radius:2px;"></div>
+              </div>
+              <span style="font-size:11px;color:var(--color-text-disabled);margin-left:4px;">12 col · 24px gap</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Content widths -->
+    <details class="ds-specs">
+      <summary>Content widths</summary>
+      <div class="specs-body">
+        <p style="font-size:13px;color:var(--color-text-secondary);margin-bottom:16px;">Section backgrounds always go full-width. The content inside is constrained. Edge padding: <strong style="color:var(--color-text-primary);">48px</strong> on desktop · <strong style="color:var(--color-text-primary);">20px</strong> on mobile.</p>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div style="display:flex;align-items:center;gap:12px;">
+            <div style="width:68px;text-align:right;font-size:12px;color:var(--color-text-secondary);flex-shrink:0;font-weight:500;">Standard</div>
+            <div style="flex:1;position:relative;height:34px;background:#E5E6EA;border-radius:4px;overflow:hidden;">
+              <div style="position:absolute;inset:0;display:flex;align-items:center;padding:0 7%;">
+                <div style="flex:1;height:20px;background:var(--color-brand-primary);border-radius:3px;display:flex;align-items:center;justify-content:center;"><span style="font-size:10px;color:#fff;font-weight:600;">1200px &mdash; features, pricing, testimonials</span></div>
+              </div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <div style="width:68px;text-align:right;font-size:12px;color:var(--color-text-secondary);flex-shrink:0;font-weight:500;">Narrow</div>
+            <div style="flex:1;position:relative;height:34px;background:#E5E6EA;border-radius:4px;overflow:hidden;">
+              <div style="position:absolute;inset:0;display:flex;align-items:center;padding:0 22%;">
+                <div style="flex:1;height:20px;background:var(--color-brand-primary);opacity:0.55;border-radius:3px;display:flex;align-items:center;justify-content:center;"><span style="font-size:10px;color:#fff;font-weight:600;">760px &mdash; blog, articles, centered CTAs</span></div>
+              </div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <div style="width:68px;text-align:right;font-size:12px;color:var(--color-text-secondary);flex-shrink:0;font-weight:500;">Full bleed</div>
+            <div style="flex:1;position:relative;height:34px;background:#E5E6EA;border-radius:4px;overflow:hidden;">
+              <div style="position:absolute;inset:0;display:flex;align-items:center;padding:0 1%;">
+                <div style="flex:1;height:20px;background:var(--color-brand-accent);opacity:0.55;border-radius:3px;display:flex;align-items:center;justify-content:center;"><span style="font-size:10px;color:#fff;font-weight:600;">100% &mdash; hero backgrounds, decorative bands</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p style="font-size:11px;color:var(--color-text-disabled);margin-top:10px;font-style:italic;">Full-bleed sections still use a 1200px inner wrapper for text and buttons &mdash; the background bleeds, the content does not.</p>
+      </div>
+    </details>
+
+    <!-- Column grid -->
+    <div class="ds-subsection">
+      <div class="ds-label">12-Column Grid — Desktop</div>
+      <p style="font-size:13px;color:var(--color-text-secondary);margin-bottom:14px;">Common column span patterns. On mobile, all content stacks to full width.</p>
+      <div style="display:grid;grid-template-columns:repeat(12,1fr);gap:5px;">
+        <div style="grid-column:span 12;background:var(--color-brand-primary);border-radius:3px;height:26px;display:flex;align-items:center;justify-content:center;"><span style="font-size:10px;color:#fff;font-weight:700;">12 &mdash; full width &middot; hero text, banners</span></div>
+        <div style="grid-column:span 6;background:var(--color-brand-primary);opacity:0.75;border-radius:3px;height:26px;display:flex;align-items:center;justify-content:center;"><span style="font-size:10px;color:#fff;font-weight:700;">6 &middot; split hero</span></div>
+        <div style="grid-column:span 6;background:var(--color-brand-primary);opacity:0.75;border-radius:3px;height:26px;display:flex;align-items:center;justify-content:center;"><span style="font-size:10px;color:#fff;font-weight:700;">6 &middot; visual</span></div>
+        <div style="grid-column:span 4;background:var(--color-brand-primary);opacity:0.55;border-radius:3px;height:26px;display:flex;align-items:center;justify-content:center;"><span style="font-size:10px;color:#fff;font-weight:700;">4 &middot; feature</span></div>
+        <div style="grid-column:span 4;background:var(--color-brand-primary);opacity:0.55;border-radius:3px;height:26px;display:flex;align-items:center;justify-content:center;"><span style="font-size:10px;color:#fff;font-weight:700;">4 &middot; feature</span></div>
+        <div style="grid-column:span 4;background:var(--color-brand-primary);opacity:0.55;border-radius:3px;height:26px;display:flex;align-items:center;justify-content:center;"><span style="font-size:10px;color:#fff;font-weight:700;">4 &middot; feature</span></div>
+        <div style="grid-column:span 3;background:var(--color-brand-primary);opacity:0.38;border-radius:3px;height:26px;display:flex;align-items:center;justify-content:center;"><span style="font-size:10px;color:#fff;font-weight:700;">3</span></div>
+        <div style="grid-column:span 3;background:var(--color-brand-primary);opacity:0.38;border-radius:3px;height:26px;display:flex;align-items:center;justify-content:center;"><span style="font-size:10px;color:#fff;font-weight:700;">3</span></div>
+        <div style="grid-column:span 3;background:var(--color-brand-primary);opacity:0.38;border-radius:3px;height:26px;display:flex;align-items:center;justify-content:center;"><span style="font-size:10px;color:#fff;font-weight:700;">3</span></div>
+        <div style="grid-column:span 3;background:var(--color-brand-primary);opacity:0.38;border-radius:3px;height:26px;display:flex;align-items:center;justify-content:center;"><span style="font-size:10px;color:#fff;font-weight:700;">3 &middot; pricing tiers</span></div>
+        <div style="grid-column:3/span 8;background:var(--color-brand-accent);opacity:0.65;border-radius:3px;height:26px;display:flex;align-items:center;justify-content:center;"><span style="font-size:10px;color:#fff;font-weight:700;">8 centered (cols 3&ndash;10) &mdash; section intro, centered CTA, testimonial</span></div>
+      </div>
+    </div>
+
+    <!-- Section spacing -->
+    <details class="ds-specs">
+      <summary>Section spacing</summary>
+      <div class="specs-body">
+        <p style="font-size:13px;color:var(--color-text-secondary);margin-bottom:16px;">Padding above and below each section &mdash; applied to the <code style="background:var(--color-surface-brand-subtle);border-radius:3px;padding:1px 5px;font-size:12px;color:var(--color-brand-primary);">&lt;section&gt;</code> element, not the inner content wrapper.</p>
+        <div style="display:flex;gap:24px;align-items:flex-start;">
+          <!-- Visual -->
+          <div style="display:flex;flex-direction:column;align-items:stretch;width:160px;flex-shrink:0;font-size:11px;">
+            <div style="background:var(--color-brand-primary);border-radius:4px;height:32px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600;">Section</div>
+            <div style="background:rgba(90,96,246,0.08);border-left:2px dashed #5A60F6;border-right:2px dashed #5A60F6;height:40px;display:flex;align-items:center;justify-content:center;color:var(--color-brand-primary);font-weight:700;">120px default</div>
+            <div style="background:var(--color-brand-primary);opacity:0.7;border-radius:4px;height:32px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600;">Section</div>
+            <div style="background:rgba(90,96,246,0.08);border-left:2px dashed #5A60F6;border-right:2px dashed #5A60F6;height:24px;display:flex;align-items:center;justify-content:center;color:var(--color-brand-primary);font-weight:700;">80px sub</div>
+            <div style="background:var(--color-brand-primary);opacity:0.45;border-radius:4px;height:32px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600;">Sub-section</div>
+          </div>
+          <!-- Table -->
+          <div style="flex:1;">
+            <table style="width:100%;border-collapse:collapse;font-size:13px;">
+              <thead>
+                <tr style="border-bottom:2px solid var(--color-border-default);">
+                  <th style="text-align:left;padding:6px 12px 6px 0;font-size:11px;font-weight:700;color:var(--color-text-secondary);letter-spacing:0.04em;text-transform:uppercase;">Use for</th>
+                  <th style="text-align:left;padding:6px 12px;font-size:11px;font-weight:700;color:var(--color-text-secondary);letter-spacing:0.04em;text-transform:uppercase;">Desktop</th>
+                  <th style="text-align:left;padding:6px 0;font-size:11px;font-weight:700;color:var(--color-text-secondary);letter-spacing:0.04em;text-transform:uppercase;">Mobile</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom:1px solid var(--color-border-subtle);">
+                  <td style="padding:9px 12px 9px 0;color:var(--color-text-primary);">Hero / major dividing section</td>
+                  <td style="padding:9px 12px;color:var(--color-text-secondary);">160px</td>
+                  <td style="padding:9px 0;color:var(--color-text-secondary);">80px</td>
+                </tr>
+                <tr style="border-bottom:1px solid var(--color-border-subtle);">
+                  <td style="padding:9px 12px 9px 0;color:var(--color-text-primary);">Standard marketing section <span style="font-size:11px;background:var(--color-surface-brand-subtle);color:var(--color-brand-primary);font-weight:600;border-radius:3px;padding:1px 5px;">default</span></td>
+                  <td style="padding:9px 12px;color:var(--color-text-secondary);">120px</td>
+                  <td style="padding:9px 0;color:var(--color-text-secondary);">64px</td>
+                </tr>
+                <tr style="border-bottom:1px solid var(--color-border-subtle);">
+                  <td style="padding:9px 12px 9px 0;color:var(--color-text-primary);">Sub-section / feature block</td>
+                  <td style="padding:9px 12px;color:var(--color-text-secondary);">80px</td>
+                  <td style="padding:9px 0;color:var(--color-text-secondary);">48px</td>
+                </tr>
+                <tr>
+                  <td style="padding:9px 12px 9px 0;color:var(--color-text-primary);">Tight group within a section</td>
+                  <td style="padding:9px 12px;color:var(--color-text-secondary);">48px</td>
+                  <td style="padding:9px 0;color:var(--color-text-secondary);">32px</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </details>
+  </section>

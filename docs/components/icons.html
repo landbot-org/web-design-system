@@ -1,0 +1,460 @@
+<!-- 
+  Component: Icons
+  Source: docs/design-system.html (CSS lines 997-1026, 2281-2414, HTML lines 5894-6177)
+  Tokens: All CSS custom properties are defined in design-system.html :root
+  Reference: tokens/DESIGN-SYSTEM-REFERENCE.md
+-->
+
+<style>
+/* Component-specific CSS extracted from design-system.html */
+    /* ─── ICON SIZE REF ──────────────────────────────────────────── */
+    .icon-demo {
+      display: flex;
+      gap: 32px;
+      align-items: flex-end;
+      flex-wrap: wrap;
+    }
+
+    .icon-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .icon-box {
+      background: var(--color-border-subtle);
+      border-radius: var(--radius-3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-brand-primary);
+    }
+
+    .icon-box svg { display: block; }
+
+    .icon-meta { text-align: center; }
+    .icon-meta .i-class { font-size: 11px; font-weight: 600; color: var(--color-brand-primary); }
+    .icon-meta .i-size  { font-size: 11px; color: var(--color-text-secondary); font-family: 'Courier New', monospace; }
+
+
+    /* ─── ICONS ─────────────────────────────────────────────────── */
+    .icon-size-row {
+      display: flex;
+      align-items: flex-end;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .icon-size-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    .icon-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius-5);
+      flex-shrink: 0;
+    }
+    .icon-container-purple { background: var(--color-surface-brand-subtle); color: var(--color-brand-primary); }
+    .icon-container-pink   { background: var(--color-surface-error); color: var(--color-brand-accent); }
+    .icon-container-navy   { background: var(--color-surface-dark); color: #fff; }
+    .icon-size-label {
+      font-size: 11px;
+      color: var(--color-text-secondary);
+      text-align: center;
+      line-height: 1.4;
+    }
+    .icon-size-label strong {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      margin-bottom: 2px;
+    }
+
+    /* Install method cards */
+    .install-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+    @media (max-width: 700px) { .install-grid { grid-template-columns: 1fr; } }
+
+    .install-card {
+      background: var(--color-surface-card);
+      border: 1px solid var(--color-border-default);
+      border-radius: var(--radius-5);
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .install-card.is-recommended {
+      border-color: var(--color-brand-primary);
+      background: var(--color-surface-brand-medium);
+    }
+    .install-card-step {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-text-disabled);
+    }
+    .install-card.is-recommended .install-card-step {
+      color: var(--color-brand-primary);
+    }
+    .install-card-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--color-text-primary);
+    }
+    .install-card-desc {
+      font-size: 12px;
+      color: var(--color-text-secondary);
+      line-height: 1.5;
+    }
+    .install-card code {
+      display: block;
+      background: var(--color-brand-secondary);
+      color: var(--color-text-on-dark-secondary);
+      border-radius: var(--radius-3);
+      padding: 10px 12px;
+      font-size: 11px;
+      font-family: 'DM Mono', 'Fira Code', monospace;
+      line-height: 1.6;
+      margin-top: 6px;
+      word-break: break-all;
+    }
+
+    /* Icon style chips */
+    .style-chips {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+    .style-chip {
+      border: 1.5px solid var(--color-border-default);
+      border-radius: var(--radius-5);
+      padding: 10px 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      cursor: default;
+      min-width: 80px;
+    }
+    .style-chip.is-primary {
+      border-color: var(--color-brand-primary);
+      background: var(--color-surface-brand-medium);
+    }
+    .style-chip svg { color: var(--color-text-primary); }
+    .style-chip-name {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--color-text-secondary);
+      text-align: center;
+    }
+    .style-chip.is-primary .style-chip-name {
+      color: var(--color-brand-primary);
+    }
+    .style-chip-badge {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--color-brand-primary);
+      background: var(--color-surface-brand-subtle);
+      border-radius: var(--radius-pill);
+      padding: 1px 6px;
+    }
+</style>
+
+  <!-- ═══ ICONS ════════════════════════════════════════════════════ -->
+  <section class="ds-section" id="icons">
+    <div class="ds-section-header">
+      <h2>Icons</h2>
+      <p>Landbot uses <strong>Hugeicons</strong> across both the marketing site and product — one library, full consistency. The free tier has 5,100+ icons, more than enough for any marketing page.</p>
+    </div>
+
+    <!-- ── WHY HUGEICONS ──────────────────────────────────────────── -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px;">
+      <div style="background:var(--color-surface-card);border:1px solid var(--color-brand-primary);border-radius:var(--radius-5);padding:20px;">
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-brand-primary);margin-bottom:10px;">✓ Why Hugeicons for Landbot</div>
+        <div style="display:flex;flex-direction:column;gap:7px;font-size:13px;color:var(--color-text-secondary);">
+          <span>✦ <strong style="color:var(--color-text-primary);">Native Webflow App</strong> — install in one click, no code needed</span>
+          <span>✦ <strong style="color:var(--color-text-primary);">Same library as Product team</strong> — one visual language across the company</span>
+          <span>✦ <strong style="color:var(--color-text-primary);">5,100+ free stroke-rounded icons</strong> — way more than you'll ever need</span>
+          <span>✦ <strong style="color:var(--color-text-primary);">Figma plugin</strong> — insert icons directly from Figma while designing</span>
+          <span>✦ <strong style="color:var(--color-text-primary);">10 styles</strong> — stroke, solid, duotone, twotone, bulk — all consistent</span>
+        </div>
+      </div>
+      <div style="background:var(--color-surface-stars);border:1px solid var(--color-status-stars);border-radius:var(--radius-5);padding:20px;">
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-text-on-stars);margin-bottom:10px;">⚠ What about Font Awesome?</div>
+        <div style="font-size:13px;color:var(--color-text-on-stars);line-height:1.6;">Font Awesome still works and there's no need to remove it from pages that already use it. But <strong>don't add it to new pages</strong> — use Hugeicons instead. Over time, migrate away from Font Awesome as you rebuild sections.</div>
+      </div>
+    </div>
+
+    <!-- ── HOW TO ADD IN WEBFLOW ──────────────────────────────────── -->
+    <h3 style="font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-text-disabled);margin:0 0 12px;">How to add in Webflow</h3>
+    <p style="font-size:13px;color:var(--color-text-secondary);margin:0 0 16px;">Three methods — choose the one that fits your situation.</p>
+
+    <div class="install-grid">
+
+      <div class="install-card is-recommended">
+        <div class="install-card-step">✓ Recommended · Method 1</div>
+        <div class="install-card-title">Webflow App (no code)</div>
+        <div class="install-card-desc">Install the official Hugeicons app directly from the Webflow App Marketplace. Icons appear as native Webflow elements — resizable, styleable, and bindable to CMS.</div>
+        <div style="margin-top:10px;font-size:12px;color:var(--color-text-secondary);display:flex;flex-direction:column;gap:4px;">
+          <span>1. Open Webflow Designer</span>
+          <span>2. Apps panel → search "Hugeicons"</span>
+          <span>3. Click Install → done</span>
+        </div>
+      </div>
+
+      <div class="install-card">
+        <div class="install-card-step">Method 2 · CDN font</div>
+        <div class="install-card-title">Link tag in &lt;head&gt;</div>
+        <div class="install-card-desc">Add the CDN stylesheet to Site Settings → Custom Code → Head. Then use class names in any Code Embed block.</div>
+        <code>&lt;!-- Site Settings → Head --&gt;
+&lt;link rel="stylesheet"
+  href="https://cdn.hugeicons.com
+  /font/hgi-stroke-rounded.css"&gt;
+
+&lt;!-- Anywhere on page --&gt;
+&lt;i class="hgi-stroke-rounded
+  hgi-home-01"&gt;&lt;/i&gt;</code>
+      </div>
+
+      <div class="install-card">
+        <div class="install-card-step">Method 3 · Per icon</div>
+        <div class="install-card-title">Inline SVG embed</div>
+        <div class="install-card-desc">Download the SVG from hugeicons.com and paste into a Code Embed block. Best when you need a single hero icon with specific colour or animation.</div>
+        <code>&lt;!-- Webflow: Add element
+→ Embed → paste SVG --&gt;
+&lt;svg width="24" height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"&gt;
+  ...path data...
+&lt;/svg&gt;</code>
+      </div>
+
+    </div>
+
+    <!-- ── STYLE TO USE ───────────────────────────────────────────── -->
+    <h3 style="font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-text-disabled);margin:24px 0 12px;">Which style to use</h3>
+    <p style="font-size:13px;color:var(--color-text-secondary);margin:0 0 16px;">Hugeicons has 10 styles. For Landbot's marketing site, <strong>Stroke Rounded</strong> is the default — its rounded corners match the brand's rounded corners everywhere (buttons, cards, radius tokens).</p>
+
+    <div class="style-chips">
+
+      <div class="style-chip is-primary">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <div class="style-chip-name">Stroke Rounded</div>
+        <div class="style-chip-badge">Primary ✓</div>
+      </div>
+
+      <div class="style-chip">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <div class="style-chip-name">Stroke Sharp</div>
+      </div>
+
+      <div class="style-chip">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+        <div class="style-chip-name">Solid</div>
+      </div>
+
+      <div class="style-chip">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" fill="currentColor" opacity="0.2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><polyline points="9 22 9 12 15 12 15 22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <div class="style-chip-name">Duotone</div>
+      </div>
+
+      <div class="style-chip" style="opacity:0.5;">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <div class="style-chip-name">Twotone</div>
+      </div>
+
+      <div class="style-chip" style="opacity:0.5;">
+        <svg width="28" height="28" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" fill="currentColor" opacity="0.15"/><path d="M9 22v-6h6v6" fill="currentColor"/></svg>
+        <div class="style-chip-name">Bulk</div>
+      </div>
+
+    </div>
+
+    <div style="background:var(--color-surface-card);border:1px solid var(--color-border-default);border-radius:var(--radius-4);padding:12px 14px;font-size:12px;color:var(--color-text-secondary);margin-bottom:24px;">
+      <strong style="color:var(--color-text-primary);">Rule:</strong> Use <strong>Stroke Rounded</strong> for all standard icons. Switch to <strong>Solid</strong> to indicate an active/selected state (e.g. filled bookmark = saved, filled star = rated). Never mix more than 2 styles on the same page.
+    </div>
+
+    <!-- ── SIZE SCALE ─────────────────────────────────────────────── -->
+    <h3 style="font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-text-disabled);margin:0 0 16px;">Size scale</h3>
+
+    <div style="background:var(--color-surface-card);border:1px solid var(--color-border-default);border-radius:var(--radius-6);padding:28px 24px;margin-bottom:8px;">
+      <div class="icon-size-row">
+
+        <div class="icon-size-item">
+          <div class="icon-container icon-container-purple" style="width:28px;height:28px;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <div class="icon-size-label"><strong>XS · 14px</strong>Inline text<br>Tags / labels</div>
+        </div>
+
+        <div class="icon-size-item">
+          <div class="icon-container icon-container-purple" style="width:34px;height:34px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <div class="icon-size-label"><strong>SM · 16px</strong>Button icons<br>Form labels</div>
+        </div>
+
+        <div class="icon-size-item">
+          <div class="icon-container icon-container-purple" style="width:40px;height:40px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <div class="icon-size-label"><strong>MD · 20px</strong>Nav links<br>List items</div>
+        </div>
+
+        <div class="icon-size-item">
+          <div class="icon-container icon-container-purple" style="width:48px;height:48px;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <div class="icon-size-label"><strong>LG · 24px</strong>Default UI<br>Feature lists</div>
+        </div>
+
+        <div class="icon-size-item">
+          <div class="icon-container icon-container-purple" style="width:60px;height:60px;border-radius:var(--radius-5);">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <div class="icon-size-label"><strong>XL · 32px</strong>Feature cards<br>Section icons</div>
+        </div>
+
+        <div class="icon-size-item">
+          <div class="icon-container icon-container-purple" style="width:80px;height:80px;border-radius:var(--radius-5);">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <div class="icon-size-label"><strong>2XL · 48px</strong>Hero features<br>Empty states</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Icon in context demos -->
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:8px;">
+
+      <div style="background:var(--color-surface-page);border:1px solid var(--color-border-default);border-radius:var(--radius-5);padding:14px;display:flex;align-items:center;gap:10px;">
+        <div class="icon-container icon-container-purple" style="width:34px;height:34px;flex-shrink:0;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <span style="font-size:13px;color:var(--color-text-primary);">SM (16px) in a feature list item</span>
+      </div>
+
+      <div style="background:var(--color-surface-page);border:1px solid var(--color-border-default);border-radius:var(--radius-5);padding:14px;display:flex;align-items:center;gap:10px;">
+        <div class="icon-container icon-container-pink" style="width:40px;height:40px;flex-shrink:0;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <span style="font-size:13px;color:var(--color-text-primary);">MD (20px) in a nav link</span>
+      </div>
+
+      <div style="background:var(--color-surface-page);border:1px solid var(--color-border-default);border-radius:var(--radius-5);padding:14px;display:flex;align-items:center;gap:10px;">
+        <div class="icon-container icon-container-navy" style="width:48px;height:48px;flex-shrink:0;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        </div>
+        <span style="font-size:13px;color:var(--color-text-primary);">LG (24px) on dark background</span>
+      </div>
+
+    </div>
+
+    <details class="ds-specs" style="margin-bottom:16px;">
+      <summary>Size scale reference</summary>
+      <div class="specs-body">
+        <table class="motion-table">
+          <thead><tr><th>Name</th><th>Icon size</th><th>Container</th><th>Stroke width</th><th>Use for</th></tr></thead>
+          <tbody>
+            <tr><td>XS</td><td>14px</td><td>No container</td><td>1.8</td><td>Inline text, tags, badges</td></tr>
+            <tr><td>SM</td><td>16px</td><td>34×34px · radius-4</td><td>1.8</td><td>Button icons, form labels</td></tr>
+            <tr><td>MD</td><td>20px</td><td>40×40px · radius-4</td><td>1.6</td><td>Nav links, list items</td></tr>
+            <tr><td>LG</td><td>24px</td><td>48×48px · radius-5</td><td>1.5</td><td>Default UI, feature lists</td></tr>
+            <tr><td>XL</td><td>32px</td><td>60×60px · radius-5</td><td>1.4</td><td>Feature cards, section callouts</td></tr>
+            <tr><td>2XL</td><td>48px</td><td>80×80px · radius-5</td><td>1.2</td><td>Hero features, empty states</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+
+    <!-- ── COLOUR RULES ────────────────────────────────────────────── -->
+    <h3 style="font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-text-disabled);margin:0 0 12px;">Colour rules</h3>
+
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px;">
+      <div style="background:var(--color-surface-card);border:1px solid var(--color-border-default);border-radius:var(--radius-5);padding:14px;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;">
+        <div class="icon-container icon-container-purple" style="width:48px;height:48px;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <div style="font-size:11px;font-weight:700;color:var(--color-text-primary);">Brand purple</div>
+        <div style="font-size:10px;color:var(--color-text-secondary);">Default · CTAs · feature highlights</div>
+      </div>
+      <div style="background:var(--color-surface-card);border:1px solid var(--color-border-default);border-radius:var(--radius-5);padding:14px;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;">
+        <div class="icon-container icon-container-pink" style="width:48px;height:48px;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+        </div>
+        <div style="font-size:11px;font-weight:700;color:var(--color-text-primary);">Brand pink</div>
+        <div style="font-size:10px;color:var(--color-text-secondary);">Accent · alerts · love/save actions</div>
+      </div>
+      <div style="background:var(--color-surface-card);border:1px solid var(--color-border-default);border-radius:var(--radius-5);padding:14px;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;">
+        <div style="width:48px;height:48px;border-radius:var(--radius-5);background:#E7EBF3;display:flex;align-items:center;justify-content:center;color:var(--color-text-secondary);">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <div style="font-size:11px;font-weight:700;color:var(--color-text-primary);">Text secondary</div>
+        <div style="font-size:10px;color:var(--color-text-secondary);">Decorative · neutral context</div>
+      </div>
+      <div style="background:var(--color-surface-dark);border-radius:var(--radius-5);padding:14px;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;">
+        <div style="width:48px;height:48px;border-radius:var(--radius-5);background:rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;color:#fff;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div style="font-size:11px;font-weight:700;color:var(--color-text-on-dark);">White</div>
+        <div style="font-size:10px;color:var(--color-text-on-dark-secondary);">On dark sections only</div>
+      </div>
+    </div>
+
+    <details class="ds-specs">
+      <summary>Usage rules & do / don't</summary>
+      <div class="specs-body">
+        <table class="motion-table" style="margin-bottom:16px;">
+          <thead><tr><th>Rule</th><th>Why</th></tr></thead>
+          <tbody>
+            <tr><td>Icons must always be a single colour</td><td>Multicolour icons look inconsistent and increase visual complexity</td></tr>
+            <tr><td>Icon colour must match the surrounding text colour</td><td>Mismatched colours make the icon feel disconnected from its label</td></tr>
+            <tr><td>Never scale an icon below 14px</td><td>Stroke icons become illegible under 14px — use text instead</td></tr>
+            <tr><td>Always pair an icon with a text label (or aria-label)</td><td>Icon-only buttons are ambiguous and fail WCAG 1.1.1</td></tr>
+            <tr><td>Use Stroke Rounded as the default; Solid only for active/selected states</td><td>Mixing weights randomly looks inconsistent</td></tr>
+            <tr><td>Keep stroke weight consistent within a section</td><td>Thinner icons next to thicker ones look like mistakes</td></tr>
+            <tr><td>Align icon to the optical centre of text, not the mathematical centre</td><td>Mathematical alignment often looks slightly low — adjust by 1–2px if needed</td></tr>
+          </tbody>
+        </table>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+          <div style="background:#E6F9F0;border:1.5px solid #52CC57;border-radius:var(--radius-4);padding:14px;">
+            <div style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-text-on-success);margin-bottom:8px;">✓ Do</div>
+            <div style="display:flex;flex-direction:column;gap:5px;font-size:12px;color:var(--color-text-primary);">
+              <span>✓ Use Stroke Rounded for all standard icons</span>
+              <span>✓ Match icon colour to adjacent text</span>
+              <span>✓ Place icon in a tinted container for feature sections</span>
+              <span>✓ Use Solid style to show active/selected state</span>
+              <span>✓ Use the Figma plugin to insert icons while designing</span>
+            </div>
+          </div>
+          <div style="background:#FFF1F5;border:1.5px solid #FF3F7B;border-radius:var(--radius-4);padding:14px;">
+            <div style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-text-on-error);margin-bottom:8px;">✗ Don't</div>
+            <div style="display:flex;flex-direction:column;gap:5px;font-size:12px;color:var(--color-text-primary);">
+              <span>✗ Mix Stroke and Solid icons in the same row</span>
+              <span>✗ Use icons smaller than 14px</span>
+              <span>✗ Use Font Awesome on new pages</span>
+              <span>✗ Use multicolour icons in body content</span>
+              <span>✗ Use an icon-only button without an aria-label</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </details>
+
+  </section>

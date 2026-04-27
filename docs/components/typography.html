@@ -1,0 +1,276 @@
+<!-- 
+  Component: Typography
+  Source: docs/design-system.html (CSS lines 420-469, HTML lines 3410-3624)
+  Tokens: All CSS custom properties are defined in design-system.html :root
+  Reference: tokens/DESIGN-SYSTEM-REFERENCE.md
+-->
+
+<style>
+/* Component-specific CSS extracted from design-system.html */
+    /* ─── TYPOGRAPHY ─────────────────────────────────────────────── */
+    .type-sample {
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--color-border-subtle);
+    }
+
+    .type-meta {
+      width: 140px;
+      flex-shrink: 0;
+      padding-top: 4px;
+    }
+
+    .type-meta .style-name {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--color-brand-primary);
+      letter-spacing: 0.02em;
+    }
+
+    .type-meta .style-specs {
+      font-size: 11px;
+      color: var(--color-text-secondary);
+      margin-top: 3px;
+      line-height: 16px;
+    }
+
+    .type-meta .style-use {
+      font-size: 11px;
+      color: var(--color-text-disabled);
+      margin-top: 7px;
+      line-height: 15px;
+      font-style: italic;
+    }
+
+    .type-preview-col {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .type-preview {
+      color: var(--color-text-primary);
+      font-family: 'DM Sans', sans-serif;
+      font-variation-settings: 'opsz' 14;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+</style>
+
+  <!-- ═══ TYPOGRAPHY ══════════════════════════════════════════════ -->
+  <section class="ds-section" id="typography">
+    <div class="ds-section-header">
+      <h2>Typography</h2>
+      <p>DM Sans — all text, all sizes. Always set <span class="token-chip">font-variation-settings: 'opsz' 14</span>. Negative tracking on headings, zero on body. Weights: 400 regular · 500 medium · 700 bold.</p>
+    </div>
+
+    <div class="ds-subsection">
+      <div class="ds-label">Headings — page &amp; section structure</div>
+      <div class="type-sample">
+        <div class="type-meta">
+          <div class="style-name">Display XL</div>
+          <div class="style-specs">80px / 96px<br>−3px · wt 400</div>
+          <div class="style-use">Full-bleed hero — the single biggest statement on a marketing page</div>
+        </div>
+        <div class="type-preview-col">
+          <div class="type-preview" style="font-size:80px;line-height:96px;letter-spacing:-3px;font-weight:400;">The future of chat</div>
+        </div>
+      </div>
+      <div class="type-sample">
+        <div class="type-meta">
+          <div class="style-name">Display</div>
+          <div class="style-specs">64px / 80px<br>−2px · wt 400</div>
+          <div class="style-use">Hero headline — above-the-fold title within a content section</div>
+        </div>
+        <div class="type-preview-col">
+          <div class="type-preview" style="font-size:64px;line-height:80px;letter-spacing:-2px;font-weight:400;">The future of chat</div>
+        </div>
+      </div>
+      <div class="type-sample">
+        <div class="type-meta">
+          <div class="style-name">H1</div>
+          <div class="style-specs">48px / 64px<br>−2px · wt 400</div>
+          <div class="style-use">Page title — primary &lt;h1&gt;, one per page</div>
+        </div>
+        <div class="type-preview-col">
+          <div class="type-preview" style="font-size:48px;line-height:64px;letter-spacing:-2px;font-weight:400;">The future of chat</div>
+        </div>
+      </div>
+      <div class="type-sample">
+        <div class="type-meta">
+          <div class="style-name">H2</div>
+          <div class="style-specs">40px / 56px<br>−2px · wt 400</div>
+          <div class="style-use">Section headline — features, pricing, major sections</div>
+        </div>
+        <div class="type-preview-col">
+          <div class="type-preview" style="font-size:40px;line-height:56px;letter-spacing:-2px;font-weight:400;">Build better conversations</div>
+        </div>
+      </div>
+      <div class="type-sample">
+        <div class="type-meta">
+          <div class="style-name">H3</div>
+          <div class="style-specs">32px / 40px<br>−2px · wt 400</div>
+          <div class="style-use">Sub-section title — feature columns, card headlines</div>
+        </div>
+        <div class="type-preview-col">
+          <div class="type-preview" style="font-size:32px;line-height:40px;letter-spacing:-2px;font-weight:400;">Engage your audience naturally</div>
+        </div>
+      </div>
+      <div class="type-sample">
+        <div class="type-meta">
+          <div class="style-name">H4</div>
+          <div class="style-specs">28px / 36px<br>−1px · wt 400</div>
+          <div class="style-use">Component title — modal titles, card headings, sidebars</div>
+        </div>
+        <div class="type-preview-col">
+          <div class="type-preview" style="font-size:28px;line-height:36px;letter-spacing:-1px;font-weight:400;">No-code chatbot platform</div>
+        </div>
+      </div>
+      <div class="type-sample">
+        <div class="type-meta">
+          <div class="style-name">H5</div>
+          <div class="style-specs">24px / 32px<br>−1px · wt 400</div>
+          <div class="style-use">UI section heading — settings panels, table group labels</div>
+        </div>
+        <div class="type-preview-col">
+          <div class="type-preview" style="font-size:24px;line-height:32px;letter-spacing:-1px;font-weight:400;">Start with a template</div>
+        </div>
+      </div>
+      <div class="type-sample">
+        <div class="type-meta">
+          <div class="style-name">H6</div>
+          <div class="style-specs">20px / 28px<br>0 · wt 400</div>
+          <div class="style-use">UI sub-label — panel sub-sections, accordion triggers</div>
+        </div>
+        <div class="type-preview-col">
+          <div class="type-preview" style="font-size:20px;line-height:28px;letter-spacing:0;font-weight:400;">Design, build and measure</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ds-subsection">
+      <div class="ds-label">Subheadings — editorial &amp; marketing content <span style="font-size:10px;font-style:italic;font-weight:400;color:var(--color-text-disabled);text-transform:none;letter-spacing:0;margin-left:6px;">same sizes as H3–H5 but +4px looser leading — use for articles and long-form pages</span></div>
+      <div class="type-sample">
+        <div class="type-meta">
+          <div class="style-name">SH1</div>
+          <div class="style-specs">32px / 44px<br>−2px · wt 400</div>
+          <div class="style-use">Editorial subheading — long-form articles, blog section breaks</div>
+        </div>
+        <div class="type-preview-col">
+          <div class="type-preview" style="font-size:32px;line-height:44px;letter-spacing:-2px;font-weight:400;">Long-form editorial subheading</div>
+        </div>
+      </div>
+      <div class="type-sample">
+        <div class="type-meta">
+          <div class="style-name">SH2</div>
+          <div class="style-specs">28px / 40px<br>−1px · wt 400</div>
+          <div class="style-use">Marketing sub-section — content-heavy landing pages</div>
+        </div>
+        <div class="type-preview-col">
+          <div class="type-preview" style="font-size:28px;line-height:40px;letter-spacing:-1px;font-weight:400;">Marketing page sub-section</div>
+        </div>
+      </div>
+      <div class="type-sample">
+        <div class="type-meta">
+          <div class="style-name">SH3</div>
+          <div class="style-specs">24px / 36px<br>−1px · wt 400</div>
+          <div class="style-use">Content column subheading — third-tier editorial structure</div>
+        </div>
+        <div class="type-preview-col">
+          <div class="type-preview" style="font-size:24px;line-height:36px;letter-spacing:-1px;font-weight:400;">Content column subheading</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ds-subsection">
+      <div class="ds-label">Body &amp; Labels</div>
+      <div class="type-sample">
+        <div class="type-meta">
+          <div class="style-name">P1</div>
+          <div class="style-specs">20px / 32px<br>0 · wt 400</div>
+          <div class="style-use">Hero body — large intro paragraphs below Display or H1</div>
+        </div>
+        <div class="type-preview-col">
+          <div class="type-preview" style="font-size:20px;line-height:32px;font-weight:400;">Landbot lets you build chatbots that feel human without writing a single line of code.</div>
+        </div>
+      </div>
+      <div class="type-sample">
+        <div class="type-meta">
+          <div class="style-name">P2</div>
+          <div class="style-specs">18px / 28px<br>0 · wt 400</div>
+          <div class="style-use">Secondary body — longer editorial content, article body</div>
+        </div>
+        <div class="type-preview-col">
+          <div class="type-preview" style="font-size:18px;line-height:28px;font-weight:400;">Create flows, track performance, and integrate with your stack — all in one place.</div>
+        </div>
+      </div>
+      <div class="type-sample">
+        <div class="type-meta">
+          <div class="style-name">P</div>
+          <div class="style-specs">16px / 24px<br>0 · wt 400</div>
+          <div class="style-use">Default UI body — descriptions, helper text, tooltips</div>
+        </div>
+        <div class="type-preview-col">
+          <div class="type-preview" style="font-size:16px;line-height:24px;font-weight:400;">The default body size for most UI copy, descriptions, and helper text.</div>
+        </div>
+      </div>
+      <div class="type-sample">
+        <div class="type-meta">
+          <div class="style-name">LAB1</div>
+          <div class="style-specs">14px / 24px<br>0 · wt 500</div>
+          <div class="style-use">UI label — form labels, table headers, input captions</div>
+        </div>
+        <div class="type-preview-col">
+          <div class="type-preview" style="font-size:14px;line-height:24px;font-weight:500;">Form labels · table column headers · input captions · UI metadata</div>
+        </div>
+      </div>
+      <div class="type-sample">
+        <div class="type-meta">
+          <div class="style-name">LAB2</div>
+          <div class="style-specs">12px / 20px<br>+0.06em · wt 700 · CAPS</div>
+          <div class="style-use">Overline — tag text, category labels, section overlines</div>
+        </div>
+        <div class="type-preview-col">
+          <div class="type-preview" style="font-size:12px;line-height:20px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;">OVERLINE · CATEGORY · TAG TEXT · SECTION LABEL</div>
+        </div>
+      </div>
+      <div class="type-sample">
+        <div class="type-meta">
+          <div class="style-name">Bold</div>
+          <div class="style-specs">matches context<br>wt 700</div>
+          <div class="style-use">Inline emphasis — strong text within P/P2, text links</div>
+        </div>
+        <div class="type-preview-col">
+          <div class="type-preview" style="font-size:16px;line-height:24px;font-weight:400;">Regular text with an <strong style="font-weight:700;">inline bold phrase</strong> and a <a href="#" onclick="return false;" style="color:var(--color-brand-primary);font-weight:700;text-decoration:none;text-underline-offset:3px;" onmouseenter="this.style.textDecoration='underline'" onmouseleave="this.style.textDecoration='none'">purple text link</a> or <a href="#" onclick="return false;" style="color:var(--color-brand-accent);font-weight:700;text-decoration:none;text-underline-offset:3px;" onmouseenter="this.style.textDecoration='underline'" onmouseleave="this.style.textDecoration='none'">pink text link</a>.</div>
+        </div>
+      </div>
+    </div>
+    <details class="ds-specs">
+      <summary>CSS class reference</summary>
+      <div class="specs-body">
+        <table class="motion-table">
+          <thead><tr><th>Style name</th><th>CSS class</th><th>Size / weight / tracking</th></tr></thead>
+          <tbody>
+            <tr><td>Display XL</td><td><code style="font-family:monospace;font-size:11px;background:var(--color-border-subtle);padding:1px 5px;border-radius:3px;">.text-display-xl</code></td><td>80px / 400 / −3px</td></tr>
+            <tr><td>Display</td><td><code style="font-family:monospace;font-size:11px;background:var(--color-border-subtle);padding:1px 5px;border-radius:3px;">.text-display</code></td><td>64px / 400 / −2px</td></tr>
+            <tr><td>H1</td><td><code style="font-family:monospace;font-size:11px;background:var(--color-border-subtle);padding:1px 5px;border-radius:3px;">.text-h1</code></td><td>48px / 400 / −2px</td></tr>
+            <tr><td>H2</td><td><code style="font-family:monospace;font-size:11px;background:var(--color-border-subtle);padding:1px 5px;border-radius:3px;">.text-h2</code></td><td>40px / 400 / −2px</td></tr>
+            <tr><td>H3</td><td><code style="font-family:monospace;font-size:11px;background:var(--color-border-subtle);padding:1px 5px;border-radius:3px;">.text-h3</code></td><td>32px / 400 / −2px</td></tr>
+            <tr><td>H4</td><td><code style="font-family:monospace;font-size:11px;background:var(--color-border-subtle);padding:1px 5px;border-radius:3px;">.text-h4</code></td><td>28px / 400 / −1px</td></tr>
+            <tr><td>H5</td><td><code style="font-family:monospace;font-size:11px;background:var(--color-border-subtle);padding:1px 5px;border-radius:3px;">.text-h5</code></td><td>24px / 400 / −1px</td></tr>
+            <tr><td>H6</td><td><code style="font-family:monospace;font-size:11px;background:var(--color-border-subtle);padding:1px 5px;border-radius:3px;">.text-h6</code></td><td>20px / 400 / 0</td></tr>
+            <tr><td>SH1</td><td><code style="font-family:monospace;font-size:11px;background:var(--color-border-subtle);padding:1px 5px;border-radius:3px;">.text-sh1</code></td><td>32px / 400 / −2px · 44px lh</td></tr>
+            <tr><td>SH2</td><td><code style="font-family:monospace;font-size:11px;background:var(--color-border-subtle);padding:1px 5px;border-radius:3px;">.text-sh2</code></td><td>28px / 400 / −1px · 40px lh</td></tr>
+            <tr><td>SH3</td><td><code style="font-family:monospace;font-size:11px;background:var(--color-border-subtle);padding:1px 5px;border-radius:3px;">.text-sh3</code></td><td>24px / 400 / −1px · 36px lh</td></tr>
+            <tr><td>P1</td><td><code style="font-family:monospace;font-size:11px;background:var(--color-border-subtle);padding:1px 5px;border-radius:3px;">.text-p1</code></td><td>20px / 400 / 0</td></tr>
+            <tr><td>P2</td><td><code style="font-family:monospace;font-size:11px;background:var(--color-border-subtle);padding:1px 5px;border-radius:3px;">.text-p2</code></td><td>18px / 400 / 0</td></tr>
+            <tr><td>P</td><td><code style="font-family:monospace;font-size:11px;background:var(--color-border-subtle);padding:1px 5px;border-radius:3px;">.text-p</code></td><td>16px / 400 / 0</td></tr>
+            <tr><td>LAB1</td><td><code style="font-family:monospace;font-size:11px;background:var(--color-border-subtle);padding:1px 5px;border-radius:3px;">.text-lab1</code></td><td>14px / 500 / 0</td></tr>
+            <tr><td>LAB2</td><td><code style="font-family:monospace;font-size:11px;background:var(--color-border-subtle);padding:1px 5px;border-radius:3px;">.text-lab2</code></td><td>12px / 700 / +0.06em · CAPS</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+  </section>

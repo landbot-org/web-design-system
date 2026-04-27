@@ -1,0 +1,168 @@
+<!-- 
+  Component: Gradients
+  Source: docs/design-system.html (HTML lines 3077-3236)
+  Tokens: All CSS custom properties are defined in design-system.html :root
+  Reference: tokens/DESIGN-SYSTEM-REFERENCE.md
+  Note: This section uses primarily inline styles; gradient tokens are defined in :root
+-->
+
+  <!-- ═══ GRADIENTS ═══════════════════════════════════════════════ -->
+  <section class="ds-section" id="gradients">
+    <div class="ds-section-header">
+      <h2>Gradients</h2>
+      <p>Five named gradients for the entire site. Use the token names — never write raw gradient values in components.</p>
+    </div>
+
+    <!-- Gradient swatches -->
+    <div class="ds-subsection">
+      <div class="ds-label">Gradient Tokens</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:8px;">
+
+        <!-- Brand gradient -->
+        <div style="border-radius:var(--radius-4);overflow:hidden;box-shadow:var(--elevation-1);">
+          <div style="height:96px;background:var(--gradient-brand);"></div>
+          <div style="background:var(--color-surface-card);padding:12px 14px;">
+            <div style="font-size:11px;font-weight:700;color:var(--color-text-primary);margin-bottom:2px;">Brand gradient</div>
+            <div style="font-size:11px;color:var(--color-text-secondary);font-family:monospace;">--gradient-brand</div>
+            <div style="font-size:11px;color:var(--color-text-disabled);margin-top:6px;font-style:italic;">CTA buttons · hero accents · text gradients</div>
+          </div>
+        </div>
+
+        <!-- Dark gradient -->
+        <div style="border-radius:var(--radius-4);overflow:hidden;box-shadow:var(--elevation-1);">
+          <div style="height:96px;background:var(--gradient-dark);"></div>
+          <div style="background:var(--color-surface-card);padding:12px 14px;">
+            <div style="font-size:11px;font-weight:700;color:var(--color-text-primary);margin-bottom:2px;">Dark gradient</div>
+            <div style="font-size:11px;color:var(--color-text-secondary);font-family:monospace;">--gradient-dark</div>
+            <div style="font-size:11px;color:var(--color-text-disabled);margin-top:6px;font-style:italic;">Dark hero sections · CTA bands · footer backgrounds</div>
+          </div>
+        </div>
+
+        <!-- Purple soft -->
+        <div style="border-radius:var(--radius-4);overflow:hidden;box-shadow:var(--elevation-1);">
+          <div style="height:96px;background:var(--gradient-purple-soft);border-bottom:1px solid var(--color-border-subtle);"></div>
+          <div style="background:var(--color-surface-card);padding:12px 14px;">
+            <div style="font-size:11px;font-weight:700;color:var(--color-text-primary);margin-bottom:2px;">Purple soft</div>
+            <div style="font-size:11px;color:var(--color-text-secondary);font-family:monospace;">--gradient-purple-soft</div>
+            <div style="font-size:11px;color:var(--color-text-disabled);margin-top:6px;font-style:italic;">Subtle section tint · feature highlights · card backgrounds</div>
+          </div>
+        </div>
+
+        <!-- Glow purple -->
+        <div style="border-radius:var(--radius-4);overflow:hidden;box-shadow:var(--elevation-1);">
+          <div style="height:96px;background:var(--color-surface-page);position:relative;overflow:hidden;">
+            <div style="position:absolute;inset:0;background:var(--gradient-glow-purple);"></div>
+          </div>
+          <div style="background:var(--color-surface-card);padding:12px 14px;">
+            <div style="font-size:11px;font-weight:700;color:var(--color-text-primary);margin-bottom:2px;">Glow — purple</div>
+            <div style="font-size:11px;color:var(--color-text-secondary);font-family:monospace;">--gradient-glow-purple</div>
+            <div style="font-size:11px;color:var(--color-text-disabled);margin-top:6px;font-style:italic;">Decorative background blur · hero ambient light</div>
+          </div>
+        </div>
+
+        <!-- Glow pink -->
+        <div style="border-radius:var(--radius-4);overflow:hidden;box-shadow:var(--elevation-1);">
+          <div style="height:96px;background:var(--color-surface-page);position:relative;overflow:hidden;">
+            <div style="position:absolute;inset:0;background:var(--gradient-glow-pink);"></div>
+          </div>
+          <div style="background:var(--color-surface-card);padding:12px 14px;">
+            <div style="font-size:11px;font-weight:700;color:var(--color-text-primary);margin-bottom:2px;">Glow — pink</div>
+            <div style="font-size:11px;color:var(--color-text-secondary);font-family:monospace;">--gradient-glow-pink</div>
+            <div style="font-size:11px;color:var(--color-text-disabled);margin-top:6px;font-style:italic;">Pair with glow-purple for a full hero ambient effect</div>
+          </div>
+        </div>
+
+        <!-- Glow green -->
+        <div style="border-radius:var(--radius-4);overflow:hidden;box-shadow:var(--elevation-1);">
+          <div style="height:96px;background:var(--color-surface-page);position:relative;overflow:hidden;">
+            <div style="position:absolute;inset:0;background:var(--gradient-glow-green);"></div>
+          </div>
+          <div style="background:var(--color-surface-card);padding:12px 14px;">
+            <div style="font-size:11px;font-weight:700;color:var(--color-text-primary);margin-bottom:2px;">Glow — green</div>
+            <div style="font-size:11px;color:var(--color-text-secondary);font-family:monospace;">--gradient-glow-green</div>
+            <div style="font-size:11px;color:var(--color-text-disabled);margin-top:6px;font-style:italic;">Use on WhatsApp-themed hero sections — same shape as glow-purple</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Usage demos -->
+    <div class="ds-subsection">
+      <div class="ds-label">Usage Examples</div>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;">
+
+        <!-- Gradient text -->
+        <div>
+          <div style="font-size:11px;color:var(--color-text-disabled);margin-bottom:8px;font-style:italic;">Gradient text — bold weight only, on key words</div>
+          <div style="background:#fff;border:1px solid var(--color-border-default);border-radius:var(--radius-4);padding:24px 20px;">
+            <div style="font-size:36px;font-weight:700;letter-spacing:-1.5px;line-height:1.15;">Turn your website into your<br><span style="background:var(--gradient-brand);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">best sales agent</span></div>
+            <div style="font-size:13px;color:var(--color-text-disabled);margin-top:10px;line-height:1.5;font-style:italic;">Weight 700 required — the gradient needs stroke mass to read. Accent 1–3 words, not the whole headline.</div>
+          </div>
+        </div>
+
+        <!-- Dark section -->
+        <div>
+          <div style="font-size:11px;color:var(--color-text-disabled);margin-bottom:8px;font-style:italic;">Dark section — social proof / CTA band</div>
+          <div style="background:var(--gradient-dark);border-radius:var(--radius-4);padding:24px 20px;position:relative;overflow:hidden;">
+            <div style="position:absolute;inset:0;background:var(--gradient-glow-purple);pointer-events:none;"></div>
+            <div style="position:absolute;inset:0;background:var(--gradient-glow-pink);pointer-events:none;"></div>
+            <div style="position:relative;font-size:22px;font-weight:400;letter-spacing:-0.5px;color:#fff;line-height:1.3;">Join 10,000+<br>teams using Landbot</div>
+            <div style="position:relative;font-size:13px;color:rgba(255,255,255,0.6);margin-top:8px;">White text on dark gradient. Add both glow overlays for depth.</div>
+            <div style="position:relative;margin-top:16px;display:inline-flex;align-items:center;gap:8px;background:var(--gradient-brand);border-radius:var(--radius-pill);padding:10px 18px;">
+              <span style="font-size:13px;font-weight:500;color:#fff;">Get started free</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Purple soft section -->
+        <div>
+          <div style="font-size:11px;color:var(--color-text-disabled);margin-bottom:8px;font-style:italic;">Purple soft — tinted feature section background</div>
+          <div style="background:var(--gradient-purple-soft);border:1px solid var(--color-border-subtle);border-radius:var(--radius-4);padding:24px 20px;">
+            <div style="font-size:13px;font-weight:700;color:var(--color-brand-primary);letter-spacing:0.04em;text-transform:uppercase;margin-bottom:8px;">Features</div>
+            <div style="font-size:22px;font-weight:400;letter-spacing:-0.5px;color:var(--color-text-primary);line-height:1.3;">Everything you need<br>to automate support</div>
+            <div style="font-size:13px;color:var(--color-text-secondary);margin-top:8px;">Standard text colors work directly on this background.</div>
+          </div>
+        </div>
+
+        <!-- Gradient on a card -->
+        <div>
+          <div style="font-size:11px;color:var(--color-text-disabled);margin-bottom:8px;font-style:italic;">Gradient border / accent card</div>
+          <div style="background:#fff;border-radius:var(--radius-4);padding:2px;background:var(--gradient-brand);box-shadow:var(--elevation-2);">
+            <div style="background:#fff;border-radius:calc(var(--radius-4) - 2px);padding:20px;">
+              <div style="font-size:22px;font-weight:400;letter-spacing:-0.5px;color:var(--color-text-primary);">Highlighted card</div>
+              <div style="font-size:13px;color:var(--color-text-secondary);margin-top:6px;">Use a gradient border to draw attention to a featured pricing tier or key feature card.</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Rules -->
+    <div class="ds-subsection">
+      <div class="ds-label">Usage Rules</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <div style="background:var(--color-surface-success);border-radius:var(--radius-4);padding:16px 18px;">
+          <div style="font-size:11px;font-weight:700;color:var(--color-text-on-success);letter-spacing:0.04em;text-transform:uppercase;margin-bottom:10px;">✓ Do</div>
+          <ul style="font-size:12px;color:var(--color-text-on-success);line-height:1.8;padding-left:14px;">
+            <li>Use brand gradient on CTA buttons and 1–3 <strong>bold (700)</strong> accent words in a headline</li>
+            <li>Use dark gradient for full-bleed dark sections — white text is always safe on it</li>
+            <li>Layer both glow gradients over the dark gradient for a rich hero</li>
+            <li>Use purple soft as a section background tint — standard text colors apply</li>
+            <li>Use gradient borders (2px gradient outline) to highlight a card</li>
+          </ul>
+        </div>
+        <div style="background:var(--color-surface-error);border-radius:var(--radius-4);padding:16px 18px;">
+          <div style="font-size:11px;font-weight:700;color:var(--color-text-on-error);letter-spacing:0.04em;text-transform:uppercase;margin-bottom:10px;">✗ Don't</div>
+          <ul style="font-size:12px;color:var(--color-text-on-error);line-height:1.8;padding-left:14px;">
+            <li>Don't use brand gradient as a solid section background — contrast at the pink end is only 3.4:1 with white text</li>
+            <li>Don't use gradient text at regular weight (400) — thin strokes kill the effect; bold (700) only</li>
+            <li>Don't apply gradient text below 32px — too small to read the color shift</li>
+            <li>Don't use more than two gradient-heavy sections back to back</li>
+            <li>Don't invent new gradient combinations — use only the five tokens above</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>

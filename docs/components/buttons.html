@@ -1,0 +1,412 @@
+<!-- 
+  Component: Buttons
+  Source: docs/design-system.html (CSS lines 565-745, HTML lines 4207-4426)
+  Tokens: All CSS custom properties are defined in design-system.html :root
+  Reference: tokens/DESIGN-SYSTEM-REFERENCE.md
+-->
+
+<style>
+/* Component-specific CSS extracted from design-system.html */
+    /* ─── BUTTONS ────────────────────────────────────────────────── */
+    .btn-grid {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .btn-variant-row {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      align-items: start;
+      gap: 0;
+      border-bottom: 1px solid var(--color-border-subtle);
+      padding: 20px 0;
+    }
+    .btn-variant-row:last-child { border-bottom: none; }
+    .btn-variant-demo {
+      display: flex;
+      align-items: center;
+      padding: 16px 20px;
+      border-radius: var(--radius-4);
+    }
+    .btn-variant-demo.on-dark {
+      background: var(--color-surface-dark);
+    }
+    .btn-variant-meta {
+      padding: 4px 0 4px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .btn-variant-name {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--color-text-primary);
+    }
+    .btn-priority-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      border-radius: var(--radius-pill);
+      background: var(--color-surface-brand-subtle);
+      color: var(--color-brand-primary);
+      font-size: 10px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .btn-priority-badge.p1 { background: var(--color-brand-primary); color: #fff; }
+    .btn-variant-class {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      color: var(--color-text-secondary);
+      background: var(--color-surface-chrome);
+      border-radius: var(--radius-2);
+      padding: 2px 7px;
+      width: fit-content;
+    }
+    .btn-variant-use {
+      font-size: 13px;
+      color: var(--color-text-secondary);
+      line-height: 1.5;
+    }
+    .btn-context-demo {
+      border-radius: var(--radius-5);
+      padding: 40px 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .btn-context-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--color-text-disabled);
+      margin-bottom: 4px;
+    }
+
+    /* Base button */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-family: 'DM Sans', sans-serif;
+      font-variation-settings: 'opsz' 14;
+      font-weight: 500;
+      cursor: pointer;
+      border: none;
+      outline: none;
+      transition: filter var(--duration-fast) var(--ease-out),
+                  transform var(--duration-fast) var(--ease-out);
+      text-decoration: none;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .btn:hover { filter: brightness(0.92); transform: translateY(-1px); }
+    .btn:active { transform: translateY(0); filter: brightness(0.85); }
+
+    /* Variants */
+    .cta-primary {
+      background: linear-gradient(90deg, var(--color-brand-accent), var(--color-brand-primary));
+      color: #fff;
+      letter-spacing: -0.36px;
+    }
+
+    .cta-purple {
+      background: var(--color-brand-primary);
+      color: #fff;
+      letter-spacing: -0.36px;
+    }
+
+    .cta-white {
+      background: #fff;
+      color: var(--color-brand-secondary);
+      letter-spacing: -0.24px;
+    }
+
+    .cta-outline {
+      background: #fff;
+      color: var(--color-brand-primary);
+      border: 2px solid var(--color-brand-primary);
+    }
+
+    .cta-alt-purple {
+      background: var(--color-surface-brand-subtle);
+      color: var(--color-text-on-brand-subtle);  /* PU600 — 4.65:1 ✅  (brand-primary #5A60F6 = 4.05:1 ❌) */
+    }
+
+    .cta-textlink {
+      background: transparent;
+      color: var(--color-brand-accent);
+      text-decoration: none;
+      text-underline-offset: 3px;
+      font-weight: 700;
+      padding: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .cta-textlink:hover { filter: brightness(0.8); }
+    .cta-textlink .hgi-stroke,
+    .cta-textlink-purple .hgi-stroke {
+      font-size: 1em;
+      line-height: 1;
+      transition: transform var(--duration-fast) var(--ease-out);
+    }
+    .cta-textlink:hover .hgi-stroke,
+    .cta-textlink-purple:hover .hgi-stroke { transform: translateX(2px); }
+
+    .cta-textlink-purple {
+      background: transparent;
+      color: var(--color-brand-primary);
+      text-decoration: none;
+      text-underline-offset: 3px;
+      font-weight: 700;
+      padding: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .cta-textlink-purple:hover { filter: brightness(0.8); }
+
+    /* Sizes */
+    .cta-large  { padding: 18px 32px; border-radius: var(--radius-4); font-size: 18px; }
+    .cta-medium { padding: 16px 32px; border-radius: var(--radius-4); font-size: 16px; }
+    .cta-small  { padding: 12px 24px; border-radius: var(--radius-3); font-size: 14px; }
+
+    /* Disabled */
+    .btn:disabled, .btn[aria-disabled="true"] {
+      opacity: 0.45;
+      cursor: not-allowed;
+      filter: none;
+      transform: none;
+    }
+</style>
+
+  <!-- ═══ BUTTONS ══════════════════════════════════════════════════ -->
+  <section class="ds-section" id="buttons">
+    <div class="ds-section-header">
+      <h2>Buttons</h2>
+      <p>Five button variants forming a clear visual hierarchy. Always use the highest-priority variant that fits the context — never two Primary buttons on the same view.</p>
+    </div>
+
+    <!-- ── VARIANT SHOWCASE ──────────────────────────────────────── -->
+    <div class="ds-subsection">
+      <div class="ds-label">Variants &amp; Hierarchy</div>
+
+      <!-- Primary -->
+      <div class="btn-variant-row">
+        <div class="btn-variant-demo">
+          <button class="btn cta-primary cta-medium">Get started free</button>
+        </div>
+        <div class="btn-variant-meta">
+          <div class="btn-variant-name">
+            <span class="btn-priority-badge p1">1</span>
+            Primary
+          </div>
+          <div class="btn-variant-class">.cta-primary</div>
+          <div class="btn-variant-use">The hero conversion action. Pink→purple gradient, always white text. Use <strong>once per page</strong> for the single most important CTA — Start free trial, Get started, Request demo.</div>
+        </div>
+      </div>
+
+      <!-- Brand / Secondary -->
+      <div class="btn-variant-row">
+        <div class="btn-variant-demo">
+          <button class="btn cta-purple cta-medium">See how it works</button>
+        </div>
+        <div class="btn-variant-meta">
+          <div class="btn-variant-name">
+            <span class="btn-priority-badge">2</span>
+            Brand
+          </div>
+          <div class="btn-variant-class">.cta-purple</div>
+          <div class="btn-variant-use">Solid brand purple for important secondary actions. Use when a gradient button would be too loud, or as the primary CTA in smaller sections (pricing cards, feature callouts).</div>
+        </div>
+      </div>
+
+      <!-- Outlined -->
+      <div class="btn-variant-row">
+        <div class="btn-variant-demo">
+          <button class="btn cta-outline cta-medium">View docs</button>
+        </div>
+        <div class="btn-variant-meta">
+          <div class="btn-variant-name">
+            <span class="btn-priority-badge">3</span>
+            Outlined
+          </div>
+          <div class="btn-variant-class">.cta-outline</div>
+          <div class="btn-variant-use">Purple border, transparent background. Used alongside a Primary or Brand button as a lower-emphasis alternative — "Sign in" next to "Get started free", secondary actions in hero sections.</div>
+        </div>
+      </div>
+
+      <!-- Subtle -->
+      <div class="btn-variant-row">
+        <div class="btn-variant-demo">
+          <button class="btn cta-alt-purple cta-medium">See all features</button>
+        </div>
+        <div class="btn-variant-meta">
+          <div class="btn-variant-name">
+            <span class="btn-priority-badge">4</span>
+            Subtle
+          </div>
+          <div class="btn-variant-class">.cta-alt-purple</div>
+          <div class="btn-variant-use">Light purple tint with dark purple text. For low-emphasis actions in dense layouts — feature card links, inline CTAs inside content blocks, "View example" type actions.</div>
+        </div>
+      </div>
+
+      <!-- On Dark -->
+      <div class="btn-variant-row">
+        <div class="btn-variant-demo on-dark">
+          <button class="btn cta-white cta-medium">Learn more</button>
+        </div>
+        <div class="btn-variant-meta">
+          <div class="btn-variant-name">
+            <span class="btn-priority-badge">5</span>
+            On Dark
+          </div>
+          <div class="btn-variant-class">.cta-white</div>
+          <div class="btn-variant-use">White background with navy text. Used <strong>exclusively on dark/navy section backgrounds</strong> as a secondary CTA. Always paired with a Primary (gradient) button as the lead action.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── TEXT LINKS ─────────────────────────────────────────────── -->
+    <div class="ds-subsection">
+      <div class="ds-label">Text Links</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start;">
+        <div>
+          <div style="margin-bottom:10px;">
+            <button class="btn cta-textlink" style="font-size:16px;line-height:24px">Read the case study <i class="hgi-stroke hgi-arrow-right-01"></i></button>
+          </div>
+          <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--color-text-secondary);background:var(--color-surface-chrome);border-radius:var(--radius-2);padding:2px 7px;width:fit-content;margin-bottom:6px;">.cta-textlink</div>
+          <div style="font-size:13px;color:var(--color-text-secondary);">Pink accent — "Learn more" links, editorial inline links. No underline at rest; underline appears on hover.</div>
+        </div>
+        <div>
+          <div style="margin-bottom:10px;">
+            <button class="btn cta-textlink-purple" style="font-size:16px;line-height:24px">Browse all integrations <i class="hgi-stroke hgi-arrow-right-01"></i></button>
+          </div>
+          <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--color-text-secondary);background:var(--color-surface-chrome);border-radius:var(--radius-2);padding:2px 7px;width:fit-content;margin-bottom:6px;">.cta-textlink-purple</div>
+          <div style="font-size:13px;color:var(--color-text-secondary);">Purple — navigation-style links, footer links, in-page anchors, breadcrumbs. No underline at rest; underline appears on hover.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── IN CONTEXT ─────────────────────────────────────────────── -->
+    <div class="ds-subsection">
+      <div class="ds-label">Buttons in Context</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+
+        <!-- Light section context -->
+        <div>
+          <div class="btn-context-label">On light background</div>
+          <div class="btn-context-demo" style="background:var(--color-surface-card);border:1px solid var(--color-border-subtle);">
+            <div style="font-size:22px;font-weight:700;color:var(--color-text-primary);letter-spacing:-0.5px;line-height:1.3;">Turn conversations<br>into customers</div>
+            <div style="font-size:14px;color:var(--color-text-secondary);">Automate your lead generation with AI-powered chatbots that qualify and convert 24/7.</div>
+            <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
+              <button class="btn cta-primary cta-medium">Start free trial</button>
+              <button class="btn cta-outline cta-medium">See demo</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dark section context -->
+        <div>
+          <div class="btn-context-label">On dark background</div>
+          <div class="btn-context-demo" style="background:var(--color-surface-dark);position:relative;overflow:hidden;">
+            <div style="position:absolute;inset:0;background:var(--gradient-glow-purple);pointer-events:none;opacity:0.5;"></div>
+            <div style="position:relative;font-size:22px;font-weight:700;color:var(--color-text-on-dark);letter-spacing:-0.5px;line-height:1.3;">Ready to get started?</div>
+            <div style="position:relative;font-size:14px;color:var(--color-text-on-dark-secondary);">Join 4,000+ companies already using Landbot.</div>
+            <div style="position:relative;display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
+              <button class="btn cta-primary cta-medium">Start free trial</button>
+              <button class="btn cta-white cta-medium">Talk to sales</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── SIZES ─────────────────────────────────────────────────── -->
+    <details class="ds-specs">
+      <summary>Sizes</summary>
+      <div class="specs-body">
+        <div class="btn-grid" style="align-items:flex-end">
+          <div style="display:flex;flex-direction:column;gap:6px;align-items:center">
+            <span class="token-chip">.cta-large</span>
+            <button class="btn cta-primary cta-large">Get started</button>
+            <span style="font-size:11px;color:var(--color-text-secondary)">18px · px32 / py18</span>
+            <span style="font-size:11px;color:var(--color-text-disabled)">Hero sections</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px;align-items:center">
+            <span class="token-chip">.cta-medium</span>
+            <button class="btn cta-primary cta-medium">Get started</button>
+            <span style="font-size:11px;color:var(--color-text-secondary)">16px · px32 / py16</span>
+            <span style="font-size:11px;color:var(--color-text-disabled)">Default — most CTAs</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px;align-items:center">
+            <span class="token-chip">.cta-small</span>
+            <button class="btn cta-primary cta-small">Get started</button>
+            <span style="font-size:11px;color:var(--color-text-secondary)">14px · px24 / py12</span>
+            <span style="font-size:11px;color:var(--color-text-disabled)">Cards, compact areas</span>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <!-- ── INTERACTION STATES ─────────────────────────────────────── -->
+    <details class="ds-specs">
+      <summary>Interaction states</summary>
+      <div class="specs-body">
+        <div class="btn-grid">
+          <div style="display:flex;flex-direction:column;gap:6px;align-items:center">
+            <span style="font-size:11px;color:var(--color-text-secondary)">Default</span>
+            <button class="btn cta-purple cta-medium">Get started</button>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px;align-items:center">
+            <span style="font-size:11px;color:var(--color-text-secondary)">Hover</span>
+            <button class="btn cta-purple cta-medium" style="filter:brightness(0.92);transform:translateY(-1px);">Get started</button>
+            <span style="font-size:11px;color:var(--color-text-disabled)">brightness(0.92) + translateY(-1px)</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px;align-items:center">
+            <span style="font-size:11px;color:var(--color-text-secondary)">Focus</span>
+            <button class="btn cta-purple cta-medium" style="box-shadow:0 0 0 3px rgba(90,96,246,0.4),var(--elevation-2);">Get started</button>
+            <span style="font-size:11px;color:var(--color-text-disabled)">3px purple ring · :focus-visible</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px;align-items:center">
+            <span style="font-size:11px;color:var(--color-text-secondary)">Disabled</span>
+            <button class="btn cta-purple cta-medium" disabled>Get started</button>
+            <span style="font-size:11px;color:var(--color-text-disabled)">opacity: 0.45 · cursor: not-allowed</span>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <!-- ── USAGE RULES ────────────────────────────────────────────── -->
+    <details class="ds-specs">
+      <summary>Usage rules</summary>
+      <div class="specs-body">
+        <table class="motion-table">
+          <thead>
+            <tr><th>Rule</th><th>Reason</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Max <strong>1 Primary</strong> gradient button per view</td><td>The gradient draws the eye — diluted by repetition</td></tr>
+            <tr><td>Never use two equal-weight buttons side by side</td><td>Creates visual ambiguity — always pair a higher + lower variant</td></tr>
+            <tr><td>On dark sections: Primary + On Dark, never two solid buttons</td><td>Contrast and visual separation on dark backgrounds</td></tr>
+            <tr><td>Don't use Subtle (.cta-alt-purple) as the only CTA in a section</td><td>Too low-emphasis for a primary conversion goal</td></tr>
+            <tr><td>Text links only for supporting/inline actions, not primary goals</td><td>Low affordance — users may miss them as actions</td></tr>
+            <tr><td>Button text: start with a verb, keep to 2–4 words</td><td>"Get started free", not "Click here to get started for free"</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+
+  </section>

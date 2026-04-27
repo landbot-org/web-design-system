@@ -1,0 +1,818 @@
+<!-- 
+  Component: Cards
+  Source: docs/design-system.html (CSS lines 1802-2188, HTML lines 4428-4847)
+  Tokens: All CSS custom properties are defined in design-system.html :root
+  Reference: tokens/DESIGN-SYSTEM-REFERENCE.md
+-->
+
+<style>
+/* Component-specific CSS extracted from design-system.html */
+    /* ─── CARDS ─────────────────────────────────────────────────── */
+    .card-demo-grid {
+      display: grid;
+      gap: 16px;
+    }
+    .card-demo-grid-3 { grid-template-columns: repeat(3, 1fr); }
+    .card-demo-grid-2 { grid-template-columns: repeat(2, 1fr); }
+    @media (max-width: 900px) {
+      .card-demo-grid-3 { grid-template-columns: repeat(2, 1fr); }
+      .card-demo-grid-2 { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .card-demo-grid-3 { grid-template-columns: 1fr; }
+    }
+
+    /* Base card */
+    .c-card {
+      background: var(--color-surface-page);
+      border: 1px solid var(--color-border-default);
+      border-radius: var(--radius-6);
+      box-shadow: var(--elevation-1);
+      transition: box-shadow 250ms cubic-bezier(0.2, 0, 0, 1),
+                  transform    250ms cubic-bezier(0.2, 0, 0, 1),
+                  border-color 200ms ease;
+      overflow: hidden;
+    }
+    .c-card:hover {
+      box-shadow: var(--elevation-3);
+      transform: translateY(-3px);
+      border-color: var(--color-border-subtle);
+    }
+
+    /* Feature card */
+    .c-feature {
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    /* Bare icon (default — recommended) */
+    .c-feature-icon {
+      width: 44px; height: 44px; border-radius: var(--radius-3);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 28px; flex-shrink: 0;
+    }
+    .c-feature-icon i { font-size: 28px; }
+
+    /* Icon color by variant */
+    .c-feature-icon-purple { color: var(--color-brand-primary); }
+    .c-feature-icon-pink   { color: var(--color-brand-accent); }
+    .c-feature-icon-green  { color: var(--color-text-on-success); }
+    .c-feature-icon-navy   { color: var(--color-brand-secondary); }
+
+    /* Box variant — add .c-feature-icon-box when you need a tinted background */
+    .c-feature-icon.c-feature-icon-box { padding: 10px; border-radius: var(--radius-3); }
+    .c-feature-icon-purple.c-feature-icon-box { background: var(--color-surface-brand-subtle); }
+    .c-feature-icon-pink.c-feature-icon-box   { background: var(--color-surface-error); }
+    .c-feature-icon-green.c-feature-icon-box  { background: var(--color-surface-success); }
+    .c-feature-icon-navy.c-feature-icon-box   { background: #E7EBF3; }
+
+    /* On dark cards — lighten icon color */
+    .c-card-dark .c-feature-icon-purple { color: var(--color-brand-primary-light); }
+    .c-card-dark .c-feature-icon-pink   { color: var(--color-brand-accent-light); }
+    .c-card-dark .c-feature-icon-green  { color: var(--color-status-success); }
+    .c-card-dark .c-feature-icon-navy   { color: var(--color-text-on-dark); }
+    .c-feature h3 {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      margin: 0;
+      line-height: 1.3;
+    }
+    .c-feature p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--color-text-secondary);
+      margin: 0;
+    }
+    .c-feature-link {
+      display: inline-flex;
+      align-items: center;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--color-brand-primary);
+      text-decoration: none;
+      text-underline-offset: 3px;
+      margin-top: 4px;
+    }
+    .c-feature-link:hover { filter: brightness(0.7); }
+
+    /* Stat card */
+    .c-stat {
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .c-stat-number {
+      font-size: 48px;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -2px;
+      background: var(--gradient-brand);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .c-stat-label {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--color-text-primary);
+      margin-top: 6px;
+    }
+    .c-stat-sub {
+      font-size: 13px;
+      color: var(--color-text-secondary);
+    }
+    .c-stat-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--color-text-on-success);
+      background: var(--color-surface-success);
+      border-radius: var(--radius-pill);
+      padding: 3px 8px;
+      margin-top: 10px;
+      width: fit-content;
+    }
+
+    /* Testimonial card */
+    .c-testimonial {
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .c-testimonial-quote {
+      font-size: 15px;
+      line-height: 1.65;
+      color: var(--color-text-primary);
+      font-style: italic;
+      margin: 0;
+      position: relative;
+      padding-top: 4px;
+    }
+    .c-testimonial-quote::before {
+      content: '\201C';
+      font-size: 48px;
+      line-height: 0;
+      color: var(--color-brand-primary);
+      opacity: 0.25;
+      position: absolute;
+      top: 8px;
+      left: -4px;
+    }
+    .c-testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: auto;
+    }
+    .c-testimonial-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--gradient-brand);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      font-weight: 700;
+      color: white;
+      flex-shrink: 0;
+    }
+    .c-testimonial-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--color-text-primary);
+    }
+    .c-testimonial-role {
+      font-size: 12px;
+      color: var(--color-text-secondary);
+      margin-top: 1px;
+    }
+    .c-testimonial-stars {
+      display: flex;
+      gap: 2px;
+      font-size: 12px;
+      color: var(--color-status-stars);
+      margin-bottom: 4px;
+    }
+
+    /* Pricing card */
+    .c-pricing {
+      padding: 28px 24px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .c-pricing.is-popular {
+      border-color: var(--color-brand-primary);
+      box-shadow: 0 0 0 3px rgba(90,96,246,0.12), var(--elevation-2);
+    }
+    .c-pricing-badge {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--color-brand-primary);
+      background: var(--color-surface-brand-subtle);
+      border-radius: var(--radius-pill);
+      padding: 3px 10px;
+      width: fit-content;
+      margin-bottom: 14px;
+    }
+    .c-pricing-plan {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--color-text-secondary);
+      margin-bottom: 8px;
+    }
+    .c-pricing-price {
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+      margin-bottom: 6px;
+    }
+    .c-pricing-amount {
+      font-size: 42px;
+      font-weight: 800;
+      letter-spacing: -2px;
+      color: var(--color-text-primary);
+      line-height: 1;
+    }
+    .c-pricing-currency {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--color-text-secondary);
+      align-self: flex-start;
+      margin-top: 6px;
+    }
+    .c-pricing-period {
+      font-size: 13px;
+      color: var(--color-text-secondary);
+    }
+    .c-pricing-desc {
+      font-size: 13px;
+      color: var(--color-text-secondary);
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+    .c-pricing-divider {
+      border: none;
+      border-top: 1px solid var(--color-border-default);
+      margin: 0 0 16px;
+    }
+    .c-pricing-features {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .c-pricing-features li {
+      font-size: 13px;
+      color: var(--color-text-primary);
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      line-height: 1.4;
+    }
+    .c-pricing-features li::before {
+      content: '✓';
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--color-text-on-success);
+      background: var(--color-surface-success);
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .c-pricing .btn-pricing {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      border-radius: var(--radius-5);
+      font-size: 14px;
+      font-weight: 700;
+      text-align: center;
+      cursor: pointer;
+      border: none;
+      transition: opacity 200ms ease, transform 150ms ease;
+      font-family: inherit;
+    }
+    .c-pricing .btn-pricing:hover { opacity: 0.88; transform: translateY(-1px); }
+    .c-pricing .btn-pricing-primary {
+      background: var(--gradient-brand);
+      color: white;
+    }
+    .c-pricing .btn-pricing-outline {
+      background: transparent;
+      border: 1.5px solid var(--color-border-default);
+      color: var(--color-text-primary);
+    }
+    .c-pricing .btn-pricing-outline:hover { border-color: var(--color-brand-primary); color: var(--color-brand-primary); }
+
+    /* Blog card */
+    .c-blog-thumb {
+      width: 100%;
+      aspect-ratio: 16/9;
+      overflow: hidden;
+      position: relative;
+    }
+    .c-blog-thumb img,
+    .c-blog-thumb-placeholder {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .c-blog-thumb-placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+    }
+    .c-blog-body {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .c-blog-tag {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      color: var(--color-brand-primary);
+      background: var(--color-surface-brand-subtle);
+      border-radius: var(--radius-pill);
+      padding: 3px 10px;
+      width: fit-content;
+    }
+    .c-blog-tag-pink   { color: var(--color-brand-accent); background: var(--color-surface-error); }
+    .c-blog-tag-green  { color: var(--color-text-on-success); background: var(--color-surface-success); }
+    .c-blog-tag-section { font-size: 12px; font-weight: 600; padding: 5px 14px; }
+    .c-blog h4 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      line-height: 1.35;
+      margin: 0;
+    }
+    .c-blog p {
+      font-size: 13px;
+      color: var(--color-text-secondary);
+      line-height: 1.55;
+      margin: 0;
+    }
+    .c-blog-meta {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--color-text-disabled);
+      margin-top: 4px;
+      flex-wrap: wrap;
+    }
+    .c-blog-meta-dot { color: var(--color-border-default); }
+
+    /* Dark feature card variant */
+    .c-card-dark {
+      background: var(--color-surface-dark-raised);
+      border-color: var(--color-border-on-dark);
+    }
+    .c-card-dark .c-feature h3 { color: var(--color-text-on-dark); }
+    .c-card-dark .c-feature p  { color: var(--color-text-on-dark-secondary); }
+    .c-card-dark .c-feature-link { color: var(--color-brand-primary-light); }
+
+</style>
+
+  <!-- ═══ CARDS ════════════════════════════════════════════════════ -->
+  <section class="ds-section" id="cards">
+    <div class="ds-section-header">
+      <h2>Cards</h2>
+      <p>Five card patterns for marketing pages. All use <strong>16px radius</strong>, <strong>elevation-1</strong> at rest and <strong>elevation-3</strong> on hover. Hover over cards below to see the interaction.</p>
+    </div>
+
+    <!-- ── 1. FEATURE CARDS ───────────────────────────────────────── -->
+    <h3 style="font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-text-disabled);margin:0 0 12px;">Feature Cards</h3>
+    <p style="font-size:13px;color:var(--color-text-secondary);margin:0 0 16px;">Used in product feature grids. Icon + heading + body. Optional arrow link.</p>
+
+    <div class="card-demo-grid card-demo-grid-3" style="margin-bottom:8px;">
+      <div class="c-card">
+        <div class="c-feature">
+          <div class="c-feature-icon c-feature-icon-purple"><i class="hgi-stroke hgi-ai-brain-02"></i></div>
+          <h3>AI-Powered Flows</h3>
+          <p>Build intelligent conversation flows that qualify leads and book meetings — without writing a line of code.</p>
+          <a href="#" class="c-feature-link" onclick="return false;">Learn more</a>
+        </div>
+      </div>
+      <div class="c-card">
+        <div class="c-feature">
+          <div class="c-feature-icon c-feature-icon-pink"><i class="hgi-stroke hgi-message-multiple-02"></i></div>
+          <h3>WhatsApp & Web</h3>
+          <p>Deploy the same bot across your website, WhatsApp, and Messenger from a single drag-and-drop builder.</p>
+          <a href="#" class="c-feature-link" onclick="return false;">Learn more</a>
+        </div>
+      </div>
+      <div class="c-card">
+        <div class="c-feature">
+          <div class="c-feature-icon c-feature-icon-green"><i class="hgi-stroke hgi-analytics-up"></i></div>
+          <h3>Real-Time Analytics</h3>
+          <p>Track conversion rates, drop-off points, and engagement metrics for every bot you publish.</p>
+          <a href="#" class="c-feature-link" onclick="return false;">Learn more</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feature card on dark background -->
+    <p style="font-size:12px;font-weight:700;color:var(--color-text-disabled);text-transform:uppercase;letter-spacing:0.06em;margin:20px 0 10px;">Dark background variant</p>
+    <div style="background:var(--color-surface-dark);border-radius:var(--radius-6);padding:24px;">
+      <div class="card-demo-grid card-demo-grid-3">
+        <div class="c-card c-card-dark">
+          <div class="c-feature">
+            <div class="c-feature-icon c-feature-icon-purple"><i class="hgi-stroke hgi-rocket-01"></i></div>
+            <h3>Instant Setup</h3>
+            <p>Go live in minutes with pre-built templates for sales, support, and lead capture.</p>
+            <a href="#" class="c-feature-link" onclick="return false;">Get started</a>
+          </div>
+        </div>
+        <div class="c-card c-card-dark">
+          <div class="c-feature">
+            <div class="c-feature-icon c-feature-icon-pink"><i class="hgi-stroke hgi-plug-01"></i></div>
+            <h3>Native Integrations</h3>
+            <p>Connect to HubSpot, Salesforce, Slack and 100+ tools in one click.</p>
+            <a href="#" class="c-feature-link" onclick="return false;">See integrations</a>
+          </div>
+        </div>
+        <div class="c-card c-card-dark">
+          <div class="c-feature">
+            <div class="c-feature-icon c-feature-icon-navy"><i class="hgi-stroke hgi-shield-01"></i></div>
+            <h3>Enterprise Security</h3>
+            <p>SOC 2 Type II, GDPR-compliant infrastructure with SSO and audit logs.</p>
+            <a href="#" class="c-feature-link" onclick="return false;">Read more</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Box icon variant demo -->
+    <p style="font-size:12px;font-weight:700;color:var(--color-text-disabled);text-transform:uppercase;letter-spacing:0.06em;margin:20px 0 10px;">Optional: Icon in box variant</p>
+    <p style="font-size:13px;color:var(--color-text-secondary);margin:0 0 12px;">Add <code style="font-family:'DM Mono',monospace;font-size:11px;background:var(--color-surface-chrome);padding:2px 6px;border-radius:var(--radius-2);">.c-feature-icon-box</code> when you need more visual structure — e.g. comparison tables, dense icon grids, or when icons vary significantly in visual weight.</p>
+    <div class="card-demo-grid card-demo-grid-3" style="margin-bottom:8px;">
+      <div class="c-card">
+        <div class="c-feature">
+          <div class="c-feature-icon c-feature-icon-purple c-feature-icon-box"><i class="hgi-stroke hgi-ai-brain-02"></i></div>
+          <h3>AI-Powered Flows</h3>
+          <p>Build intelligent conversation flows that qualify leads and book meetings.</p>
+        </div>
+      </div>
+      <div class="c-card">
+        <div class="c-feature">
+          <div class="c-feature-icon c-feature-icon-pink c-feature-icon-box"><i class="hgi-stroke hgi-message-multiple-02"></i></div>
+          <h3>WhatsApp & Web</h3>
+          <p>Deploy the same bot across your website, WhatsApp, and Messenger.</p>
+        </div>
+      </div>
+      <div class="c-card">
+        <div class="c-feature">
+          <div class="c-feature-icon c-feature-icon-green c-feature-icon-box"><i class="hgi-stroke hgi-analytics-up"></i></div>
+          <h3>Real-Time Analytics</h3>
+          <p>Track conversion rates, drop-off points, and engagement metrics.</p>
+        </div>
+      </div>
+    </div>
+
+    <details class="ds-specs" style="margin-top:16px;">
+      <summary>Feature card specs</summary>
+      <div class="specs-body">
+        <table class="motion-table">
+          <thead><tr><th>Property</th><th>Value</th><th>Token</th></tr></thead>
+          <tbody>
+            <tr><td>Background</td><td>#FFFFFF</td><td><code>--color-surface-page</code></td></tr>
+            <tr><td>Border</td><td>1px · #E5E6EA</td><td><code>--color-border-default</code></td></tr>
+            <tr><td>Border radius</td><td>16px</td><td><code>--radius-6</code></td></tr>
+            <tr><td>Shadow (rest)</td><td>elevation-1</td><td><code>--elevation-1</code></td></tr>
+            <tr><td>Shadow (hover)</td><td>elevation-3</td><td><code>--elevation-3</code></td></tr>
+            <tr><td>Hover lift</td><td>translateY(−3px)</td><td>—</td></tr>
+            <tr><td>Padding</td><td>28px 24px</td><td><code>--spacing-7</code> / <code>--spacing-6</code></td></tr>
+            <tr><td>Icon container</td><td>48×48px · radius-5 (12px)</td><td><code>--radius-5</code></td></tr>
+            <tr><td>Heading</td><td>17px / wt 700</td><td><code>--color-text-primary</code></td></tr>
+            <tr><td>Body</td><td>14px / line-height 1.6</td><td><code>--color-text-secondary</code></td></tr>
+            <tr><td>Link</td><td>13px / wt 600</td><td><code>--color-brand-primary</code></td></tr>
+            <tr><td>Transition</td><td>250ms ease-out</td><td><code>--duration-normal</code></td></tr>
+          </tbody>
+        </table>
+        <div style="margin-top:14px;font-size:12px;color:var(--color-text-secondary);display:flex;flex-direction:column;gap:4px;">
+          <strong style="color:var(--color-text-primary);">Icon background tints</strong>
+          <span>Purple: #EBECFF · Pink: #FFEEF4 · Green: #E6F9F0 · Navy: #E7EBF3</span>
+        </div>
+      </div>
+    </details>
+
+    <!-- ── 2. STAT CARDS ──────────────────────────────────────────── -->
+    <h3 style="font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-text-disabled);margin:32px 0 12px;">Stat / Metric Cards</h3>
+    <p style="font-size:13px;color:var(--color-text-secondary);margin:0 0 16px;">Used in social-proof strips and "why Landbot" sections. Numbers use the brand gradient.</p>
+
+    <div class="card-demo-grid card-demo-grid-3" style="margin-bottom:8px;">
+      <div class="c-card">
+        <div class="c-stat">
+          <div class="c-stat-number">10K+</div>
+          <div class="c-stat-label">Companies worldwide</div>
+          <div class="c-stat-sub">trust Landbot to power their conversations</div>
+          <div class="c-stat-badge">↑ 42% YoY</div>
+        </div>
+      </div>
+      <div class="c-card">
+        <div class="c-stat">
+          <div class="c-stat-number">98%</div>
+          <div class="c-stat-label">Customer satisfaction</div>
+          <div class="c-stat-sub">across all support interactions</div>
+          <div class="c-stat-badge">↑ 12pts vs industry avg</div>
+        </div>
+      </div>
+      <div class="c-card">
+        <div class="c-stat">
+          <div class="c-stat-number">3×</div>
+          <div class="c-stat-label">More qualified leads</div>
+          <div class="c-stat-sub">compared to static web forms</div>
+          <div class="c-stat-badge">↑ Avg. across 500+ accounts</div>
+        </div>
+      </div>
+    </div>
+
+    <details class="ds-specs" style="margin-top:16px;">
+      <summary>Stat card specs</summary>
+      <div class="specs-body">
+        <table class="motion-table">
+          <thead><tr><th>Property</th><th>Value</th></tr></thead>
+          <tbody>
+            <tr><td>Number size</td><td>48px / wt 800 / ls −2px</td></tr>
+            <tr><td>Number fill</td><td>Gradient brand (pink → purple)</td></tr>
+            <tr><td>Label</td><td>15px / wt 600 · <code>--color-text-primary</code></td></tr>
+            <tr><td>Sub-label</td><td>13px · <code>--color-text-secondary</code></td></tr>
+            <tr><td>Trend badge</td><td>12px / wt 700 · green text on green tint · pill radius</td></tr>
+            <tr><td>Padding</td><td>28px 24px</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:12px;color:var(--color-text-secondary);margin:12px 0 0;"><strong>Rule:</strong> Gradient text requires font-weight 700+. Never use gradient on body text.</p>
+      </div>
+    </details>
+
+    <!-- ── 3. TESTIMONIAL CARDS ───────────────────────────────────── -->
+    <h3 style="font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-text-disabled);margin:32px 0 12px;">Testimonial Cards</h3>
+    <p style="font-size:13px;color:var(--color-text-secondary);margin:0 0 16px;">Customer quotes with star rating, reviewer info, and company context.</p>
+
+    <div class="card-demo-grid card-demo-grid-3" style="margin-bottom:8px;">
+      <div class="c-card">
+        <div class="c-testimonial">
+          <div class="c-testimonial-stars">★★★★★</div>
+          <p class="c-testimonial-quote">Landbot completely changed how we capture leads. Our conversion rate jumped 3× in the first month.</p>
+          <div class="c-testimonial-author">
+            <div class="c-testimonial-avatar">SR</div>
+            <div>
+              <div class="c-testimonial-name">Sara Romero</div>
+              <div class="c-testimonial-role">Head of Growth · Fintech Co.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="c-card">
+        <div class="c-testimonial">
+          <div class="c-testimonial-stars">★★★★★</div>
+          <p class="c-testimonial-quote">The no-code builder is incredibly intuitive. We launched our first bot in under an hour with zero dev help.</p>
+          <div class="c-testimonial-author">
+            <div class="c-testimonial-avatar" style="background:linear-gradient(135deg,#FF3F7B,#FF9EBE);">MK</div>
+            <div>
+              <div class="c-testimonial-name">Marco Klein</div>
+              <div class="c-testimonial-role">Marketing Manager · SaaS Co.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="c-card">
+        <div class="c-testimonial">
+          <div class="c-testimonial-stars">★★★★★</div>
+          <p class="c-testimonial-quote">Support response time dropped by 60% after deploying Landbot. Our team finally has breathing room.</p>
+          <div class="c-testimonial-author">
+            <div class="c-testimonial-avatar" style="background:linear-gradient(135deg,#33405E,#546994);">AL</div>
+            <div>
+              <div class="c-testimonial-name">Ana Lopes</div>
+              <div class="c-testimonial-role">Customer Success Lead · E-commerce</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <details class="ds-specs" style="margin-top:16px;">
+      <summary>Testimonial card specs</summary>
+      <div class="specs-body">
+        <table class="motion-table">
+          <thead><tr><th>Property</th><th>Value</th></tr></thead>
+          <tbody>
+            <tr><td>Stars</td><td>12px · #F59E0B (Amber 500)</td></tr>
+            <tr><td>Quote mark (pseudo)</td><td>48px · brand-primary at 25% opacity</td></tr>
+            <tr><td>Quote text</td><td>15px / line-height 1.65 / italic · <code>--color-text-primary</code></td></tr>
+            <tr><td>Avatar</td><td>40×40px · circle · gradient fill</td></tr>
+            <tr><td>Avatar initials</td><td>15px / wt 700 · white</td></tr>
+            <tr><td>Name</td><td>14px / wt 700 · <code>--color-text-primary</code></td></tr>
+            <tr><td>Role / company</td><td>12px · <code>--color-text-secondary</code></td></tr>
+            <tr><td>Padding</td><td>28px 24px</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:12px;color:var(--color-text-secondary);margin:12px 0 0;"><strong>Tip:</strong> Keep quotes under 30 words for visual balance in a 3-column grid. Trim to the most impactful sentence.</p>
+      </div>
+    </details>
+
+    <!-- ── 4. PRICING CARDS ───────────────────────────────────────── -->
+    <h3 style="font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-text-disabled);margin:32px 0 12px;">Pricing Cards</h3>
+    <p style="font-size:13px;color:var(--color-text-secondary);margin:0 0 16px;">Always present plans in a 3-column grid. The recommended plan gets the <strong>brand ring</strong> and a "Most popular" badge.</p>
+
+    <div class="card-demo-grid card-demo-grid-3" style="margin-bottom:8px;align-items:start;">
+
+      <!-- Starter -->
+      <div class="c-card c-pricing">
+        <div class="c-pricing-plan">Starter</div>
+        <div class="c-pricing-price">
+          <span class="c-pricing-currency">$</span>
+          <span class="c-pricing-amount">40</span>
+          <span class="c-pricing-period">/mo</span>
+        </div>
+        <div class="c-pricing-desc">For individuals and small teams getting started with chat automation.</div>
+        <hr class="c-pricing-divider">
+        <ul class="c-pricing-features">
+          <li>500 chats / month</li>
+          <li>1 active bot</li>
+          <li>Web widget</li>
+          <li>Basic integrations</li>
+          <li>Email support</li>
+        </ul>
+        <button class="btn-pricing btn-pricing-outline">Get started free</button>
+      </div>
+
+      <!-- Pro — Popular -->
+      <div class="c-card c-pricing is-popular">
+        <div class="c-pricing-badge">Most popular</div>
+        <div class="c-pricing-plan">Professional</div>
+        <div class="c-pricing-price">
+          <span class="c-pricing-currency">$</span>
+          <span class="c-pricing-amount">100</span>
+          <span class="c-pricing-period">/mo</span>
+        </div>
+        <div class="c-pricing-desc">For growing teams who need full automation across web and WhatsApp.</div>
+        <hr class="c-pricing-divider">
+        <ul class="c-pricing-features">
+          <li>5,000 chats / month</li>
+          <li>Unlimited bots</li>
+          <li>WhatsApp + Web</li>
+          <li>All integrations</li>
+          <li>Priority support</li>
+          <li>A/B testing</li>
+        </ul>
+        <button class="btn-pricing btn-pricing-primary">Start free trial</button>
+      </div>
+
+      <!-- Business -->
+      <div class="c-card c-pricing">
+        <div class="c-pricing-plan">Business</div>
+        <div class="c-pricing-price">
+          <span class="c-pricing-amount" style="font-size:32px;letter-spacing:-1px;">Custom</span>
+        </div>
+        <div class="c-pricing-desc">For enterprises with advanced security, compliance, and volume needs.</div>
+        <hr class="c-pricing-divider">
+        <ul class="c-pricing-features">
+          <li>Unlimited chats</li>
+          <li>SSO & audit logs</li>
+          <li>Dedicated CSM</li>
+          <li>Custom SLA</li>
+          <li>GDPR + SOC 2</li>
+          <li>Onboarding support</li>
+        </ul>
+        <button class="btn-pricing btn-pricing-outline">Talk to sales</button>
+      </div>
+
+    </div>
+
+    <details class="ds-specs" style="margin-top:16px;">
+      <summary>Pricing card specs</summary>
+      <div class="specs-body">
+        <table class="motion-table">
+          <thead><tr><th>Property</th><th>Default</th><th>Popular (highlighted)</th></tr></thead>
+          <tbody>
+            <tr><td>Border</td><td>1px · border-default</td><td>1px · brand-primary</td></tr>
+            <tr><td>Ring (popular)</td><td>—</td><td><code>box-shadow: 0 0 0 3px rgba(90,96,246,0.12)</code></td></tr>
+            <tr><td>"Popular" badge</td><td>—</td><td>11px / wt 700 · brand-primary on #EBECFF · pill</td></tr>
+            <tr><td>Price amount</td><td>42px / wt 800 / ls −2px · text-primary</td><td>Same</td></tr>
+            <tr><td>Feature list icon</td><td>✓ white on green tint (#E6F9F0) circle</td><td>Same</td></tr>
+            <tr><td>CTA (popular)</td><td>—</td><td>Gradient brand button (full width)</td></tr>
+            <tr><td>CTA (default)</td><td>Outline button (full width)</td><td>—</td></tr>
+            <tr><td>Padding</td><td>28px 24px top, 24px bottom</td><td>Same</td></tr>
+          </tbody>
+        </table>
+        <div style="margin-top:14px;font-size:12px;color:var(--color-text-secondary);display:flex;flex-direction:column;gap:4px;">
+          <strong style="color:var(--color-text-primary);">Rules</strong>
+          <span>• Always show 3 tiers — a clear "recommended" middle option drives decisions.</span>
+          <span>• Highlight exactly one plan with the purple ring + badge — never two.</span>
+          <span>• Use "Start free trial" (not "Buy now") as primary CTA copy.</span>
+          <span>• Align the grid to start (top) so cards with more features naturally grow down.</span>
+        </div>
+      </div>
+    </details>
+
+    <!-- ── 5. BLOG / ARTICLE CARDS ────────────────────────────────── -->
+    <h3 style="font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-text-disabled);margin:32px 0 12px;">Blog / Article Cards</h3>
+    <p style="font-size:13px;color:var(--color-text-secondary);margin:0 0 16px;">Thumbnail · category tag · title · excerpt · read time. Used in blog indexes and resource grids.</p>
+
+    <div class="card-demo-grid card-demo-grid-3" style="margin-bottom:8px;">
+
+      <div class="c-card">
+        <div class="c-blog-thumb">
+          <div class="c-blog-thumb-placeholder" style="background:var(--gradient-brand);">📣</div>
+        </div>
+        <div class="c-blog-body">
+          <span class="c-blog-tag">Product</span>
+          <h4>How to Build a Lead Capture Bot in 15 Minutes</h4>
+          <p>A step-by-step walkthrough using Landbot's visual builder — no code required.</p>
+          <div class="c-blog-meta">
+            <span>Niklas P.</span>
+            <span class="c-blog-meta-dot">·</span>
+            <span>Mar 12, 2025</span>
+            <span class="c-blog-meta-dot">·</span>
+            <span>5 min read</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="c-card">
+        <div class="c-blog-thumb">
+          <div class="c-blog-thumb-placeholder" style="background:linear-gradient(135deg,#FFEEF4,var(--color-surface-brand-subtle));">💡</div>
+        </div>
+        <div class="c-blog-body">
+          <span class="c-blog-tag c-blog-tag-pink">Case Study</span>
+          <h4>How Fonoma Grew Conversions by 40% with WhatsApp Bots</h4>
+          <p>A look at how one B2C brand moved from email to WhatsApp automation — and the results.</p>
+          <div class="c-blog-meta">
+            <span>Sara R.</span>
+            <span class="c-blog-meta-dot">·</span>
+            <span>Feb 28, 2025</span>
+            <span class="c-blog-meta-dot">·</span>
+            <span>8 min read</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="c-card">
+        <div class="c-blog-thumb">
+          <div class="c-blog-thumb-placeholder" style="background:linear-gradient(135deg,#E6F9F0,var(--color-surface-brand-subtle));">📊</div>
+        </div>
+        <div class="c-blog-body">
+          <span class="c-blog-tag c-blog-tag-green">Guide</span>
+          <h4>The 2025 Conversational Marketing Playbook</h4>
+          <p>Everything you need to build a chat-first GTM strategy, from acquisition to retention.</p>
+          <div class="c-blog-meta">
+            <span>Marco K.</span>
+            <span class="c-blog-meta-dot">·</span>
+            <span>Jan 15, 2025</span>
+            <span class="c-blog-meta-dot">·</span>
+            <span>12 min read</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <details class="ds-specs" style="margin-top:16px;">
+      <summary>Blog card specs</summary>
+      <div class="specs-body">
+        <table class="motion-table">
+          <thead><tr><th>Property</th><th>Value</th></tr></thead>
+          <tbody>
+            <tr><td>Thumbnail ratio</td><td>16:9 · <code>aspect-ratio: 16/9</code> · overflow hidden</td></tr>
+            <tr><td>Body padding</td><td>20px · all sides</td></tr>
+            <tr><td>Category tag</td><td>11px / wt 700 / uppercase / ls 0.06em · pill</td></tr>
+            <tr><td>Tag colours</td><td>Purple: brand on #EBECFF · Pink: accent on #FFEEF4 · Green: #0D7F4F on #E6F9F0</td></tr>
+            <tr><td>Title</td><td>16px / wt 700 / lh 1.35 · <code>--color-text-primary</code></td></tr>
+            <tr><td>Excerpt</td><td>13px / lh 1.55 · <code>--color-text-secondary</code></td></tr>
+            <tr><td>Meta (author, date, time)</td><td>12px · <code>--color-text-disabled</code> · separated by dot</td></tr>
+          </tbody>
+        </table>
+        <div style="margin-top:14px;font-size:12px;color:var(--color-text-secondary);display:flex;flex-direction:column;gap:4px;">
+          <strong style="color:var(--color-text-primary);">Rules</strong>
+          <span>• Use real thumbnails — not solid colour fills — in production.</span>
+          <span>• Keep titles under 65 characters so 2 lines max in a grid.</span>
+          <span>• Always include read time — it sets expectation and improves CTR.</span>
+        </div>
+      </div>
+    </details>
+
+  </section>
