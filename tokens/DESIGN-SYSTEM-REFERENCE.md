@@ -19,14 +19,14 @@
 | Font family | `--font-sans` | `DM Sans, sans-serif` |
 | Spacing base | `--spacing-4` | `16px` (base unit) |
 | Button radius | `--radius-4` | `8px` |
-| Breakpoint | `--bp-desktop` | `768px` |
+| Breakpoints | `--bp-tablet` / `--bp-desktop` | `768px` / `1024px` |
 
 **Critical rules for AI tools:**
 - Font is always **DM Sans**. Always set `font-variation-settings: 'opsz' 14`.
 - Heading font-weight is **400** (not bold). Negative letter-spacing on all headings.
 - CTA buttons always use **`--radius-4` (8px)**. Never pill radius on buttons.
 - Pill radius (`9999px`) is **only for tags, badges, and toggle tracks**.
-- Two breakpoints only: **mobile (< 768px)** and **desktop (≥ 768px)**.
+- Three breakpoints: **mobile (< 768px)**, **tablet (768–1023px)**, **desktop (≥ 1024px)**. Grid is **4 / 8 / 12** columns.
 
 ---
 
@@ -471,15 +471,17 @@ Icon library: **Hugeicons**. Class pattern: `hgi-stroke hgi-{name}`.
 
 ## 4. Responsive Collection
 
-Two breakpoints only: **mobile (< 768px)** and **desktop (≥ 768px)**.
+Three breakpoints: **mobile (< 768px)**, **tablet (768–1023px)**, **desktop (≥ 1024px)**.
 
 ### Grid
 
-| Property | Mobile | Desktop |
-|---|---|---|
-| Columns | 4 | 12 |
-| Gap | `16px` | `24px` |
-| Padding X | `20px` | `48px` |
+| Property | Mobile (<768) | Tablet (768–1023) | Desktop (≥1024) |
+|---|---|---|---|
+| Columns | 4 | 8 | 12 |
+| Gap (gutter) | `16px` | `24px` | `24px` |
+| Margin (padding X) | `20px` | `32px` | `48px` |
+
+Desktop content caps at **1200px** (centered); below that it's fluid with the margins above. Figma grid styles: `Grid/Mobile`, `Grid/Tablet`, `Grid/Desktop`, plus `Grid/Baseline-8px` (8px baseline helper). Column counts follow the Material 4/8/12 standard — a 3-up row (4 cols each on desktop) becomes 2-up on tablet (8 cols) and 1-up on mobile (4 cols).
 
 ### Content Widths
 
@@ -742,7 +744,8 @@ module.exports = {
         'elevation-4': 'var(--elevation-4)',
       },
       screens: {
-        'md': '768px', // only breakpoint in this system
+        'md': '768px',  // tablet
+        'lg': '1024px', // desktop
       },
     },
   },
@@ -979,7 +982,7 @@ h2, .text-h2 {
 - Never use arbitrary spacing values. Always reference `--spacing-*` tokens.
 
 **Responsive**
-- Only one breakpoint: `768px`. Do not introduce `sm:`, `lg:`, `xl:` Tailwind prefixes.
+- Three breakpoints, mobile-first: base (mobile), `md:` `768px` (tablet), `lg:` `1024px` (desktop). Grid is **4 / 8 / 12** columns. Avoid `sm:`/`xl:`/`2xl:` unless a real need arises.
 - On mobile, full-width CTA buttons inside hero/banner sections only.
 
 **Dark sections**
